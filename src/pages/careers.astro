@@ -1,0 +1,278 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import PageHero from "../components/PageHero.astro";
+import ImageBand from "../components/ImageBand.astro";
+import { business } from "../config";
+import teamPhoto from "../assets/photos/02-plan-review-jobsite-team.png";
+import bandPhoto from "../assets/photos/17-branded-cap-materials-detail.png";
+
+const perks = [
+  {
+    title: "Ownership of Your Work",
+    copy: "Real responsibility from day one — your projects, your relationships, your name on the result.",
+  },
+  {
+    title: "Growth & Mentorship",
+    copy: "Work alongside senior builders who teach the craft — and a company that promotes from within.",
+  },
+  {
+    title: "Safety Without Shortcuts",
+    copy: "No schedule is worth your health. Everyone goes home safe, every day.",
+  },
+  {
+    title: "A Team That Has Your Back",
+    copy: "Integrity, teamwork, accountability — the values on the wall are the values on the site.",
+  },
+];
+
+const roles = [
+  { title: "Superintendent", dept: "Field Operations — Phoenix, AZ" },
+  { title: "Project Manager", dept: "Operations — Phoenix, AZ" },
+  { title: "Preconstruction Estimator", dept: "Preconstruction — Phoenix, AZ" },
+];
+
+const applyHref = (role: string) =>
+  `mailto:${business.careersEmail}?subject=${encodeURIComponent(`Application — ${role}`)}`;
+---
+
+<Base
+  title="Careers — Trinity Build Co."
+  description="Build your career at Trinity Build Co. — real ownership, growth and mentorship, and a team that has your back. Open roles in Phoenix, Arizona."
+>
+  <Nav active="none" />
+  <main id="main-content">
+    <PageHero
+      eyebrow="Careers"
+      title="Build your career here."
+      titleMaxWidth="960px"
+      lede="We hire people who take pride in the work and take care of each other. If that sounds like you, we'd like to meet."
+    />
+
+    <section class="offer">
+      <div class="container">
+        <div class="offer-grid">
+          <div data-reveal>
+            <div class="eyebrow offer-eyebrow"><span>Why Work Here</span></div>
+            <h2 class="section-title section-title--sm offer-title">
+              Do the best work of your career.
+            </h2>
+            <p class="offer-copy">
+              Trinity is built by people who sweat the details — in the field and in the office.
+              We invest in growth, protect our people, and give every team member real ownership
+              of the work that carries our name.
+            </p>
+          </div>
+          <Image
+            src={teamPhoto}
+            alt="Trinity Build Co. team reviewing plans on a jobsite"
+            widths={[480, 800, 1200]}
+            sizes="(min-width: 900px) 48vw, 100vw"
+            quality={75}
+            class="offer-img"
+            data-reveal
+          />
+        </div>
+        <div class="tile-grid perks-grid">
+          {
+            perks.map((perk, i) => (
+              <div class="perk-card" data-reveal>
+                <div class="num">{String(i + 1).padStart(2, "0")}</div>
+                <h3>{perk.title}</h3>
+                <p>{perk.copy}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <ImageBand
+      image={bandPhoto}
+      alt="Trinity Build Co. branded cap with tools and materials on site"
+      height="clamp(280px, 34vw, 440px)"
+      gradient="linear-gradient(180deg, rgba(13,13,13,0.5) 0%, rgba(13,13,13,0.12) 44%, rgba(13,13,13,0.66) 100%)"
+      caption="The values on the wall are the values on the site."
+    />
+
+    <section class="roles">
+      <div class="container">
+        <div class="eyebrow roles-eyebrow"><span>Open Roles</span></div>
+        <h2 class="section-title section-title--sm roles-title">Current openings</h2>
+        <div class="roles-list" data-reveal>
+          {
+            roles.map((role) => (
+              <a href={applyHref(role.title)} class="role-row">
+                <span>
+                  <span class="role-title">{role.title}</span>
+                  <span class="role-dept">{role.dept}</span>
+                </span>
+                <span class="role-apply">Apply →</span>
+              </a>
+            ))
+          }
+        </div>
+        <p class="roles-note">
+          Don't see your role? Introduce yourself at
+          <a href={`mailto:${business.careersEmail}`} class="roles-email">{business.careersEmail}</a>
+        </p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .offer {
+    background: #ffffff;
+    padding: var(--section-pad) 0;
+  }
+
+  .offer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+    gap: 64px;
+    align-items: center;
+    margin-bottom: 72px;
+  }
+
+  .offer-eyebrow {
+    margin-bottom: 24px;
+  }
+
+  .offer-title {
+    color: var(--color-ink);
+  }
+
+  .offer-copy {
+    margin: 26px 0 0;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--color-stone);
+  }
+
+  .offer-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 700px) {
+    .offer-img {
+      height: clamp(240px, 56vw, 400px);
+    }
+  }
+
+  .perks-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr));
+  }
+
+  .perk-card {
+    background: #ffffff;
+    padding: 38px 34px;
+  }
+
+  .perk-card h3 {
+    margin: 16px 0 10px;
+    font-size: 15.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+
+  .perk-card p {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--color-stone-muted);
+  }
+
+  .roles {
+    background: var(--color-cream);
+    padding: clamp(72px, 9vw, 100px) 0 var(--section-pad);
+  }
+
+  .roles-eyebrow {
+    margin-bottom: 24px;
+  }
+
+  .roles-title {
+    color: var(--color-ink);
+    margin-bottom: 48px;
+  }
+
+  .roles-list {
+    background: #ffffff;
+    border: 1px solid var(--color-line-grid);
+  }
+
+  .role-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 30px 40px;
+    text-decoration: none;
+    flex-wrap: wrap;
+    transition: background 0.2s;
+  }
+
+  .role-row:not(:last-child) {
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .role-row:hover {
+    background: var(--color-cream-hover);
+  }
+
+  .role-title {
+    display: block;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+
+  .role-dept {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-caption);
+  }
+
+  .role-apply {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+  }
+
+  @media (max-width: 560px) {
+    .role-row {
+      padding: 26px 24px;
+    }
+  }
+
+  .roles-note {
+    margin: 36px 0 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-stone-muted);
+  }
+
+  .roles-email {
+    color: var(--color-ink);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px solid var(--color-gold);
+  }
+</style>

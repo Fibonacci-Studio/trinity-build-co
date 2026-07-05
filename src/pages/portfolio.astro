@@ -1,0 +1,163 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import PageHero from "../components/PageHero.astro";
+import facade from "../assets/photos/15-exterior-facade-install.png";
+import medical from "../assets/photos/11-medical-ti-framing.png";
+import warehouse from "../assets/photos/07-tilt-up-warehouse-crew.png";
+import fleet from "../assets/photos/12-branded-fleet-tool-trailer.png";
+import glass from "../assets/photos/09-glass-partition-installation.png";
+import walkthrough from "../assets/photos/03-tenant-improvement-walkthrough.png";
+
+interface Project {
+  image: ImageMetadata;
+  alt: string;
+  title: string;
+  location: string;
+}
+
+const projects: Project[] = [
+  {
+    image: facade,
+    alt: "Exterior facade installation on a commercial office project",
+    title: "Featured Project — Office",
+    location: "Phoenix, AZ",
+  },
+  {
+    image: medical,
+    alt: "Medical tenant-improvement framing in progress",
+    title: "Medical",
+    location: "Phoenix, AZ",
+  },
+  {
+    image: warehouse,
+    alt: "Tilt-up warehouse construction crew on site",
+    title: "Industrial",
+    location: "Phoenix, AZ",
+  },
+  {
+    image: fleet,
+    alt: "Trinity Build Co. branded fleet and tool trailer at a retail jobsite",
+    title: "Retail",
+    location: "Phoenix, AZ",
+  },
+  {
+    image: glass,
+    alt: "Glass partition installation in a corporate office buildout",
+    title: "Corporate Office",
+    location: "Phoenix, AZ",
+  },
+  {
+    image: walkthrough,
+    alt: "Tenant improvement walkthrough with the project team",
+    title: "Tenant Improvement",
+    location: "Phoenix, AZ",
+  },
+];
+---
+
+<Base
+  title="Portfolio — Trinity Build Co."
+  description="Selected commercial construction work by Trinity Build Co. — ground-up construction and tenant improvements across Arizona."
+>
+  <Nav active="portfolio" />
+  <main id="main-content">
+    <PageHero
+      eyebrow="Selected Work"
+      title="Our portfolio."
+      lede="Ground-up construction and tenant improvements across Arizona."
+    />
+
+    <section class="grid-section">
+      <div class="container">
+        <div class="project-grid">
+          {
+            projects.map((project) => (
+              <div data-reveal>
+                <Image
+                  src={project.image}
+                  alt={project.alt}
+                  widths={[480, 800, 1200]}
+                  sizes="(min-width: 760px) 48vw, 100vw"
+                  quality={75}
+                  class="project-img"
+                />
+                <div class="project-caption">
+                  <span class="caption-title">{project.title}</span>
+                  <span class="caption-loc">{project.location}</span>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+        <p class="grid-note">Project photography coming soon.</p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .grid-section {
+    background: #ffffff;
+    padding: clamp(72px, 9vw, 100px) 0 var(--section-pad);
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .project-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .project-caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 18px;
+    gap: 16px;
+  }
+
+  .caption-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+
+  .caption-loc {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-caption);
+  }
+
+  .grid-note {
+    margin: 56px 0 0;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--color-caption);
+    text-align: center;
+  }
+
+  @media (max-width: 759px) {
+    .project-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .project-img {
+      height: clamp(240px, 56vw, 420px);
+    }
+  }
+</style>

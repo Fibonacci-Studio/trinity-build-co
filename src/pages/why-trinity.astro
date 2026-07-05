@@ -1,0 +1,189 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import PageHero from "../components/PageHero.astro";
+import promisePhoto from "../assets/photos/18-mechanical-room-inspection.png";
+
+const differentiators = [
+  {
+    title: "Disciplined Preconstruction",
+    copy: "We solve problems on paper — before they cost time or money in the field. Feasibility, constructability, and phasing are worked through while changes are still cheap.",
+  },
+  {
+    title: "Financial Stewardship",
+    copy: "Your budget is managed like our own — line-item transparency, early buyout, and continuous reconciliation as design evolves. No padded numbers.",
+  },
+  {
+    title: "Transparent Communication",
+    copy: "Honest reporting on cost, schedule, and risk — even when the news is hard. You will never learn about a problem after it becomes expensive.",
+  },
+  {
+    title: "Experienced Leadership",
+    copy: "Senior people stay on your project from first meeting to final walkthrough. The team that wins your work is the team that builds it.",
+  },
+  {
+    title: "Quality Without Compromise",
+    copy: "Quality checkpoints at every phase — preparatory reviews, first-work inspections, and documented closeout — so the finished product matches the promise.",
+  },
+  {
+    title: "Technology & Modern Systems",
+    copy: "Digital plans, real-time dashboards, and documentation you can access anytime. You always know where your project stands.",
+  },
+  {
+    title: "Safety First",
+    copy: "A culture of prevention that protects every person on site, every day — because nothing we build matters more than the people building it.",
+  },
+  {
+    title: "Long-Term Partnerships",
+    copy: "We build for the second project, not just the first — relationships that outlast ribbon cuttings, backed by support long after closeout.",
+  },
+];
+---
+
+<Base
+  title="Why Trinity — Trinity Build Co."
+  description="Eight commitments we make on every project — disciplined preconstruction, financial stewardship, transparent communication, experienced leadership, and quality without compromise."
+>
+  <Nav active="why" />
+  <main id="main-content">
+    <PageHero
+      eyebrow="Why Trinity"
+      title="Why owners choose us."
+      titleMaxWidth="960px"
+      lede="Choosing a general contractor is a decision about trust. Here is what that trust is built on — eight commitments we make on every project."
+    />
+
+    <section class="diffs">
+      <div class="container">
+        <div class="tile-grid diffs-grid">
+          {
+            differentiators.map((diff, i) => (
+              <div class="diff-card" data-reveal>
+                <div class="num">{String(i + 1).padStart(2, "0")}</div>
+                <h3>{diff.title}</h3>
+                <p>{diff.copy}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="brand-promise">
+      <Image
+        src={promisePhoto}
+        alt="Trinity Build Co. team inspecting a mechanical room"
+        widths={[768, 1280, 1920]}
+        sizes="100vw"
+        quality={72}
+        class="promise-img"
+      />
+      <div class="promise-scrim" aria-hidden="true"></div>
+      <div class="container promise-inner">
+        <div class="kicker promise-kicker">Our Brand Promise</div>
+        <p class="promise-headline">Building Excellence.<br /><span>Delivering Trust.</span></p>
+        <p class="promise-copy">
+          Visitors leave our buildings believing what our clients already know: this is a builder
+          with the leadership, systems, and discipline to deliver.
+        </p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .diffs {
+    background: #ffffff;
+    padding: clamp(72px, 9vw, 100px) 0 var(--section-pad);
+  }
+
+  .diffs-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+  }
+
+  .diff-card {
+    background: #ffffff;
+    padding: 46px 44px;
+  }
+
+  .diff-card h3 {
+    margin: 16px 0 12px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+
+  .diff-card p {
+    margin: 0;
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--color-stone);
+  }
+
+  @media (max-width: 560px) {
+    .diff-card {
+      padding: 38px 30px;
+    }
+  }
+
+  .brand-promise {
+    position: relative;
+    padding: clamp(96px, 12vw, 130px) 0;
+    overflow: hidden;
+  }
+
+  .promise-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .promise-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(13, 13, 13, 0.72) 0%, rgba(13, 13, 13, 0.64) 100%);
+  }
+
+  .promise-inner {
+    position: relative;
+    text-align: center;
+  }
+
+  .promise-kicker {
+    letter-spacing: 0.3em;
+    margin-bottom: 28px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  }
+
+  .promise-headline {
+    margin: 0 auto;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    color: #ffffff;
+    max-width: 900px;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.55);
+  }
+
+  .promise-headline span {
+    color: var(--color-gold);
+  }
+
+  .promise-copy {
+    margin: 28px auto 0;
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--color-dust);
+    max-width: 560px;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
+  }
+</style>

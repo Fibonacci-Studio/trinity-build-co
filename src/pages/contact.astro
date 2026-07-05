@@ -1,0 +1,100 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import ContactForm from "../components/ContactForm.astro";
+import ContactRows from "../components/ContactRows.astro";
+import { business } from "../config";
+import sitePhoto from "../assets/photos/20-site-entrance-fencing.png";
+
+const contactRows = [
+  { label: "Phone", value: business.phone, href: business.phoneHref },
+  { label: "Email", value: business.email, href: `mailto:${business.email}` },
+  { label: "Office", value: "Phoenix, Arizona" },
+  { label: "Careers", value: business.careersEmail, href: `mailto:${business.careersEmail}` },
+];
+---
+
+<Base
+  title="Contact — Trinity Build Co."
+  description="Tell us about your project and a member of our leadership team will respond within one business day. Phoenix, Arizona commercial general contractor."
+>
+  <Nav active="none" />
+  <main id="main-content">
+    <section class="contact-page">
+      <div class="container">
+        <div class="eyebrow contact-eyebrow"><span>Start Your Project</span></div>
+        <h1 class="page-title contact-title">Let's build something that lasts.</h1>
+        <p class="contact-lede">
+          Tell us about your project and a member of our leadership team will respond within one
+          business day.
+        </p>
+
+        <div class="contact-grid">
+          <div data-reveal>
+            <ContactRows rows={contactRows} large />
+            <Image
+              src={sitePhoto}
+              alt="Trinity Build Co. site entrance with branded fencing"
+              widths={[480, 800, 1200]}
+              sizes="(min-width: 900px) 48vw, 100vw"
+              quality={75}
+              class="contact-img"
+            />
+          </div>
+          <div data-reveal>
+            <ContactForm rows={6} />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer showCta={false} />
+</Base>
+
+<style>
+  .contact-page {
+    background: var(--color-ink);
+    padding: clamp(72px, 9vw, 96px) 0 var(--section-pad);
+  }
+
+  .contact-eyebrow {
+    margin-bottom: 28px;
+  }
+
+  .contact-title {
+    max-width: 960px;
+  }
+
+  .contact-lede {
+    margin: 28px 0 0;
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--color-dust-muted);
+    max-width: 620px;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+    gap: 80px;
+    align-items: start;
+    margin-top: 80px;
+  }
+
+  .contact-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    margin-top: 48px;
+  }
+
+  @media (max-width: 700px) {
+    .contact-grid {
+      margin-top: 56px;
+      gap: 56px;
+    }
+  }
+</style>

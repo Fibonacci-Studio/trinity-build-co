@@ -1,0 +1,234 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import PageHero from "../components/PageHero.astro";
+import ImageBand from "../components/ImageBand.astro";
+import bandPhoto from "../assets/photos/13-hardhat-plans-detail.png";
+
+const services = [
+  {
+    title: "Commercial General Contracting",
+    copy: "Full-scope delivery of commercial projects — permits, trades, schedule, and budget managed under one roof, with weekly reporting you can act on.",
+    bullets: [
+      "Full project delivery, permit to punch list",
+      "Vetted trade partners, self-performed supervision",
+      "Weekly reporting on cost, schedule, and risk",
+    ],
+  },
+  {
+    title: "Design-Build",
+    copy: "One contract, one accountable team. Architect and builder aligned from day one — faster decisions, fewer change orders, and a budget that holds.",
+    bullets: [
+      "Single point of accountability",
+      "Design and cost developed together",
+      "Compressed delivery timelines",
+    ],
+  },
+  {
+    title: "Construction Management",
+    copy: "Owner-side leadership across every phase — an advocate who protects your budget, schedule, and quality while you stay focused on your business.",
+    bullets: [
+      "Owner's advocate at the table",
+      "Bid leveling and trade prequalification",
+      "Cost and schedule control, fully transparent",
+    ],
+  },
+  {
+    title: "Preconstruction Services",
+    copy: "The phase where projects are won or lost. We de-risk your project before ground breaks — feasibility, constructability, phasing, and permitting strategy.",
+    bullets: [
+      "Feasibility and site logistics review",
+      "Constructability and phasing analysis",
+      "Permitting and entitlement support",
+    ],
+  },
+  {
+    title: "Budget Development",
+    copy: "Accurate, transparent budgets built early and reconciled continuously as design evolves — no padded numbers, no surprises at GMP.",
+    bullets: [
+      "Conceptual through GMP estimating",
+      "Line-item transparency",
+      "Continuous design-to-budget reconciliation",
+    ],
+  },
+  {
+    title: "Value Engineering",
+    copy: "Smart alternatives that reduce cost without compromising design intent — documented options with clear tradeoffs, so you decide with full information.",
+    bullets: [
+      "Alternatives that protect design intent",
+      "Lifecycle cost, not just first cost",
+      "Documented options and tradeoffs",
+    ],
+  },
+  {
+    title: "Project Planning",
+    copy: "Realistic schedules with real milestones. Long-lead items procured early, trades coordinated before mobilization, and progress you can verify.",
+    bullets: [
+      "CPM schedules with honest milestones",
+      "Long-lead procurement mapped early",
+      "Trade coordination before mobilization",
+    ],
+  },
+  {
+    title: "Ground-Up Commercial Construction",
+    copy: "New commercial construction from sitework through shell and interiors — sequenced tightly, supervised daily, and built for durability.",
+    bullets: [
+      "Sitework through shell and interiors",
+      "Tight sequencing across all trades",
+      "Built for durability and low operating cost",
+    ],
+  },
+  {
+    title: "Tenant Improvements",
+    copy: "Fast-track interior buildouts that minimize downtime — including occupied-space and after-hours work, coordinated with landlords and property managers.",
+    bullets: [
+      "Occupied-space and after-hours work",
+      "Landlord and PM coordination",
+      "Speed without sacrificing finish quality",
+    ],
+  },
+];
+---
+
+<Base
+  title="Services — Trinity Build Co."
+  description="Nine core commercial construction services, one accountable team — general contracting, design-build, construction management, preconstruction, and tenant improvements in Phoenix, Arizona."
+>
+  <Nav active="services" />
+  <main id="main-content">
+    <PageHero
+      eyebrow="What We Do"
+      title="Commercial construction services."
+      titleMaxWidth="960px"
+      lede="Nine core services, one accountable team. From first budget to final closeout, every phase is planned, priced, and delivered with discipline."
+    />
+
+    <ImageBand
+      image={bandPhoto}
+      alt="Trinity Build Co. hardhat resting on construction plans"
+      height="clamp(320px, 42vw, 520px)"
+      gradient="linear-gradient(180deg, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0.1) 40%, rgba(13,13,13,0.72) 100%)"
+      objectPosition="center 46%"
+      eyebrow="Discipline, Documented"
+      caption="Every project begins on paper — planned, priced, and pressure-tested before a shovel hits the ground."
+    />
+
+    <section class="services-detail">
+      <div class="container">
+        {
+          services.map((service, i) => (
+            <div class="service-row" data-reveal>
+              <div class="service-num">{String(i + 1).padStart(2, "0")}</div>
+              <div>
+                <h3 class="service-title">{service.title}</h3>
+                <p class="service-copy">{service.copy}</p>
+              </div>
+              <div class="service-bullets">
+                {service.bullets.map((bullet) => (
+                  <div class="bullet">
+                    <span class="bullet-dash" aria-hidden="true">
+                      —
+                    </span>
+                    <span class="bullet-text">{bullet}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+
+        <div class="services-cta">
+          <a href="/contact" class="btn btn--gold">Request a Proposal</a>
+          <a href="/process" class="btn btn--outline-dark">See How We Work</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .services-detail {
+    background: #ffffff;
+    padding: clamp(72px, 9vw, 96px) 0 var(--section-pad);
+  }
+
+  .service-row {
+    border-top: 1px solid var(--color-line);
+    padding: 46px 0;
+    display: grid;
+    grid-template-columns: minmax(70px, 90px) minmax(320px, 1.15fr) minmax(280px, 0.85fr);
+    gap: 40px;
+  }
+
+  .service-row:last-of-type {
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .service-num {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--color-gold);
+  }
+
+  .service-title {
+    margin: 0 0 14px;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+
+  .service-copy {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--color-stone);
+  }
+
+  .service-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 6px;
+  }
+
+  .bullet {
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+  }
+
+  .bullet-dash {
+    color: var(--color-gold);
+    font-weight: 700;
+  }
+
+  .bullet-text {
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--color-stone);
+  }
+
+  .services-cta {
+    margin-top: 64px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 980px) {
+    .service-row {
+      grid-template-columns: 1fr;
+      gap: 22px;
+      padding: 40px 0;
+    }
+
+    .service-bullets {
+      padding-top: 0;
+    }
+  }
+</style>

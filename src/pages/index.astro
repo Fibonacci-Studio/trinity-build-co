@@ -1,0 +1,956 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import ContactForm from "../components/ContactForm.astro";
+import ContactRows from "../components/ContactRows.astro";
+import { business } from "../config";
+import heroPhoto from "../assets/photos/16-night-commercial-jobsite.png";
+import portfolioFeatured from "../assets/photos/15-exterior-facade-install.png";
+import portfolioMedical from "../assets/photos/11-medical-ti-framing.png";
+import portfolioIndustrial from "../assets/photos/07-tilt-up-warehouse-crew.png";
+
+const capabilities = [
+  "Ground-Up Construction",
+  "Tenant Improvements",
+  "Design-Build & Construction Management",
+];
+
+const services = [
+  {
+    title: "Commercial General Contracting",
+    copy: "Full-scope delivery of commercial projects, managed with precision from permit to closeout.",
+  },
+  {
+    title: "Design-Build",
+    copy: "A single accountable team from concept through completion — faster decisions, fewer change orders.",
+  },
+  {
+    title: "Construction Management",
+    copy: "Owner-side leadership that protects budget, schedule, and quality at every phase.",
+  },
+  {
+    title: "Preconstruction Services",
+    copy: "Feasibility, constructability, and planning that de-risk your project before ground breaks.",
+  },
+  {
+    title: "Budget Development",
+    copy: "Accurate, transparent budgets built early — and defended through delivery.",
+  },
+  {
+    title: "Value Engineering",
+    copy: "Smart alternatives that reduce cost without compromising design intent or quality.",
+  },
+  {
+    title: "Project Planning",
+    copy: "Realistic schedules, clear milestones, and proactive coordination across every trade.",
+  },
+  {
+    title: "Ground-Up Construction",
+    copy: "New commercial construction delivered on time, on budget, and built to last.",
+  },
+  {
+    title: "Tenant Improvements",
+    copy: "Fast-track interior buildouts that minimize downtime for tenants and owners.",
+  },
+];
+
+const processSteps = [
+  { title: "Discover", copy: "We understand your goals, vision, and priorities." },
+  { title: "Plan", copy: "We develop the right strategy, budget, and timeline." },
+  { title: "Collaborate", copy: "We align the right team and solve challenges early." },
+  { title: "Build", copy: "We execute with precision, quality, and proactive communication." },
+  { title: "Deliver", copy: "We complete with thorough closeout and a seamless turnover." },
+  { title: "Support", copy: "We remain a trusted partner long after completion." },
+];
+
+const industries = [
+  "Office",
+  "Medical",
+  "Industrial",
+  "Warehouses",
+  "Retail",
+  "Restaurants",
+  "Churches",
+  "Mixed-Use Developments",
+  "Apartment Communities",
+  "Commercial Condominiums",
+  "Tenant Improvements",
+];
+
+const values = [
+  "Integrity",
+  "Excellence",
+  "Relationships",
+  "Stewardship",
+  "Innovation",
+  "Teamwork",
+  "Safety",
+  "Accountability",
+];
+
+const whyItems = [
+  "Disciplined Preconstruction",
+  "Financial Stewardship",
+  "Transparent Communication",
+  "Experienced Leadership",
+  "Quality Without Compromise",
+  "Technology & Modern Systems",
+  "Safety First",
+  "Long-Term Partnerships",
+];
+
+const contactRows = [
+  { label: "Phone", value: business.phone, href: business.phoneHref },
+  { label: "Email", value: business.email, href: `mailto:${business.email}` },
+  { label: "Office", value: "Phoenix, Arizona" },
+];
+---
+
+<Base
+  title="Trinity Build Co. — Commercial General Contractor | Phoenix, Arizona"
+  description="Ground-up commercial construction, tenant improvements, and design-build across Arizona — delivered with disciplined preconstruction, transparent budgets, and institutional rigor."
+>
+  <Nav active="home" />
+  <main id="main-content">
+    <!-- ============ HERO ============ -->
+    <section id="top" class="hero">
+      <div class="hero-bg" aria-hidden="true">
+        <Image
+          src={heroPhoto}
+          alt=""
+          widths={[768, 1280, 1920]}
+          sizes="100vw"
+          loading="eager"
+          fetchpriority="high"
+          quality={72}
+          class="hero-img"
+        />
+        <div class="hero-scrim hero-scrim--x"></div>
+        <div class="hero-scrim hero-scrim--y"></div>
+      </div>
+      <div class="container hero-inner">
+        <div class="eyebrow"><span>Commercial General Contractor — Phoenix, Arizona</span></div>
+        <h1 class="hero-title">Building Excellence.<br /><span>Delivering Trust.</span></h1>
+        <p class="hero-lede">
+          Ground-up commercial construction, tenant improvements, and design-build — delivered
+          with the discipline, transparency, and financial rigor of an institutional partner.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn--gold">Start Your Project</a>
+          <a href="#services" class="btn btn--outline">View Our Capabilities</a>
+        </div>
+        <div class="hero-caps">
+          {
+            capabilities.map((cap, i) => (
+              <div class="hero-cap">
+                <span class="cap-num">{String(i + 1).padStart(2, "0")}</span>
+                <span class="cap-label">{cap}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="about-grid">
+          <div data-reveal>
+            <div class="eyebrow about-eyebrow"><span>Who We Are</span></div>
+            <h2 class="section-title about-title">More than a general contractor.</h2>
+          </div>
+          <div data-reveal>
+            <p class="about-copy">
+              Trinity Build Co. is a Phoenix-based commercial general contractor serving owners,
+              developers, and institutions across Arizona. We deliver ground-up construction,
+              tenant improvements, and design-build projects with the rigor of a premier
+              development firm — disciplined preconstruction, financial stewardship, and execution
+              without surprises.
+            </p>
+            <p class="about-copy about-copy--follow">
+              We build more than buildings. We build confidence, opportunity, and a legacy of
+              trust — through projects that strengthen businesses, communities, and the people we
+              serve.
+            </p>
+            <a href="/about" class="arrow-link arrow-link--dark about-link">Our Story →</a>
+          </div>
+        </div>
+        <div class="mission-grid">
+          <div class="mission-card" data-reveal>
+            <div class="kicker">Our Mission</div>
+            <p>
+              To build exceptional commercial spaces through integrity, disciplined execution, and
+              lasting relationships — delivering projects that strengthen businesses, communities,
+              and the people we serve.
+            </p>
+          </div>
+          <div class="mission-card" data-reveal>
+            <div class="kicker">Our Vision</div>
+            <p>
+              To become Arizona's most trusted commercial builder — recognized for excellence in
+              preconstruction, quality craftsmanship, financial stewardship, and long-term
+              partnership.
+            </p>
+          </div>
+        </div>
+        <div class="values-strip">
+          {
+            values.map((value) => (
+              <span class="value-item">
+                <span class="value-dot" aria-hidden="true" />
+                <span class="value-label">{value}</span>
+              </span>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-head">
+          <div data-reveal>
+            <div class="eyebrow head-eyebrow"><span>What We Do</span></div>
+            <h2 class="section-title dark-on-light">Commercial Construction Services</h2>
+          </div>
+          <div class="head-side" data-reveal>
+            <p>From first budget to final closeout — one accountable team, one standard of excellence.</p>
+            <a href="/services" class="arrow-link arrow-link--dark head-link">All Services →</a>
+          </div>
+        </div>
+        <div class="tile-grid services-grid">
+          {
+            services.map((service, i) => (
+              <div class="service-card" data-reveal>
+                <div class="num">{String(i + 1).padStart(2, "0")}</div>
+                <h3>{service.title}</h3>
+                <p>{service.copy}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section id="process" class="process">
+      <div class="container">
+        <div class="section-head">
+          <div data-reveal>
+            <div class="eyebrow head-eyebrow"><span>Our Process</span></div>
+            <h2 class="section-title light-on-dark">The Trinity Way</h2>
+          </div>
+          <div class="head-side head-side--process" data-reveal>
+            <p>
+              A proven six-step process that ensures predictable outcomes and exceptional results —
+              on every project, at every phase.
+            </p>
+            <a href="/process" class="arrow-link arrow-link--light head-link">The Full Process →</a>
+          </div>
+        </div>
+        <div class="tile-grid tile-grid--dark process-grid">
+          {
+            processSteps.map((step, i) => (
+              <div class="process-card" data-reveal>
+                <div class="num">{String(i + 1).padStart(2, "0")}</div>
+                <h3>{step.title}</h3>
+                <p>{step.copy}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INDUSTRIES ============ -->
+    <section id="industries" class="industries">
+      <div class="container">
+        <div class="section-head">
+          <div data-reveal>
+            <div class="eyebrow head-eyebrow"><span>Where We Build</span></div>
+            <h2 class="section-title dark-on-light">Industries We Serve</h2>
+          </div>
+          <div class="head-side" data-reveal>
+            <p>Purpose-built experience across the commercial sectors driving Arizona's growth.</p>
+            <a href="/industries" class="arrow-link arrow-link--dark head-link">All Industries →</a>
+          </div>
+        </div>
+        <div class="tile-grid industries-grid">
+          {
+            industries.map((industry) => (
+              <div class="industry-tile" data-reveal>
+                <span class="industry-dot" aria-hidden="true" />
+                <span class="industry-label">{industry}</span>
+              </div>
+            ))
+          }
+          <a href="#contact" class="industry-cta" data-reveal>
+            <span class="industry-cta-hint">Have a project in mind?</span>
+            <span class="industry-cta-link">Let's Talk →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHY TRINITY ============ -->
+    <section id="why" class="why">
+      <div class="container why-grid">
+        <div data-reveal>
+          <div class="eyebrow head-eyebrow"><span>Why Trinity</span></div>
+          <h2 class="section-title dark-on-light">Why owners choose us.</h2>
+          <p class="why-copy">
+            We treat every dollar, day, and decision as our own. Preconstruction is disciplined,
+            budgets are transparent, schedules are honest — and our leadership stays engaged from
+            first meeting to final walkthrough.
+          </p>
+          <a href="#contact" class="arrow-link arrow-link--dark why-link">Schedule a Consultation →</a>
+        </div>
+        <div class="why-list" data-reveal>
+          {
+            whyItems.map((item) => (
+              <div class="why-item">
+                <span class="why-check" aria-hidden="true">✓</span>
+                <span class="why-label">{item}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PORTFOLIO ============ -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+        <div class="section-head">
+          <div data-reveal>
+            <div class="eyebrow head-eyebrow"><span>Selected Work</span></div>
+            <h2 class="section-title dark-on-light">Recent Projects</h2>
+          </div>
+          <div class="head-side" data-reveal>
+            <p>Ground-up and tenant-improvement work across Arizona.</p>
+            <a href="/portfolio" class="arrow-link arrow-link--dark head-link">Full Portfolio →</a>
+          </div>
+        </div>
+        <div class="portfolio-grid">
+          <div data-reveal>
+            <Image
+              src={portfolioFeatured}
+              alt="Exterior facade installation on a Trinity Build Co. office project in Phoenix"
+              widths={[640, 1000, 1400]}
+              sizes="(min-width: 900px) 56vw, 100vw"
+              quality={75}
+              class="portfolio-img portfolio-img--featured"
+            />
+            <div class="portfolio-caption">
+              <span class="caption-title">Featured Project — Office</span>
+              <span class="caption-loc">Phoenix, AZ</span>
+            </div>
+          </div>
+          <div class="portfolio-col">
+            <div data-reveal>
+              <Image
+                src={portfolioMedical}
+                alt="Medical tenant-improvement framing by Trinity Build Co."
+                widths={[480, 800, 1200]}
+                sizes="(min-width: 900px) 42vw, 100vw"
+                quality={75}
+                class="portfolio-img portfolio-img--stack"
+              />
+              <div class="portfolio-caption">
+                <span class="caption-title">Medical</span>
+                <span class="caption-loc">Phoenix, AZ</span>
+              </div>
+            </div>
+            <div data-reveal>
+              <Image
+                src={portfolioIndustrial}
+                alt="Tilt-up warehouse construction crew on a Trinity Build Co. industrial project"
+                widths={[480, 800, 1200]}
+                sizes="(min-width: 900px) 42vw, 100vw"
+                quality={75}
+                class="portfolio-img portfolio-img--stack"
+              />
+              <div class="portfolio-caption">
+                <span class="caption-title">Industrial</span>
+                <span class="caption-loc">Phoenix, AZ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="contact">
+      <div class="container contact-grid">
+        <div data-reveal>
+          <div class="eyebrow head-eyebrow"><span>Start Your Project</span></div>
+          <h2 class="section-title light-on-dark">Let's build something that lasts.</h2>
+          <p class="contact-copy">
+            Tell us about your project and a member of our leadership team will respond within one
+            business day.
+          </p>
+          <ContactRows rows={contactRows} />
+        </div>
+        <div data-reveal>
+          <ContactForm rows={5} />
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer showCta={false} />
+</Base>
+
+<style>
+  section {
+    scroll-margin-top: 80px;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative;
+    background: var(--color-ink);
+    color: #ffffff;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 55%;
+    display: block;
+  }
+
+  .hero-scrim {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-scrim--x {
+    background: linear-gradient(
+      90deg,
+      rgba(13, 13, 13, 0.96) 0%,
+      rgba(13, 13, 13, 0.82) 42%,
+      rgba(13, 13, 13, 0.42) 100%
+    );
+  }
+
+  .hero-scrim--y {
+    background: linear-gradient(
+      180deg,
+      rgba(13, 13, 13, 0.6) 0%,
+      rgba(13, 13, 13, 0) 32%,
+      rgba(13, 13, 13, 0.2) 72%,
+      rgba(13, 13, 13, 0.92) 100%
+    );
+  }
+
+  .hero-inner {
+    position: relative;
+    padding-top: clamp(90px, 13vh, 160px);
+  }
+
+  .hero-inner .eyebrow {
+    margin-bottom: 30px;
+  }
+
+  .hero-title {
+    margin: 0;
+    font-size: clamp(48px, 5.6vw, 78px);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    line-height: 1.08;
+    max-width: 900px;
+  }
+
+  .hero-title span {
+    color: var(--color-gold);
+  }
+
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: clamp(34px, 10.5vw, 44px);
+    }
+  }
+
+  .hero-lede {
+    margin: 32px 0 0;
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--color-dust);
+    max-width: 560px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 44px;
+    flex-wrap: wrap;
+  }
+
+  .hero-caps {
+    margin-top: clamp(70px, 10vh, 120px);
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+    gap: 32px;
+    padding: 28px 0 38px;
+  }
+
+  .hero-cap {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+
+  .cap-num {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--color-gold);
+  }
+
+  .cap-label {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-dust-bright);
+  }
+
+  /* ── Shared section furniture ── */
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 48px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+
+  .head-eyebrow {
+    margin-bottom: 24px;
+  }
+
+  .dark-on-light {
+    color: var(--color-ink);
+  }
+
+  .light-on-dark {
+    color: #ffffff;
+  }
+
+  .head-side {
+    max-width: 360px;
+  }
+
+  .head-side p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--color-stone-muted);
+  }
+
+  .head-side--process {
+    max-width: 380px;
+  }
+
+  .head-side--process p {
+    color: var(--color-dust-muted);
+  }
+
+  .head-link {
+    margin-top: 16px;
+  }
+
+  /* ── About ── */
+  .about {
+    background: #ffffff;
+    padding: var(--section-pad) 0;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-eyebrow {
+    margin-bottom: 24px;
+  }
+
+  .about-title {
+    color: var(--color-ink);
+  }
+
+  .about-copy {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--color-stone);
+  }
+
+  .about-copy--follow {
+    margin-top: 20px;
+  }
+
+  .about-link {
+    margin-top: 28px;
+  }
+
+  .mission-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+    gap: 24px;
+    margin-top: 72px;
+  }
+
+  .mission-card {
+    background: var(--color-cream);
+    padding: 46px 48px;
+  }
+
+  .mission-card .kicker {
+    margin-bottom: 18px;
+  }
+
+  .mission-card p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--color-char);
+  }
+
+  .values-strip {
+    margin-top: 72px;
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+    padding: 26px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 40px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .value-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .value-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--color-gold);
+  }
+
+  .value-label {
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-char);
+  }
+
+  /* ── Services ── */
+  .services {
+    background: var(--color-cream);
+    padding: var(--section-pad) 0;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  }
+
+  .service-card {
+    background: #ffffff;
+    padding: 38px 34px;
+    transition: background 0.2s;
+  }
+
+  .service-card:hover {
+    background: var(--color-cream-hover);
+  }
+
+  .service-card h3 {
+    margin: 16px 0 10px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+
+  .service-card p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--color-stone-muted);
+  }
+
+  /* ── Process ── */
+  .process {
+    background: var(--color-ink);
+    padding: var(--section-pad) 0;
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  }
+
+  .process-card {
+    background: var(--color-ink);
+    padding: 42px 38px;
+  }
+
+  .process-card h3 {
+    margin: 18px 0 12px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  .process-card p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-dust-muted);
+  }
+
+  /* ── Industries ── */
+  .industries {
+    background: #ffffff;
+    padding: var(--section-pad) 0;
+  }
+
+  .industries-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  }
+
+  .industry-tile,
+  .industry-cta {
+    padding: 30px 28px;
+    min-height: 124px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .industry-tile {
+    background: #ffffff;
+  }
+
+  .industry-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--color-gold);
+  }
+
+  .industry-label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-char);
+  }
+
+  .industry-cta {
+    background: var(--color-ink);
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .industry-cta:hover {
+    background: var(--color-coal-hover);
+  }
+
+  .industry-cta-hint {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-dust-label);
+  }
+
+  .industry-cta-link {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+  }
+
+  /* ── Why Trinity ── */
+  .why {
+    background: var(--color-cream);
+    padding: var(--section-pad) 0;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+    gap: 72px;
+    align-items: start;
+  }
+
+  .why-copy {
+    margin: 28px 0 0;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--color-stone);
+    max-width: 460px;
+  }
+
+  .why-link {
+    margin-top: 36px;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    padding-bottom: 8px;
+  }
+
+  .why-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 48px;
+  }
+
+  .why-item {
+    border-top: 1px solid var(--color-line-soft);
+    padding: 22px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .why-item:nth-last-child(-n + 2) {
+    border-bottom: 1px solid var(--color-line-soft);
+  }
+
+  .why-check {
+    color: var(--color-gold);
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .why-label {
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+
+  @media (max-width: 560px) {
+    .why-list {
+      grid-template-columns: 1fr;
+    }
+
+    .why-item:nth-last-child(2) {
+      border-bottom: none;
+    }
+  }
+
+  /* ── Portfolio ── */
+  .portfolio {
+    background: #ffffff;
+    padding: var(--section-pad) 0;
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 28px;
+  }
+
+  .portfolio-col {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .portfolio-img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .portfolio-img--featured {
+    height: 584px;
+  }
+
+  .portfolio-img--stack {
+    height: 262px;
+  }
+
+  .portfolio-caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 18px;
+    gap: 16px;
+  }
+
+  .caption-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+
+  .caption-loc {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-caption);
+  }
+
+  @media (max-width: 899px) {
+    .portfolio-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .portfolio-img--featured,
+    .portfolio-img--stack {
+      height: clamp(240px, 52vw, 420px);
+    }
+  }
+
+  /* ── Contact ── */
+  .contact {
+    background: var(--color-ink);
+    padding: clamp(80px, 10vw, 120px) 0 clamp(72px, 9vw, 100px);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-copy {
+    margin: 26px 0 44px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--color-dust-muted);
+    max-width: 440px;
+  }
+</style>

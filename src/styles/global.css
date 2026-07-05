@@ -1,0 +1,306 @@
+@import "tailwindcss";
+
+/* ── Design tokens (extracted from the Claude Design handoff) ──────────────── */
+@theme {
+  --color-ink: #0d0d0d;
+  --color-gold: #c8a15a;
+  --color-gold-light: #d8b472;
+  --color-cream: #f6f3ee;
+  --color-cream-hover: #fcfbf8;
+
+  /* text on dark */
+  --color-dust-bright: #e8e5df;
+  --color-dust: #c4c0b9;
+  --color-dust-nav: #c9c5be;
+  --color-dust-link: #b5b2ad;
+  --color-dust-muted: #a6a39e;
+  --color-dust-label: #8f8b84;
+  --color-dust-faint: #6e6a64;
+
+  /* text on light */
+  --color-char: #2b2b2b;
+  --color-stone: #4b4a47;
+  --color-stone-muted: #6b6862;
+  --color-caption: #a6a6a6;
+
+  /* hairlines on light */
+  --color-line: #e8e4dd;
+  --color-line-grid: #e2ddd3;
+  --color-line-soft: #ddd8cc;
+  --color-line-btn: #c9c2b4;
+
+  /* hairlines / surfaces on dark */
+  --color-coal-nav: #1f1d1a;
+  --color-coal-footer: #1e1c19;
+  --color-coal-row: #242220;
+  --color-coal-border: #2b2926;
+  --color-coal-grid: #262421;
+  --color-coal-hover: #1a1815;
+  --color-coal-input: #141311;
+
+  --font-sans: "Archivo Variable", Archivo, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+  --container: 1240px;
+  --gutter: clamp(22px, 5vw, 48px);
+  --section-pad: clamp(72px, 9vw, 110px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-ink);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+}
+
+::placeholder {
+  color: var(--color-dust-faint);
+  opacity: 1;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* ── Layout primitives ─────────────────────────────────────────────────────── */
+.container {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  background: var(--color-gold);
+  color: var(--color-ink);
+  padding: 12px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* ── Type ──────────────────────────────────────────────────────────────────── */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 40px;
+  height: 2px;
+  background: var(--color-gold);
+  flex-shrink: 0;
+}
+
+.eyebrow span {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.page-title {
+  margin: 0;
+  font-size: clamp(40px, 4.6vw, 64px);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: #ffffff;
+  text-wrap: pretty;
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: clamp(32px, 9.6vw, 40px);
+  }
+}
+
+.section-title {
+  margin: 0;
+  font-size: clamp(32px, 3.2vw, 44px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.15;
+  text-wrap: pretty;
+}
+
+.section-title--sm {
+  font-size: clamp(28px, 2.8vw, 38px);
+  line-height: 1.2;
+}
+
+.kicker {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.num {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-gold);
+}
+
+/* ── Buttons & links ───────────────────────────────────────────────────────── */
+.btn {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 19px 34px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn--gold {
+  background: var(--color-gold);
+  color: var(--color-ink);
+  transition: background 0.2s;
+}
+
+.btn--gold:hover {
+  background: var(--color-gold-light);
+}
+
+.btn--outline {
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  padding: 18px 33px;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.btn--outline:hover {
+  border-color: #ffffff;
+}
+
+.btn--outline-dark {
+  font-weight: 600;
+  border: 1px solid var(--color-line-btn);
+  color: var(--color-ink);
+  padding: 18px 33px;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.btn--outline-dark:hover {
+  border-color: var(--color-ink);
+}
+
+.btn--ink {
+  background: var(--color-ink);
+  color: #ffffff;
+  padding: 20px 38px;
+  transition: background 0.2s;
+}
+
+.btn--ink:hover {
+  background: #2b2b2b;
+}
+
+.arrow-link {
+  display: inline-block;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-gold);
+  padding-bottom: 5px;
+  transition: color 0.2s;
+}
+
+.arrow-link--dark {
+  color: var(--color-ink);
+}
+
+.arrow-link--light {
+  color: #ffffff;
+}
+
+.arrow-link:hover {
+  color: var(--color-gold);
+}
+
+/* ── Hairline tile grids ───────────────────────────────────────────────────── */
+.tile-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--color-line-grid);
+  border: 1px solid var(--color-line-grid);
+}
+
+.tile-grid--dark {
+  background: var(--color-coal-grid);
+  border-color: var(--color-coal-grid);
+}
+
+/* ── Scroll reveal (gated on .js-reveal so no-JS users see everything) ─────── */
+.js-reveal [data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+.js-reveal [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}

@@ -1,0 +1,244 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import PageHero from "../components/PageHero.astro";
+import safetyPhoto from "../assets/photos/14-safety-huddle-jobsite.png";
+
+const safetyPillars = [
+  {
+    title: "Site-Specific Safety Plans",
+    copy: "Every project starts with a written plan tailored to its site, scope, and risks.",
+  },
+  {
+    title: "Daily Huddles & Inspections",
+    copy: "Toolbox talks, daily walks, and documented corrections keep hazards visible.",
+  },
+  {
+    title: "Prequalified Trade Partners",
+    copy: "Subcontractors are vetted for safety history before they ever step on site.",
+  },
+  {
+    title: "Training & Certification",
+    copy: "OSHA-aligned training and continuing education for every field leader.",
+  },
+];
+
+const qualitySteps = [
+  {
+    title: "Preparatory Reviews",
+    copy: "Materials, submittals, and installation standards reviewed with the trade before work begins — expectations set in writing.",
+  },
+  {
+    title: "First-Work Inspections",
+    copy: "The first section of every feature is inspected and approved before production continues — catching issues at unit one, not unit one hundred.",
+  },
+  {
+    title: "Documented Closeout",
+    copy: "Punch lists, warranties, O&M manuals, and as-builts delivered complete — a clean handoff your facilities team will thank you for.",
+  },
+];
+---
+
+<Base
+  title="Safety & Quality — Trinity Build Co."
+  description="A culture of prevention and a QA/QC program that verifies every definable feature of work — because nothing we build matters more than the people building it."
+>
+  <Nav active="none" />
+  <main id="main-content">
+    <PageHero
+      eyebrow="The Standard"
+      title="Safety & quality."
+      lede="Nothing we build matters more than the people building it — and nothing protects your investment like quality that is verified, not assumed."
+    />
+
+    <section class="safety">
+      <div class="container">
+        <div class="safety-grid">
+          <div data-reveal>
+            <div class="eyebrow safety-eyebrow"><span>Safety First</span></div>
+            <h2 class="section-title section-title--sm safety-title">A culture of prevention.</h2>
+            <p class="safety-copy">
+              Safety isn't a poster in the trailer — it's how we plan, staff, and supervise every
+              site. Everyone goes home safe, every day. No exceptions, no shortcuts, no schedule
+              worth the risk.
+            </p>
+          </div>
+          <Image
+            src={safetyPhoto}
+            alt="Trinity Build Co. crew in a safety huddle on a jobsite"
+            widths={[480, 800, 1200]}
+            sizes="(min-width: 900px) 48vw, 100vw"
+            quality={75}
+            class="safety-img"
+            data-reveal
+          />
+        </div>
+        <div class="tile-grid pillars-grid">
+          {
+            safetyPillars.map((pillar, i) => (
+              <div class="pillar-card" data-reveal>
+                <div class="num">{String(i + 1).padStart(2, "0")}</div>
+                <h3>{pillar.title}</h3>
+                <p>{pillar.copy}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="quality">
+      <div class="container">
+        <div class="quality-head">
+          <div data-reveal>
+            <div class="eyebrow quality-eyebrow"><span>Quality Assurance</span></div>
+            <h2 class="section-title section-title--sm quality-title">Verified, not assumed.</h2>
+          </div>
+          <p class="quality-side" data-reveal>
+            Our QA/QC program reviews every definable feature of work — before, during, and after
+            installation.
+          </p>
+        </div>
+        <div class="quality-grid">
+          {
+            qualitySteps.map((step, i) => (
+              <div class="quality-card" data-reveal>
+                <div class="num">{String(i + 1).padStart(2, "0")}</div>
+                <h3>{step.title}</h3>
+                <p>{step.copy}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .safety {
+    background: #ffffff;
+    padding: var(--section-pad) 0;
+  }
+
+  .safety-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+    gap: 64px;
+    align-items: center;
+    margin-bottom: 72px;
+  }
+
+  .safety-eyebrow {
+    margin-bottom: 24px;
+  }
+
+  .safety-title {
+    color: var(--color-ink);
+  }
+
+  .safety-copy {
+    margin: 26px 0 0;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--color-stone);
+  }
+
+  .safety-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 700px) {
+    .safety-img {
+      height: clamp(240px, 56vw, 400px);
+    }
+  }
+
+  .pillars-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr));
+  }
+
+  .pillar-card {
+    background: #ffffff;
+    padding: 38px 34px;
+  }
+
+  .pillar-card h3 {
+    margin: 16px 0 10px;
+    font-size: 15.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+
+  .pillar-card p {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--color-stone-muted);
+  }
+
+  .quality {
+    background: var(--color-cream);
+    padding: var(--section-pad) 0;
+  }
+
+  .quality-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 48px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+
+  .quality-eyebrow {
+    margin-bottom: 24px;
+  }
+
+  .quality-title {
+    color: var(--color-ink);
+  }
+
+  .quality-side {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--color-stone-muted);
+    max-width: 380px;
+  }
+
+  .quality-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: 24px;
+  }
+
+  .quality-card {
+    background: #ffffff;
+    padding: 44px 42px;
+  }
+
+  .quality-card h3 {
+    margin: 16px 0 12px;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+
+  .quality-card p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-stone);
+  }
+</style>

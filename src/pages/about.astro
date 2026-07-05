@@ -1,0 +1,399 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import heroPhoto from "../assets/photos/01-branded-truck-office-construction.png";
+import storyPhoto from "../assets/photos/10-preconstruction-meeting.png";
+
+const values = [
+  { title: "Integrity", copy: "We do what we say — especially when no one is watching." },
+  { title: "Excellence", copy: "Good enough isn't. Every detail matters, every time." },
+  { title: "Relationships", copy: "We build for the decades, not the transaction." },
+  { title: "Stewardship", copy: "Your capital, schedule, and trust are treated as our own." },
+  { title: "Innovation", copy: "Modern systems and real-time transparency, project-wide." },
+  { title: "Teamwork", copy: "One team — owner, architect, trades — one goal." },
+  { title: "Safety", copy: "Everyone goes home safe. Every day. No exceptions." },
+  { title: "Accountability", copy: "One name on the contract. One team responsible." },
+];
+
+const explore = [
+  { label: "The People", title: "Leadership", link: "Meet the team →", href: "/leadership" },
+  { label: "The Standard", title: "Safety & Quality", link: "Our standard →", href: "/safety" },
+  { label: "The Future", title: "Careers", link: "Join the team →", href: "/careers" },
+];
+---
+
+<Base
+  title="About — Trinity Build Co."
+  description="Trinity Build Co. brings the discipline of an institutional developer — and the accountability of a company whose name is on the line — to commercial construction across Arizona."
+>
+  <Nav active="about" />
+  <main id="main-content">
+    <!-- HERO -->
+    <section class="about-hero">
+      <Image
+        src={heroPhoto}
+        alt="Trinity Build Co. branded truck at a commercial jobsite"
+        widths={[768, 1280, 1920]}
+        sizes="100vw"
+        loading="eager"
+        fetchpriority="high"
+        quality={72}
+        class="about-hero-img"
+      />
+      <div class="about-hero-scrim" aria-hidden="true"></div>
+      <div class="container about-hero-inner">
+        <div class="eyebrow hero-eyebrow"><span>Who We Are</span></div>
+        <h1 class="page-title">More than a general contractor.</h1>
+        <p class="hero-lede">
+          Trinity Build Co. brings the discipline of an institutional developer — and the
+          accountability of a company whose name is on the line — to commercial construction
+          across Arizona.
+        </p>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="story">
+      <div class="container story-grid">
+        <div data-reveal>
+          <div class="eyebrow story-eyebrow"><span>Our Story</span></div>
+          <h2 class="section-title section-title--sm story-title">Built on a simple conviction.</h2>
+          <p class="story-copy">
+            Commercial construction should feel less like risk management and more like
+            partnership. Too many owners have learned to expect surprise change orders, drifting
+            schedules, and builders who disappear after closeout. We founded Trinity Build Co. to
+            be the opposite of that.
+          </p>
+          <p class="story-copy story-copy--follow">
+            We serve commercial developers, business owners, investors, and institutions with
+            disciplined preconstruction, transparent budgets, and senior leadership that stays
+            engaged from first meeting to final walkthrough — and long after.
+          </p>
+        </div>
+        <Image
+          src={storyPhoto}
+          alt="Trinity Build Co. preconstruction meeting"
+          widths={[480, 800, 1200]}
+          sizes="(min-width: 900px) 48vw, 100vw"
+          quality={75}
+          class="story-img"
+          data-reveal
+        />
+      </div>
+    </section>
+
+    <!-- MISSION / VISION -->
+    <section class="mv">
+      <div class="container mv-grid">
+        <div class="mv-card mv-card--light" data-reveal>
+          <div class="kicker">Our Mission</div>
+          <p>
+            To build exceptional commercial spaces through integrity, disciplined execution, and
+            lasting relationships — delivering projects that strengthen businesses, communities,
+            and the people we serve.
+          </p>
+        </div>
+        <div class="mv-card mv-card--dark" data-reveal>
+          <div class="kicker">Our Vision</div>
+          <p>
+            To become Arizona's most trusted commercial builder — we aspire to build more than
+            buildings. We build confidence, opportunity, and a legacy of trust.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUES -->
+    <section class="values">
+      <div class="container">
+        <div class="values-head">
+          <div data-reveal>
+            <div class="eyebrow values-eyebrow"><span>Core Values</span></div>
+            <h2 class="section-title values-title">What we stand on</h2>
+          </div>
+          <p class="values-side" data-reveal>
+            Eight values that shape every estimate, every schedule, and every handshake.
+          </p>
+        </div>
+        <div class="tile-grid values-grid">
+          {
+            values.map((value, i) => (
+              <div class="value-card" data-reveal>
+                <div class="num">{String(i + 1).padStart(2, "0")}</div>
+                <h3>{value.title}</h3>
+                <p>{value.copy}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPLORE -->
+    <section class="explore">
+      <div class="container explore-grid">
+        {
+          explore.map((card) => (
+            <a href={card.href} class="explore-card" data-reveal>
+              <div>
+                <div class="explore-label">{card.label}</div>
+                <div class="explore-title">{card.title}</div>
+              </div>
+              <span class="explore-link">{card.link}</span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  /* ── Hero ── */
+  .about-hero {
+    position: relative;
+    background: var(--color-ink);
+    padding: clamp(88px, 11vw, 124px) 0 clamp(76px, 10vw, 104px);
+    overflow: hidden;
+  }
+
+  .about-hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 42%;
+  }
+
+  .about-hero-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(13, 13, 13, 0.95) 0%,
+      rgba(13, 13, 13, 0.8) 46%,
+      rgba(13, 13, 13, 0.48) 100%
+    );
+  }
+
+  .about-hero-inner {
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 28px;
+  }
+
+  .hero-lede {
+    margin: 28px 0 0;
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--color-dust-muted);
+    max-width: 620px;
+  }
+
+  /* ── Story ── */
+  .story {
+    background: #ffffff;
+    padding: var(--section-pad) 0;
+  }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+    gap: 64px;
+    align-items: center;
+  }
+
+  .story-eyebrow {
+    margin-bottom: 24px;
+  }
+
+  .story-title {
+    color: var(--color-ink);
+  }
+
+  .story-copy {
+    margin: 26px 0 0;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--color-stone);
+  }
+
+  .story-copy--follow {
+    margin-top: 20px;
+  }
+
+  .story-img {
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 700px) {
+    .story-img {
+      height: clamp(260px, 60vw, 460px);
+    }
+  }
+
+  /* ── Mission / Vision ── */
+  .mv {
+    background: var(--color-cream);
+    padding: clamp(72px, 9vw, 100px) 0;
+  }
+
+  .mv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+    gap: 24px;
+  }
+
+  .mv-card {
+    padding: 52px 54px;
+  }
+
+  .mv-card .kicker {
+    margin-bottom: 20px;
+  }
+
+  .mv-card p {
+    margin: 0;
+    font-size: 20px;
+    line-height: 1.65;
+  }
+
+  .mv-card--light {
+    background: #ffffff;
+  }
+
+  .mv-card--light p {
+    color: var(--color-char);
+  }
+
+  .mv-card--dark {
+    background: var(--color-ink);
+  }
+
+  .mv-card--dark p {
+    color: var(--color-dust-bright);
+  }
+
+  @media (max-width: 560px) {
+    .mv-card {
+      padding: 40px 32px;
+    }
+  }
+
+  /* ── Values ── */
+  .values {
+    background: #ffffff;
+    padding: var(--section-pad) 0;
+  }
+
+  .values-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 48px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+
+  .values-eyebrow {
+    margin-bottom: 24px;
+  }
+
+  .values-title {
+    color: var(--color-ink);
+  }
+
+  .values-side {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--color-stone-muted);
+    max-width: 360px;
+  }
+
+  .values-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr));
+  }
+
+  .value-card {
+    background: #ffffff;
+    padding: 36px 32px;
+  }
+
+  .value-card h3 {
+    margin: 14px 0 10px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+
+  .value-card p {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--color-stone-muted);
+  }
+
+  /* ── Explore ── */
+  .explore {
+    background: var(--color-cream);
+    padding: clamp(72px, 9vw, 100px) 0;
+  }
+
+  .explore-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: 24px;
+  }
+
+  .explore-card {
+    background: var(--color-ink);
+    padding: 44px 42px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 48px;
+    transition: background 0.2s;
+  }
+
+  .explore-card:hover {
+    background: var(--color-coal-hover);
+  }
+
+  .explore-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--color-dust-label);
+    margin-bottom: 16px;
+  }
+
+  .explore-title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  .explore-link {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+  }
+</style>

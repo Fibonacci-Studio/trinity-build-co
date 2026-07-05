@@ -1,0 +1,134 @@
+---
+import "@fontsource-variable/archivo";
+import "../styles/global.css";
+import SpeedInsights from "@vercel/speed-insights/astro";
+import { business } from "../config";
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = business.description,
+  ogImage = "/og-image.jpg",
+  noindex = false,
+} = Astro.props;
+
+const siteURL = Astro.site?.href ?? business.url;
+const resolvedOgImage = new URL(ogImage, siteURL).href;
+const canonical = new URL(Astro.url.pathname, siteURL).href;
+const robots = noindex
+  ? "noindex, nofollow"
+  : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "GeneralContractor",
+      "@id": `${siteURL}#organization`,
+      name: business.name,
+      slogan: business.tagline,
+      description: business.description,
+      url: siteURL,
+      logo: new URL("/icon-512.png", siteURL).href,
+      image: resolvedOgImage,
+      telephone: "+16025550145",
+      email: business.email,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: business.address.locality,
+        addressRegion: business.address.region,
+        addressCountry: business.address.country,
+      },
+      areaServed: business.areaServed,
+      knowsAbout: [
+        "Commercial general contracting",
+        "Design-build",
+        "Construction management",
+        "Preconstruction services",
+        "Ground-up commercial construction",
+        "Tenant improvements",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteURL}#website`,
+      url: siteURL,
+      name: business.name,
+      description: business.description,
+      publisher: { "@id": `${siteURL}#organization` },
+      inLanguage: "en-US",
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0D0D0D" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <script is:inline>
+      (function () {
+        try {
+          if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            document.documentElement.classList.add("js-reveal");
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={resolvedOgImage} />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={business.name} />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={resolvedOgImage} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <slot />
+    <script>
+      const root = document.documentElement;
+      if (root.classList.contains("js-reveal") && "IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                obs.unobserve(entry.target);
+              }
+            });
+          },
+          { rootMargin: "0px 0px -8% 0px", threshold: 0.04 }
+        );
+        document.querySelectorAll("[data-reveal]").forEach((el) => observer.observe(el));
+      } else {
+        document.querySelectorAll("[data-reveal]").forEach((el) => el.classList.add("is-visible"));
+      }
+    </script>
+    <SpeedInsights />
+  </body>
+</html>

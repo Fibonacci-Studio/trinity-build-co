@@ -1,0 +1,245 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import PageHero from "../components/PageHero.astro";
+import promisePhoto from "../assets/photos/06-concrete-pour-superintendent.png";
+
+const steps = [
+  {
+    title: "Discover",
+    copy: "We understand your goals, vision, and priorities — before anyone talks square footage. What does success look like for your business, your tenants, your board?",
+    bullets: [
+      "Goals and priorities workshop",
+      "Site, budget, and schedule realities",
+      "A clear definition of success",
+    ],
+  },
+  {
+    title: "Plan",
+    copy: "We develop the right strategy, budget, and timeline. Preconstruction is where your project is won — we treat it that way.",
+    bullets: [
+      "Preconstruction roadmap and milestones",
+      "Budget development and value engineering",
+      "Permitting and procurement strategy",
+    ],
+  },
+  {
+    title: "Collaborate",
+    copy: "We align the right team and solve challenges early. Architect, engineers, and key trades at one table — before mobilization, not after conflict.",
+    bullets: [
+      "Design team alignment",
+      "Subcontractor prequalification and buyout",
+      "Risks identified and resolved on paper",
+    ],
+  },
+  {
+    title: "Build",
+    copy: "We execute with precision, quality, and proactive communication. Disciplined supervision on site, honest reporting off site.",
+    bullets: [
+      "Disciplined site supervision",
+      "Weekly owner reporting — cost, schedule, safety",
+      "Quality checkpoints at every phase",
+    ],
+  },
+  {
+    title: "Deliver",
+    copy: "We complete with thorough closeout and a seamless turnover — your team trained on every system, every document in your hands.",
+    bullets: [
+      "Thorough punch and closeout documentation",
+      "Systems training and turnover",
+      "Clean handoff to operations",
+    ],
+  },
+  {
+    title: "Support",
+    copy: "We remain a trusted partner long after completion. Warranty response you can count on — and a builder who already knows your building.",
+    bullets: [
+      "Responsive warranty service",
+      "Post-occupancy check-ins",
+      "A partner for your next project",
+    ],
+  },
+];
+---
+
+<Base
+  title="The Trinity Way — Trinity Build Co."
+  description="A proven six-step process — Discover, Plan, Collaborate, Build, Deliver, Support — that ensures predictable outcomes and exceptional results on every commercial project."
+>
+  <Nav active="process" />
+  <main id="main-content">
+    <PageHero
+      eyebrow="Our Process"
+      title="The Trinity Way."
+      lede="A proven six-step process that ensures predictable outcomes and exceptional results. Problems get solved on paper — not in the field, on your dime."
+    />
+
+    <section class="steps">
+      <div class="container">
+        {
+          steps.map((step, i) => (
+            <div class="step-row" data-reveal>
+              <div class="step-num">{String(i + 1).padStart(2, "0")}</div>
+              <div>
+                <h3 class="step-title">{step.title}</h3>
+                <p class="step-copy">{step.copy}</p>
+              </div>
+              <div class="step-bullets">
+                {step.bullets.map((bullet) => (
+                  <div class="bullet">
+                    <span class="bullet-dash" aria-hidden="true">
+                      —
+                    </span>
+                    <span class="bullet-text">{bullet}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="promise">
+      <Image
+        src={promisePhoto}
+        alt="Trinity Build Co. superintendent overseeing a concrete pour"
+        widths={[768, 1280, 1920]}
+        sizes="100vw"
+        quality={72}
+        class="promise-img"
+      />
+      <div class="promise-scrim" aria-hidden="true"></div>
+      <div class="container promise-inner">
+        <div class="kicker promise-kicker">The Result</div>
+        <p class="promise-copy">
+          Predictable outcomes. No surprise change orders. A building — and a builder — you can
+          count on.
+        </p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .steps {
+    background: #ffffff;
+    padding: clamp(72px, 9vw, 96px) 0 var(--section-pad);
+  }
+
+  .step-row {
+    border-top: 1px solid var(--color-line);
+    padding: 52px 0;
+    display: grid;
+    grid-template-columns: minmax(120px, 180px) minmax(280px, 1fr) minmax(280px, 1fr);
+    gap: 40px;
+    align-items: start;
+  }
+
+  .step-row:last-of-type {
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .step-num {
+    font-size: clamp(40px, 4vw, 56px);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: var(--color-gold);
+    line-height: 1;
+  }
+
+  .step-title {
+    margin: 0 0 14px;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+
+  .step-copy {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--color-stone);
+  }
+
+  .step-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 8px;
+  }
+
+  .bullet {
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+  }
+
+  .bullet-dash {
+    color: var(--color-gold);
+    font-weight: 700;
+  }
+
+  .bullet-text {
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--color-stone);
+  }
+
+  @media (max-width: 980px) {
+    .step-row {
+      grid-template-columns: 1fr;
+      gap: 22px;
+      padding: 44px 0;
+    }
+
+    .step-bullets {
+      padding-top: 0;
+    }
+  }
+
+  .promise {
+    position: relative;
+    padding: clamp(88px, 11vw, 120px) 0;
+    overflow: hidden;
+  }
+
+  .promise-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+
+  .promise-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(13, 13, 13, 0.86) 0%, rgba(13, 13, 13, 0.78) 100%);
+  }
+
+  .promise-inner {
+    position: relative;
+    text-align: center;
+  }
+
+  .promise-kicker {
+    letter-spacing: 0.3em;
+    margin-bottom: 24px;
+  }
+
+  .promise-copy {
+    margin: 0 auto;
+    font-size: clamp(24px, 2.6vw, 34px);
+    font-weight: 600;
+    line-height: 1.45;
+    color: #ffffff;
+    max-width: 820px;
+  }
+</style>

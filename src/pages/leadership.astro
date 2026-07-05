@@ -1,0 +1,148 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import PageHero from "../components/PageHero.astro";
+import logoIcon from "../assets/logo-icon.png";
+
+const team = [
+  { name: "Full Name", role: "Principal & Founder" },
+  { name: "Full Name", role: "Vice President, Construction" },
+  { name: "Full Name", role: "Director of Preconstruction" },
+  { name: "Full Name", role: "Project Executive" },
+];
+---
+
+<Base
+  title="Leadership — Trinity Build Co."
+  description="Senior leadership stays engaged on every project — from first meeting to final walkthrough. Meet the team behind Trinity Build Co."
+>
+  <Nav active="none" />
+  <main id="main-content">
+    <PageHero
+      eyebrow="The People"
+      title="Leadership."
+      lede="Senior leadership stays engaged on every project. These are the people who answer the phone — from first meeting to final walkthrough."
+    />
+
+    <section class="team">
+      <div class="container">
+        <div class="team-grid">
+          {
+            team.map((member) => (
+              <div data-reveal>
+                <div class="headshot-slot">
+                  <Image
+                    src={logoIcon}
+                    alt=""
+                    width={96}
+                    height={58}
+                    densities={[1, 2]}
+                    class="headshot-mark"
+                  />
+                </div>
+                <h3 class="member-name">{member.name}</h3>
+                <div class="member-role">{member.role}</div>
+              </div>
+            ))
+          }
+        </div>
+        <p class="team-note">Team photography and bios coming soon.</p>
+      </div>
+    </section>
+
+    <section class="philosophy">
+      <div class="container philosophy-inner">
+        <div class="kicker philosophy-kicker">Our Philosophy</div>
+        <p class="philosophy-copy">
+          The team that wins your work is the team that builds it. No bait and switch — senior
+          people, start to finish.
+        </p>
+        <a href="/careers" class="btn btn--outline philosophy-btn">Join the Team</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .team {
+    background: #ffffff;
+    padding: clamp(72px, 9vw, 100px) 0 var(--section-pad);
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+    gap: 32px;
+  }
+
+  .headshot-slot {
+    width: 100%;
+    height: 340px;
+    background: var(--color-cream);
+    border: 1px solid var(--color-line-grid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .headshot-mark {
+    width: 96px;
+    height: auto;
+    opacity: 0.18;
+  }
+
+  .member-name {
+    margin: 20px 0 6px;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+
+  .member-role {
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+  }
+
+  .team-note {
+    margin: 56px 0 0;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--color-caption);
+    text-align: center;
+  }
+
+  .philosophy {
+    background: var(--color-ink);
+    padding: clamp(72px, 9vw, 100px) 0;
+  }
+
+  .philosophy-inner {
+    text-align: center;
+  }
+
+  .philosophy-kicker {
+    letter-spacing: 0.3em;
+    margin-bottom: 24px;
+  }
+
+  .philosophy-copy {
+    margin: 0 auto;
+    font-size: clamp(24px, 2.6vw, 34px);
+    font-weight: 600;
+    line-height: 1.45;
+    color: #ffffff;
+    max-width: 860px;
+  }
+
+  .philosophy-btn {
+    margin-top: 44px;
+  }
+</style>

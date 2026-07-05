@@ -1,0 +1,181 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import PageHero from "../components/PageHero.astro";
+import ImageBand from "../components/ImageBand.astro";
+import bandPhoto from "../assets/photos/19-warehouse-loading-dock.png";
+
+const industries = [
+  {
+    title: "Office",
+    copy: "Class-A office, corporate campuses, and professional buildouts designed for how teams actually work.",
+  },
+  {
+    title: "Medical",
+    copy: "Clinics, outpatient facilities, and medical suites built to healthcare standards and compliance requirements.",
+  },
+  {
+    title: "Industrial",
+    copy: "Manufacturing and flex space engineered for uptime, utilities, and future expansion.",
+  },
+  {
+    title: "Warehouses",
+    copy: "Distribution and logistics facilities built for throughput — clear heights, dock flow, and durable slabs.",
+  },
+  {
+    title: "Retail",
+    copy: "Storefronts, shell buildings, and multi-tenant centers that open on schedule.",
+  },
+  {
+    title: "Restaurants",
+    copy: "Kitchens, hoods, and dining rooms delivered ready for service — health-code clean and on time for opening day.",
+  },
+  {
+    title: "Churches",
+    copy: "Worship and community spaces built with care, stewardship, and respect for every dollar given.",
+  },
+  {
+    title: "Mixed-Use Developments",
+    copy: "Complex, multi-tenant projects coordinated end to end — retail, office, and residential in one build.",
+  },
+  {
+    title: "Apartment Communities",
+    copy: "Multifamily communities from podium to punch list, delivered unit by unit without missed turnovers.",
+  },
+  {
+    title: "Commercial Condominiums",
+    copy: "Ownable commercial space with clean unit turnover and association-ready documentation.",
+  },
+  {
+    title: "Tenant Improvements",
+    copy: "Interior transformations in occupied buildings — fast, clean, and coordinated around your operations.",
+  },
+];
+---
+
+<Base
+  title="Industries — Trinity Build Co."
+  description="Purpose-built commercial construction experience across office, medical, industrial, retail, restaurants, churches, mixed-use, multifamily, and tenant improvements in Arizona."
+>
+  <Nav active="industries" />
+  <main id="main-content">
+    <PageHero
+      eyebrow="Where We Build"
+      title="Industries we serve."
+      lede="Purpose-built experience across the commercial sectors driving Arizona's growth — each with its own codes, constraints, and stakeholders. We know them well."
+    />
+
+    <ImageBand
+      image={bandPhoto}
+      alt="Trinity Build Co. crew at a commercial warehouse loading dock"
+      height="clamp(300px, 38vw, 480px)"
+      gradient="linear-gradient(180deg, rgba(13,13,13,0.5) 0%, rgba(13,13,13,0.12) 42%, rgba(13,13,13,0.66) 100%)"
+      caption="From loading docks to lobbies — the range to build it, the focus to build it right."
+      captionMaxWidth="680px"
+    />
+
+    <section class="industry-detail">
+      <div class="container">
+        <div class="tile-grid industry-grid">
+          {
+            industries.map((industry) => (
+              <div class="industry-card" data-reveal>
+                <span class="industry-dot" aria-hidden="true" />
+                <h3>{industry.title}</h3>
+                <p>{industry.copy}</p>
+              </div>
+            ))
+          }
+          <a href="/contact" class="industry-cta" data-reveal>
+            <div>
+              <div class="cta-hint">Don't see your sector?</div>
+              <h3 class="cta-title">Tell us about your project</h3>
+            </div>
+            <span class="cta-link">Let's Talk →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .industry-detail {
+    background: #ffffff;
+    padding: clamp(72px, 9vw, 100px) 0 var(--section-pad);
+  }
+
+  .industry-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+  }
+
+  .industry-card {
+    background: #ffffff;
+    padding: 42px 40px;
+  }
+
+  .industry-dot {
+    display: block;
+    width: 7px;
+    height: 7px;
+    background: var(--color-gold);
+  }
+
+  .industry-card h3 {
+    margin: 24px 0 12px;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+
+  .industry-card p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-stone-muted);
+  }
+
+  .industry-cta {
+    background: var(--color-ink);
+    padding: 42px 40px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    transition: background 0.2s;
+  }
+
+  .industry-cta:hover {
+    background: var(--color-coal-hover);
+  }
+
+  .cta-hint {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-dust-label);
+  }
+
+  .cta-title {
+    margin: 16px 0 0;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  .cta-link {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+  }
+</style>

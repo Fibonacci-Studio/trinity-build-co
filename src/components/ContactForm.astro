@@ -1,0 +1,221 @@
+---
+import { business, projectTypes } from "../config";
+
+interface Props {
+  rows?: number;
+}
+
+const { rows = 5 } = Astro.props;
+---
+
+<div class="form-wrap" data-contact-form data-endpoint={business.formEndpoint}>
+  <form class="contact-form" novalidate>
+    <input
+      type="text"
+      name="name"
+      placeholder="Full name*"
+      required
+      aria-label="Full name"
+      autocomplete="name"
+      maxlength="100"
+    />
+    <input
+      type="text"
+      name="company"
+      placeholder="Company"
+      aria-label="Company"
+      autocomplete="organization"
+      maxlength="120"
+    />
+    <input
+      type="email"
+      name="email"
+      placeholder="Email*"
+      required
+      aria-label="Email"
+      autocomplete="email"
+      maxlength="160"
+    />
+    <input
+      type="tel"
+      name="phone"
+      placeholder="Phone"
+      aria-label="Phone"
+      autocomplete="tel"
+      maxlength="40"
+    />
+    <select name="type" aria-label="Project type" class="span-2">
+      <option value="">Project type</option>
+      {projectTypes.map((t) => <option value={t.value}>{t.label}</option>)}
+    </select>
+    <textarea
+      name="message"
+      rows={rows}
+      placeholder="Tell us about your project — location, size, timeline"
+      aria-label="Project details"
+      class="span-2"
+      maxlength="4000"></textarea>
+    <p class="hp-field" aria-hidden="true">
+      <label>
+        Leave this field empty
+        <input type="text" name="bot-field" tabindex="-1" autocomplete="off" />
+      </label>
+    </p>
+    <p class="form-error span-2" role="alert" hidden></p>
+    <button type="submit" class="btn btn--gold span-2">Request a Proposal</button>
+  </form>
+
+  <div class="form-success" hidden>
+    <div class="success-check" aria-hidden="true">✓</div>
+    <div class="success-title">Request received</div>
+    <p class="success-copy">
+      Thank you — a member of our team will reach out within one business day.
+    </p>
+  </div>
+</div>
+
+<style>
+  .contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    background: var(--color-coal-input);
+    border: 1px solid var(--color-coal-border);
+    color: #ffffff;
+    padding: 16px;
+    font-size: 14px;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .contact-form select {
+    appearance: auto;
+  }
+
+  .contact-form textarea {
+    resize: vertical;
+  }
+
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus {
+    border-color: var(--color-gold);
+    outline: none;
+  }
+
+  .span-2 {
+    grid-column: 1 / -1;
+  }
+
+  .contact-form .btn {
+    padding: 19px;
+    width: 100%;
+  }
+
+  .contact-form .btn[disabled] {
+    opacity: 0.65;
+    cursor: default;
+  }
+
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    margin: 0;
+  }
+
+  .form-error {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #e08f7c;
+  }
+
+  .form-success {
+    border: 1px solid var(--color-coal-border);
+    padding: 64px 48px;
+    text-align: center;
+  }
+
+  .success-check {
+    font-size: 28px;
+    color: var(--color-gold);
+    font-weight: 700;
+  }
+
+  .success-title {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  .success-copy {
+    margin: 14px 0 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-dust-muted);
+  }
+
+  @media (max-width: 560px) {
+    .contact-form {
+      grid-template-columns: 1fr;
+    }
+
+    .span-2 {
+      grid-column: auto;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-contact-form]").forEach((wrap) => {
+    const form = wrap.querySelector<HTMLFormElement>("form");
+    const success = wrap.querySelector<HTMLElement>(".form-success");
+    const errorEl = wrap.querySelector<HTMLElement>(".form-error");
+    const button = wrap.querySelector<HTMLButtonElement>("button[type=submit]");
+    const endpoint = wrap.dataset.endpoint || "/api/contact";
+    if (!form || !success || !button) return;
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+
+      if (errorEl) {
+        errorEl.hidden = true;
+        errorEl.textContent = "";
+      }
+      button.disabled = true;
+      button.textContent = "Sending…";
+
+      try {
+        const payload = Object.fromEntries(new FormData(form).entries());
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const out = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
+        if (!res.ok || !out.ok) throw new Error(out.error || "Something went wrong.");
+        form.hidden = true;
+        success.hidden = false;
+      } catch (err) {
+        if (errorEl) {
+          errorEl.textContent =
+            err instanceof Error && err.message !== "Failed to fetch"
+              ? err.message
+              : "Something went wrong sending your request. Please try again, or email us directly.";
+          errorEl.hidden = false;
+        }
+        button.disabled = false;
+        button.textContent = "Request a Proposal";
+      }
+    });
+  });
+</script>

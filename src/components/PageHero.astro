@@ -1,0 +1,37 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  lede?: string;
+  titleMaxWidth?: string;
+}
+
+const { eyebrow, title, lede, titleMaxWidth = "900px" } = Astro.props;
+---
+
+<section class="page-hero">
+  <div class="container">
+    <div class="eyebrow"><span>{eyebrow}</span></div>
+    <h1 class="page-title" style={`max-width:${titleMaxWidth}`}>{title}</h1>
+    {lede && <p class="hero-lede">{lede}</p>}
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    background: var(--color-ink);
+    padding: clamp(72px, 9vw, 96px) 0 clamp(60px, 8vw, 84px);
+  }
+
+  .eyebrow {
+    margin-bottom: 28px;
+  }
+
+  .hero-lede {
+    margin: 28px 0 0;
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--color-dust-muted);
+    max-width: 620px;
+  }
+</style>

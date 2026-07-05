@@ -1,0 +1,224 @@
+---
+import { Image } from "astro:assets";
+import logoFull from "../assets/logo-full.png";
+import { business, footerColumns } from "../config";
+
+interface Props {
+  showCta?: boolean;
+}
+
+const { showCta = true } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+{
+  showCta && (
+    <section class="cta-band">
+      <div class="container cta-inner">
+        <div data-reveal>
+          <h2 class="cta-title">Ready to build?</h2>
+          <p class="cta-copy">
+            Schedule a consultation and get a straight answer on budget, schedule, and feasibility
+            — before you commit a dollar.
+          </p>
+        </div>
+        <a href="/contact" class="btn btn--ink">Schedule a Consultation</a>
+      </div>
+    </section>
+  )
+}
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo-link" aria-label="Trinity Build Co. — home">
+          <Image
+            src={logoFull}
+            alt="Trinity Build Co. — Building Excellence. Delivering Trust."
+            width={230}
+            height={129}
+            densities={[1, 2]}
+            class="footer-logo"
+          />
+        </a>
+        <p class="footer-blurb">
+          Commercial general contractor serving owners, developers, and institutions across
+          Arizona.
+        </p>
+      </div>
+      <div class="footer-cols">
+        {
+          footerColumns.map((col) => (
+            <div>
+              <div class="footer-heading">{col.heading}</div>
+              <div class="footer-links">
+                {col.links.map((link) => (
+                  <a href={link.href} class="footer-link">
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+        <div>
+          <div class="footer-heading">Contact</div>
+          <div class="footer-links">
+            <a href={business.phoneHref} class="footer-link">{business.phone}</a>
+            <a href={`mailto:${business.email}`} class="footer-link">{business.email}</a>
+            <span class="footer-link footer-link--static">Phoenix, Arizona</span>
+            <a href="/contact" class="footer-start">Start Your Project →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copyright">
+        © {year} Trinity Build Co. All rights reserved. — Phoenix, Arizona
+      </span>
+      <span class="footer-tagline">{business.tagline}</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .cta-band {
+    background: var(--color-gold);
+    padding: 88px 0;
+  }
+
+  .cta-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .cta-title {
+    margin: 0;
+    font-size: clamp(32px, 3.4vw, 48px);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    line-height: 1.1;
+    color: var(--color-ink);
+  }
+
+  .cta-copy {
+    margin: 18px 0 0;
+    font-size: 17px;
+    line-height: 1.65;
+    color: #3d341f;
+    max-width: 560px;
+  }
+
+  .site-footer {
+    background: var(--color-ink);
+    border-top: 1px solid var(--color-coal-footer);
+    padding: 64px 0 40px;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .footer-brand {
+    max-width: 300px;
+  }
+
+  .footer-logo-link {
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .footer-logo {
+    width: 230px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .footer-blurb {
+    margin: 26px 0 0;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--color-dust-label);
+  }
+
+  .footer-cols {
+    display: flex;
+    gap: 72px;
+    flex-wrap: wrap;
+  }
+
+  .footer-heading {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 20px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+  }
+
+  .footer-link {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--color-dust-link);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  a.footer-link:hover {
+    color: #ffffff;
+  }
+
+  .footer-start {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--color-gold);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-start:hover {
+    color: var(--color-gold-light);
+  }
+
+  .footer-bottom {
+    margin-top: 56px;
+    border-top: 1px solid var(--color-coal-footer);
+    padding-top: 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .footer-copyright {
+    font-size: 12.5px;
+    color: var(--color-dust-faint);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-tagline {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+  }
+</style>
