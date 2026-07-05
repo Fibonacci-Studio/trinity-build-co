@@ -15,6 +15,16 @@ npm run build      # production build to dist/
 npm run preview    # serve the production build locally
 ```
 
+## Brand package
+
+`brand/` holds the client's approved brand materials for reference and future collateral:
+the executive design brief ([brand/executive-brief.md](brand/executive-brief.md) — text conversion of the
+original RTF, plus the designed one-pager PNG), the brand identity board
+(`brand/brand-board.png` — logo system, palette hexes, applications), and the full-resolution
+logo set (`brand/logo/`, including the HD transparent primary used in the footer). Site colors
+in `src/styles/global.css` match the board exactly: matte black `#0D0D0D`, warm gold `#C8A15A`,
+charcoal `#2B2B2B`, concrete gray `#A6A6A6`.
+
 ## Structure
 
 - `src/config.ts` — business facts (phone, emails, nav, footer columns). Edit once, applies everywhere.
