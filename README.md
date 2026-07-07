@@ -43,8 +43,12 @@ set these environment variables in Vercel:
 - `CONTACT_TO_EMAIL` — where leads are sent
 - `CONTACT_FROM_EMAIL` — optional verified sender (defaults to Resend onboarding sender)
 
-## Placeholders to replace before hand-off
+## Content status
 
-- Phone number `602.555.0145` and emails in `src/config.ts` (design used placeholder contact details).
-- Leadership names/headshots in `src/pages/leadership.astro`.
-- Portfolio project captions as real project photography arrives.
+- Contact details in `src/config.ts` are the client's real ones (shared with Trinity Homes AZ):
+  602.708.9986 · info@trinityhomesaz.com · 15455 N Greenway Hayden Loop, Ste C19, Scottsdale, AZ 85260.
+  Careers mail routes to the same inbox until a dedicated address exists.
+- Leadership features Slade Gibson (President & CEO) with his real headshot; additional team
+  headshots from trinityhomesaz.com are staged in `src/assets/people/` if more profiles are added.
+- Portfolio photography is interim branded imagery; sector-specific shots (multifamily,
+  apartments, mixed-use) are being produced and slot into `src/assets/photos/`.

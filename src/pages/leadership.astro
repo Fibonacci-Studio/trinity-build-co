@@ -4,7 +4,7 @@ import Base from "../layouts/Base.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import PageHero from "../components/PageHero.astro";
-import logoIcon from "../assets/logo-icon.png";
+import sladePortrait from "../assets/people/slade-gibson.jpg";
 
 const bio = [
   "Slade Gibson is the Founder and President of Trinity Build Co., providing strategic leadership for the company's commercial construction operations throughout Arizona. With over 25 years of experience in the construction industry, Slade has built a reputation for integrity, disciplined execution, and lasting client relationships.",
@@ -31,12 +31,12 @@ const bio = [
         <div class="leader-portrait" data-reveal>
           <div class="portrait-slot">
             <Image
-              src={logoIcon}
-              alt=""
-              width={130}
-              height={79}
-              densities={[1, 2]}
-              class="portrait-mark"
+              src={sladePortrait}
+              alt="Slade Gibson, President & CEO of Trinity Build Co."
+              widths={[480, 720, 1000]}
+              sizes="(min-width: 900px) 36vw, 100vw"
+              quality={82}
+              class="portrait-img"
             />
           </div>
         </div>
@@ -97,12 +97,15 @@ const bio = [
     bottom: 0;
     height: 2px;
     background: var(--color-gold);
+    z-index: 1;
   }
 
-  .portrait-mark {
-    width: 130px;
-    height: auto;
-    opacity: 0.4;
+  .portrait-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 18%;
+    display: block;
   }
 
   .leader-kicker {

@@ -67,7 +67,11 @@ const year = new Date().getFullYear();
           <div class="footer-links">
             <a href={business.phoneHref} class="footer-link">{business.phone}</a>
             <a href={`mailto:${business.email}`} class="footer-link">{business.email}</a>
-            <span class="footer-link footer-link--static">Phoenix, Arizona</span>
+            <span class="footer-link footer-link--static">{business.address.street}</span>
+            <span class="footer-link footer-link--static">
+              {business.address.locality}, {business.address.region}
+              {business.address.postalCode}
+            </span>
             <span class="footer-link footer-link--static">{business.rocLicense}</span>
             <a href="/contact" class="footer-start">Start Your Project →</a>
           </div>
@@ -76,7 +80,7 @@ const year = new Date().getFullYear();
     </div>
     <div class="footer-bottom">
       <span class="footer-copyright">
-        © {year} Trinity Build Co. All rights reserved. — Phoenix, Arizona — {business.rocLicense}
+        © {year} Trinity Build Co. All rights reserved. — Scottsdale, Arizona — {business.rocLicense}
       </span>
       <span class="footer-tagline">{business.tagline}</span>
     </div>
