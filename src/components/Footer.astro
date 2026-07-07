@@ -68,6 +68,7 @@ const year = new Date().getFullYear();
             <a href={business.phoneHref} class="footer-link">{business.phone}</a>
             <a href={`mailto:${business.email}`} class="footer-link">{business.email}</a>
             <span class="footer-link footer-link--static">Phoenix, Arizona</span>
+            <span class="footer-link footer-link--static">{business.rocLicense}</span>
             <a href="/contact" class="footer-start">Start Your Project →</a>
           </div>
         </div>
@@ -75,7 +76,7 @@ const year = new Date().getFullYear();
     </div>
     <div class="footer-bottom">
       <span class="footer-copyright">
-        © {year} Trinity Build Co. All rights reserved. — Phoenix, Arizona
+        © {year} Trinity Build Co. All rights reserved. — Phoenix, Arizona — {business.rocLicense}
       </span>
       <span class="footer-tagline">{business.tagline}</span>
     </div>
@@ -85,7 +86,7 @@ const year = new Date().getFullYear();
 <style>
   .cta-band {
     background: var(--color-gold);
-    padding: 88px 0;
+    padding: clamp(60px, 8vw, 88px) 0;
   }
 
   .cta-inner {
@@ -152,7 +153,7 @@ const year = new Date().getFullYear();
 
   .footer-cols {
     display: flex;
-    gap: 72px;
+    gap: clamp(40px, 5.5vw, 72px);
     flex-wrap: wrap;
   }
 

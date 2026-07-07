@@ -11,11 +11,14 @@ export const business = {
     "Phoenix-based commercial general contractor delivering ground-up construction, tenant improvements, and design-build projects across Arizona.",
   url: "https://trinity-build-co.vercel.app",
 
+  // NOTE: phone/email are still the design's placeholders — swap in the real
+  // business details here when the client provides them; the whole site updates.
   phone: "602.555.0145",
   phoneHref: "tel:6025550145",
   email: "info@trinitybuildco.com",
   careersEmail: "careers@trinitybuildco.com",
   domainLabel: "trinitybuildco.com",
+  rocLicense: "AZ ROC License #343291",
 
   address: {
     locality: "Phoenix",

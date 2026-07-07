@@ -76,4 +76,19 @@ const { rows, large = false } = Astro.props;
   a.row-value:hover {
     color: var(--color-gold);
   }
+
+  @media (max-width: 420px) {
+    .contact-row {
+      flex-wrap: wrap;
+      gap: 6px 32px;
+    }
+
+    .row-value {
+      font-size: 15px;
+    }
+
+    .contact-rows--lg .row-value {
+      font-size: 15px;
+    }
+  }
 </style>

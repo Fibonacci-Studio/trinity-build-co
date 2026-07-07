@@ -154,6 +154,36 @@ const contactRows = [
       </div>
     </section>
 
+    <!-- ============ INDUSTRIES ============ -->
+    <section id="industries" class="industries">
+      <div class="container">
+        <div class="section-head">
+          <div data-reveal>
+            <div class="eyebrow head-eyebrow"><span>Where We Build</span></div>
+            <h2 class="section-title dark-on-light">Industries We Serve</h2>
+          </div>
+          <div class="head-side" data-reveal>
+            <p>Purpose-built experience across the commercial sectors driving Arizona's growth.</p>
+            <a href="/industries" class="arrow-link arrow-link--dark head-link">All Industries →</a>
+          </div>
+        </div>
+        <div class="tile-grid industries-grid">
+          {
+            industries.map((industry) => (
+              <div class="industry-tile" data-reveal>
+                <span class="industry-dot" aria-hidden="true" />
+                <span class="industry-label">{industry}</span>
+              </div>
+            ))
+          }
+          <a href="#contact" class="industry-cta" data-reveal>
+            <span class="industry-cta-hint">Have a project in mind?</span>
+            <span class="industry-cta-link">Let's Talk →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ ABOUT ============ -->
     <section id="about" class="about">
       <div class="container">
@@ -262,36 +292,6 @@ const contactRows = [
               </div>
             ))
           }
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ INDUSTRIES ============ -->
-    <section id="industries" class="industries">
-      <div class="container">
-        <div class="section-head">
-          <div data-reveal>
-            <div class="eyebrow head-eyebrow"><span>Where We Build</span></div>
-            <h2 class="section-title dark-on-light">Industries We Serve</h2>
-          </div>
-          <div class="head-side" data-reveal>
-            <p>Purpose-built experience across the commercial sectors driving Arizona's growth.</p>
-            <a href="/industries" class="arrow-link arrow-link--dark head-link">All Industries →</a>
-          </div>
-        </div>
-        <div class="tile-grid industries-grid">
-          {
-            industries.map((industry) => (
-              <div class="industry-tile" data-reveal>
-                <span class="industry-dot" aria-hidden="true" />
-                <span class="industry-label">{industry}</span>
-              </div>
-            ))
-          }
-          <a href="#contact" class="industry-cta" data-reveal>
-            <span class="industry-cta-hint">Have a project in mind?</span>
-            <span class="industry-cta-link">Let's Talk →</span>
-          </a>
         </div>
       </div>
     </section>
@@ -622,6 +622,12 @@ const contactRows = [
     padding: 46px 48px;
   }
 
+  @media (max-width: 560px) {
+    .mission-card {
+      padding: 36px 28px;
+    }
+  }
+
   .mission-card .kicker {
     margin-bottom: 18px;
   }
@@ -734,7 +740,7 @@ const contactRows = [
 
   /* ── Industries ── */
   .industries {
-    background: #ffffff;
+    background: var(--color-cream);
     padding: var(--section-pad) 0;
   }
 
@@ -942,7 +948,7 @@ const contactRows = [
   .contact-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
-    gap: 80px;
+    gap: clamp(48px, 7vw, 80px);
     align-items: start;
   }
 

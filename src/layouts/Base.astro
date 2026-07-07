@@ -46,6 +46,17 @@ const schema = {
         addressCountry: business.address.country,
       },
       areaServed: business.areaServed,
+      founder: {
+        "@type": "Person",
+        name: "Slade Gibson",
+        jobTitle: "President & CEO",
+      },
+      hasCredential: {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "license",
+        name: business.rocLicense,
+        recognizedBy: { "@type": "Organization", name: "Arizona Registrar of Contractors" },
+      },
       knowsAbout: [
         "Commercial general contracting",
         "Design-build",

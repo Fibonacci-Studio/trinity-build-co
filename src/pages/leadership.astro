@@ -6,17 +6,17 @@ import Footer from "../components/Footer.astro";
 import PageHero from "../components/PageHero.astro";
 import logoIcon from "../assets/logo-icon.png";
 
-const team = [
-  { name: "Full Name", role: "Principal & Founder" },
-  { name: "Full Name", role: "Vice President, Construction" },
-  { name: "Full Name", role: "Director of Preconstruction" },
-  { name: "Full Name", role: "Project Executive" },
+const bio = [
+  "Slade Gibson is the Founder and President of Trinity Build Co., providing strategic leadership for the company's commercial construction operations throughout Arizona. With over 25 years of experience in the construction industry, Slade has built a reputation for integrity, disciplined execution, and lasting client relationships.",
+  "He works closely with owners, developers, architects, and project teams from preconstruction through project completion, ensuring every project is thoughtfully planned, professionally managed, and successfully delivered. His leadership is rooted in accountability, proactive communication, and a commitment to creating value for every client.",
+  "Under Slade's leadership, Trinity Build Co. delivers commercial construction services with a focus on quality, collaboration, and long-term partnerships. The company is committed to helping clients navigate complex projects with confidence through careful planning, transparent communication, and dependable execution.",
+  "Slade believes the strongest projects are built on trust, shared goals, and a commitment to doing the right thing. Those principles continue to shape the culture of Trinity Build Co. and guide every project the company undertakes.",
 ];
 ---
 
 <Base
   title="Leadership — Trinity Build Co."
-  description="Senior leadership stays engaged on every project — from first meeting to final walkthrough. Meet the team behind Trinity Build Co."
+  description="Slade Gibson, President & CEO of Trinity Build Co., brings over 25 years of construction experience and a reputation for integrity, disciplined execution, and lasting client relationships."
 >
   <Nav active="none" />
   <main id="main-content">
@@ -26,29 +26,28 @@ const team = [
       lede="Senior leadership stays engaged on every project. These are the people who answer the phone — from first meeting to final walkthrough."
     />
 
-    <section class="team">
-      <div class="container">
-        <div class="team-grid">
-          {
-            team.map((member) => (
-              <div data-reveal>
-                <div class="headshot-slot">
-                  <Image
-                    src={logoIcon}
-                    alt=""
-                    width={110}
-                    height={67}
-                    densities={[1, 2]}
-                    class="headshot-mark"
-                  />
-                </div>
-                <h3 class="member-name">{member.name}</h3>
-                <div class="member-role">{member.role}</div>
-              </div>
-            ))
-          }
+    <section class="leader">
+      <div class="container leader-grid">
+        <div class="leader-portrait" data-reveal>
+          <div class="portrait-slot">
+            <Image
+              src={logoIcon}
+              alt=""
+              width={130}
+              height={79}
+              densities={[1, 2]}
+              class="portrait-mark"
+            />
+          </div>
         </div>
-        <p class="team-note">Team photography and bios coming soon.</p>
+        <div data-reveal>
+          <div class="leader-kicker">
+            <span class="kicker-dash" aria-hidden="true"></span>
+            <span class="kicker">President & CEO</span>
+          </div>
+          <h2 class="leader-name">Slade Gibson</h2>
+          {bio.map((paragraph) => <p class="leader-bio">{paragraph}</p>)}
+        </div>
       </div>
     </section>
 
@@ -67,28 +66,30 @@ const team = [
 </Base>
 
 <style>
-  .team {
+  .leader {
     background: #ffffff;
     padding: clamp(72px, 9vw, 100px) 0 var(--section-pad);
   }
 
-  .team-grid {
+  .leader-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
-    gap: 32px;
+    grid-template-columns: minmax(300px, 0.72fr) 1fr;
+    gap: clamp(40px, 5vw, 72px);
+    align-items: start;
   }
 
-  .headshot-slot {
+  .portrait-slot {
     width: 100%;
-    height: 340px;
+    height: 560px;
     background: var(--color-ink);
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+    position: sticky;
+    top: 108px;
   }
 
-  .headshot-slot::after {
+  .portrait-slot::after {
     content: "";
     position: absolute;
     left: 0;
@@ -98,35 +99,63 @@ const team = [
     background: var(--color-gold);
   }
 
-  .headshot-mark {
-    width: 110px;
+  .portrait-mark {
+    width: 130px;
     height: auto;
     opacity: 0.4;
   }
 
-  .member-name {
-    margin: 20px 0 6px;
-    font-size: 17px;
+  .leader-kicker {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .kicker-dash {
+    display: inline-block;
+    width: 40px;
+    height: 2px;
+    background: var(--color-gold);
+  }
+
+  .leader-kicker .kicker {
+    letter-spacing: 0.3em;
+    font-size: 12px;
+  }
+
+  .leader-name {
+    margin: 0 0 28px;
+    font-size: clamp(30px, 3vw, 40px);
     font-weight: 700;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
+    line-height: 1.15;
     color: var(--color-ink);
   }
 
-  .member-role {
-    font-size: 12.5px;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-gold);
+  .leader-bio {
+    margin: 0 0 20px;
+    font-size: 16.5px;
+    line-height: 1.85;
+    color: var(--color-stone);
+    max-width: 640px;
   }
 
-  .team-note {
-    margin: 56px 0 0;
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--color-caption);
-    text-align: center;
+  .leader-bio:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 899px) {
+    .leader-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .portrait-slot {
+      position: static;
+      height: clamp(320px, 64vw, 460px);
+      max-width: 460px;
+    }
   }
 
   .philosophy {
