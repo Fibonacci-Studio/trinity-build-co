@@ -7,9 +7,11 @@ import ContactForm from "../components/ContactForm.astro";
 import ContactRows from "../components/ContactRows.astro";
 import { business } from "../config";
 import heroPhoto from "../assets/photos/16-night-commercial-jobsite.png";
-import portfolioFeatured from "../assets/photos/15-exterior-facade-install.png";
-import portfolioMedical from "../assets/photos/11-medical-ti-framing.png";
-import portfolioIndustrial from "../assets/photos/07-tilt-up-warehouse-crew.png";
+import multiFamilyPhoto from "../assets/photos/work-areas/01-multi-family-developments.png";
+import apartmentPhoto from "../assets/photos/work-areas/02-apartment-communities.png";
+import mixedUsePhoto from "../assets/photos/work-areas/03-mixed-use-developments.png";
+import officePhoto from "../assets/photos/work-areas/04-office-buildings.png";
+import campusPhoto from "../assets/photos/work-areas/05-commercial-campuses.png";
 
 const capabilities = [
   "Ground-Up Construction",
@@ -32,7 +34,7 @@ const services = [
   },
   {
     title: "Preconstruction Services",
-    copy: "Feasibility, constructability, and planning that de-risk your project before ground breaks.",
+    copy: "Planning, budget development, scheduling, value engineering, and hands-on management before construction begins.",
   },
   {
     title: "Budget Development",
@@ -65,16 +67,51 @@ const processSteps = [
   { title: "Support", copy: "We remain a trusted partner long after completion." },
 ];
 
-const industries = [
-  "Office",
+const priorityIndustries = [
+  {
+    title: "Multi-Family Developments",
+    slug: "multi-family-developments",
+    href: "/industries/multi-family-developments",
+    image: multiFamilyPhoto,
+    alt: "Trinity Build Co. team at a branded multi-family development jobsite in Phoenix",
+  },
+  {
+    title: "Apartment Communities",
+    slug: "apartment-communities",
+    href: "/industries/apartment-communities",
+    image: apartmentPhoto,
+    alt: "Trinity Build Co. team overseeing an apartment community under construction in Phoenix",
+  },
+  {
+    title: "Mixed-Use Developments",
+    slug: "mixed-use-developments",
+    href: "/industries#mixed-use-developments",
+    image: mixedUsePhoto,
+    alt: "Trinity Build Co. team at a mixed-use development under construction in Phoenix",
+  },
+  {
+    title: "Office Buildings",
+    slug: "office-buildings",
+    href: "/industries#office-buildings",
+    image: officePhoto,
+    alt: "Trinity Build Co. team at a commercial office building jobsite in Phoenix",
+  },
+  {
+    title: "Commercial Campuses",
+    slug: "commercial-campuses",
+    href: "/industries#commercial-campuses",
+    image: campusPhoto,
+    alt: "Trinity Build Co. team at a commercial campus under construction in Phoenix",
+  },
+];
+
+const additionalIndustries = [
   "Medical",
   "Industrial",
   "Warehouses",
   "Retail",
   "Restaurants",
   "Churches",
-  "Mixed-Use Developments",
-  "Apartment Communities",
   "Commercial Condominiums",
   "Tenant Improvements",
 ];
@@ -105,6 +142,7 @@ const contactRows = [
   { label: "Phone", value: business.phone, href: business.phoneHref },
   { label: "Email", value: business.email, href: `mailto:${business.email}` },
   { label: "Office", value: business.addressLabel },
+  { label: "License", value: business.rocLicense },
 ];
 ---
 
@@ -167,9 +205,39 @@ const contactRows = [
             <a href="/industries" class="arrow-link arrow-link--dark head-link">All Industries →</a>
           </div>
         </div>
+        <div class="focus-grid">
+          {
+            priorityIndustries.map((industry) => (
+              <a
+                href={industry.href}
+                class="focus-card"
+                aria-label={`Learn about ${industry.title}`}
+                data-reveal
+              >
+                <Image
+                  src={industry.image}
+                  alt={industry.alt}
+                  widths={[480, 800, 1200]}
+                  sizes="(min-width: 900px) 40vw, (min-width: 560px) 50vw, 100vw"
+                  quality={75}
+                  class="focus-img"
+                />
+                <span class="focus-scrim" aria-hidden="true" />
+                <span class="focus-content">
+                  <span class="focus-kicker">Commercial Sector</span>
+                  <span class="focus-title">{industry.title}</span>
+                  <span class="focus-link">Explore Sector →</span>
+                </span>
+              </a>
+            ))
+          }
+        </div>
+        <div class="additional-head" data-reveal>
+          <span>Additional Commercial Sectors</span>
+        </div>
         <div class="tile-grid industries-grid">
           {
-            industries.map((industry) => (
+            additionalIndustries.map((industry) => (
               <div class="industry-tile" data-reveal>
                 <span class="industry-dot" aria-hidden="true" />
                 <span class="industry-label">{industry}</span>
@@ -327,58 +395,73 @@ const contactRows = [
       <div class="container">
         <div class="section-head">
           <div data-reveal>
-            <div class="eyebrow head-eyebrow"><span>Selected Work</span></div>
-            <h2 class="section-title dark-on-light">Recent Projects</h2>
+            <div class="eyebrow head-eyebrow"><span>Commercial Focus</span></div>
+            <h2 class="section-title dark-on-light">Project Types We Build</h2>
           </div>
           <div class="head-side" data-reveal>
-            <p>Ground-up and tenant-improvement work across Arizona.</p>
-            <a href="/portfolio" class="arrow-link arrow-link--dark head-link">Full Portfolio →</a>
+            <p>Representative imagery for the commercial work we pursue across Arizona.</p>
+            <a href="/portfolio" class="arrow-link arrow-link--dark head-link">View Project Types →</a>
           </div>
         </div>
         <div class="portfolio-grid">
-          <div data-reveal>
+          <a
+            href="/industries/multi-family-developments"
+            class="portfolio-item"
+            aria-label="Explore Multi-Family Developments"
+            data-reveal
+          >
             <Image
-              src={portfolioFeatured}
-              alt="Exterior facade installation on a Trinity Build Co. office project in Phoenix"
+              src={multiFamilyPhoto}
+              alt="Trinity Build Co. team at a multi-family development under construction in Phoenix"
               widths={[640, 1000, 1400]}
               sizes="(min-width: 900px) 56vw, 100vw"
               quality={75}
               class="portfolio-img portfolio-img--featured"
             />
             <div class="portfolio-caption">
-              <span class="caption-title">Featured Project — Office</span>
+              <span class="caption-title">Multi-Family Developments</span>
               <span class="caption-loc">Phoenix, AZ</span>
             </div>
-          </div>
+          </a>
           <div class="portfolio-col">
-            <div data-reveal>
+            <a
+              href="/industries/apartment-communities"
+              class="portfolio-item"
+              aria-label="Explore Apartment Communities"
+              data-reveal
+            >
               <Image
-                src={portfolioMedical}
-                alt="Medical tenant-improvement framing by Trinity Build Co."
+                src={apartmentPhoto}
+                alt="Trinity Build Co. team overseeing an apartment community under construction in Phoenix"
                 widths={[480, 800, 1200]}
                 sizes="(min-width: 900px) 42vw, 100vw"
                 quality={75}
                 class="portfolio-img portfolio-img--stack"
               />
               <div class="portfolio-caption">
-                <span class="caption-title">Medical</span>
+                <span class="caption-title">Apartment Communities</span>
                 <span class="caption-loc">Phoenix, AZ</span>
               </div>
-            </div>
-            <div data-reveal>
+            </a>
+            <a
+              href="/industries#mixed-use-developments"
+              class="portfolio-item"
+              aria-label="Explore Mixed-Use Developments"
+              data-reveal
+            >
               <Image
-                src={portfolioIndustrial}
-                alt="Tilt-up warehouse construction crew on a Trinity Build Co. industrial project"
+                src={mixedUsePhoto}
+                alt="Trinity Build Co. team at a mixed-use development under construction in Phoenix"
                 widths={[480, 800, 1200]}
                 sizes="(min-width: 900px) 42vw, 100vw"
                 quality={75}
                 class="portfolio-img portfolio-img--stack"
               />
               <div class="portfolio-caption">
-                <span class="caption-title">Industrial</span>
+                <span class="caption-title">Mixed-Use Developments</span>
                 <span class="caption-loc">Phoenix, AZ</span>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -480,7 +563,7 @@ const contactRows = [
 
   @media (max-width: 480px) {
     .hero-title {
-      font-size: clamp(34px, 10.5vw, 44px);
+      font-size: clamp(34px, 9.2vw, 38px);
     }
   }
 
@@ -527,6 +610,59 @@ const contactRows = [
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--color-dust-bright);
+  }
+
+  @media (max-width: 700px) {
+    .hero-inner {
+      padding-top: 56px;
+    }
+
+    .hero-inner .eyebrow {
+      margin-bottom: 22px;
+    }
+
+    .hero-lede {
+      margin-top: 22px;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .hero-caps {
+      margin-top: 36px;
+      gap: 14px;
+      padding: 20px 0 24px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .hero-inner {
+      padding-top: 44px;
+    }
+
+    .hero-lede {
+      margin-top: 18px;
+      font-size: 15.5px;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      margin-top: 22px;
+    }
+
+    .hero-actions .btn {
+      width: 100%;
+      padding: 14px 18px;
+      font-size: 12px;
+    }
+
+    .hero-caps {
+      display: none;
+    }
   }
 
   /* ── Shared section furniture ── */
@@ -744,6 +880,132 @@ const contactRows = [
     padding: var(--section-pad) 0;
   }
 
+  .focus-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 2px;
+    margin-bottom: 36px;
+  }
+
+  .focus-card {
+    position: relative;
+    grid-column: span 2;
+    min-height: 270px;
+    overflow: hidden;
+    text-decoration: none;
+    background: var(--color-ink);
+  }
+
+  .focus-card:nth-child(-n + 2) {
+    grid-column: span 3;
+    min-height: 330px;
+  }
+
+  .focus-card:focus-visible {
+    outline: 3px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+
+  .focus-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+  }
+
+  .focus-card:hover .focus-img {
+    transform: scale(1.025);
+  }
+
+  .focus-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(13, 13, 13, 0.08) 20%, rgba(13, 13, 13, 0.9) 100%);
+  }
+
+  .focus-content {
+    position: absolute;
+    inset: auto 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px;
+  }
+
+  .focus-kicker {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-gold-light);
+  }
+
+  .focus-title {
+    margin-top: 10px;
+    font-size: clamp(17px, 1.5vw, 22px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  .focus-link {
+    margin-top: 15px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-dust-bright);
+  }
+
+  .additional-head {
+    margin-bottom: 18px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-stone-muted);
+  }
+
+  @media (max-width: 899px) {
+    .focus-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .focus-card,
+    .focus-card:nth-child(-n + 2) {
+      grid-column: span 1;
+      min-height: 280px;
+    }
+
+    .focus-card:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 559px) {
+    .focus-grid {
+      grid-template-columns: 1fr;
+      gap: 1px;
+      margin-bottom: 30px;
+    }
+
+    .focus-card,
+    .focus-card:nth-child(-n + 2),
+    .focus-card:last-child {
+      grid-column: 1;
+      min-height: 230px;
+    }
+
+    .focus-content {
+      padding: 24px;
+    }
+  }
+
   .industries-grid {
     grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
   }
@@ -888,6 +1150,17 @@ const contactRows = [
     display: flex;
     flex-direction: column;
     gap: 28px;
+  }
+
+  .portfolio-item {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .portfolio-item:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 5px;
   }
 
   .portfolio-img {

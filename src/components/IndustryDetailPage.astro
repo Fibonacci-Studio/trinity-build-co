@@ -1,0 +1,463 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import Base from "../layouts/Base.astro";
+import Nav from "./Nav.astro";
+import Footer from "./Footer.astro";
+
+interface DetailItem {
+  title: string;
+  copy: string;
+}
+
+interface Props {
+  title: string;
+  seoDescription: string;
+  eyebrow: string;
+  lede: string;
+  heroImage: ImageMetadata;
+  heroAlt: string;
+  heroPosition?: string;
+  introTitle: string;
+  introParagraphs: string[];
+  capabilities: DetailItem[];
+  supportImage: ImageMetadata;
+  supportAlt: string;
+  supportPosition?: string;
+  supportEyebrow: string;
+  supportTitle: string;
+  supportCopy: string;
+  deliveryTitle: string;
+  deliveryCopy: string;
+  deliveryItems: DetailItem[];
+}
+
+const {
+  title,
+  seoDescription,
+  eyebrow,
+  lede,
+  heroImage,
+  heroAlt,
+  heroPosition = "center 50%",
+  introTitle,
+  introParagraphs,
+  capabilities,
+  supportImage,
+  supportAlt,
+  supportPosition = "center 50%",
+  supportEyebrow,
+  supportTitle,
+  supportCopy,
+  deliveryTitle,
+  deliveryCopy,
+  deliveryItems,
+} = Astro.props;
+---
+
+<Base title={`${title} - Trinity Build Co.`} description={seoDescription}>
+  <Nav active="industries" />
+  <main id="main-content">
+    <section class="sector-hero">
+      <Image
+        src={heroImage}
+        alt={heroAlt}
+        widths={[768, 1280, 1920]}
+        sizes="100vw"
+        loading="eager"
+        fetchpriority="high"
+        quality={76}
+        class="sector-hero-img"
+        style={`object-position: ${heroPosition}`}
+      />
+      <div class="sector-hero-scrim" aria-hidden="true"></div>
+      <div class="container sector-hero-inner">
+        <a href="/industries" class="back-link">All Industries</a>
+        <div class="eyebrow hero-eyebrow"><span>{eyebrow}</span></div>
+        <h1 class="page-title sector-title">{title}</h1>
+        <p class="sector-lede">{lede}</p>
+        <div class="hero-actions">
+          <a href="/contact" class="btn btn--gold">Start Your Project</a>
+          <a href="/industries" class="btn btn--outline">View All Industries</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sector-intro">
+      <div class="container intro-grid">
+        <div data-reveal>
+          <div class="eyebrow intro-eyebrow"><span>Sector Approach</span></div>
+          <h2 class="section-title intro-title">{introTitle}</h2>
+        </div>
+        <div class="intro-copy" data-reveal>
+          {introParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="scope">
+      <div class="container">
+        <div class="scope-head" data-reveal>
+          <div class="eyebrow scope-eyebrow"><span>Project Scope</span></div>
+          <h2 class="section-title scope-title">How we support the work.</h2>
+        </div>
+        <div class="tile-grid scope-grid">
+          {
+            capabilities.map((capability, index) => (
+              <article class="scope-card" data-reveal>
+                <div class="num">{String(index + 1).padStart(2, "0")}</div>
+                <h3>{capability.title}</h3>
+                <p>{capability.copy}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="support-band">
+      <Image
+        src={supportImage}
+        alt={supportAlt}
+        widths={[768, 1280, 1920]}
+        sizes="100vw"
+        quality={76}
+        class="support-img"
+        style={`object-position: ${supportPosition}`}
+      />
+      <div class="support-scrim" aria-hidden="true"></div>
+      <div class="container support-inner" data-reveal>
+        <div class="kicker support-kicker">{supportEyebrow}</div>
+        <h2>{supportTitle}</h2>
+        <p>{supportCopy}</p>
+      </div>
+    </section>
+
+    <section class="delivery">
+      <div class="container delivery-grid">
+        <div data-reveal>
+          <div class="eyebrow delivery-eyebrow"><span>Delivery Discipline</span></div>
+          <h2 class="section-title delivery-title">{deliveryTitle}</h2>
+          <p class="delivery-copy">{deliveryCopy}</p>
+        </div>
+        <div class="delivery-list">
+          {
+            deliveryItems.map((item, index) => (
+              <article class="delivery-item" data-reveal>
+                <span class="delivery-num">{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.copy}</p>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .sector-hero {
+    position: relative;
+    min-height: clamp(540px, 68vh, 660px);
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: var(--color-ink);
+  }
+
+  .sector-hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .sector-hero-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(13, 13, 13, 0.94) 0%, rgba(13, 13, 13, 0.68) 52%, rgba(13, 13, 13, 0.2) 100%),
+      linear-gradient(180deg, rgba(13, 13, 13, 0.14) 25%, rgba(13, 13, 13, 0.84) 100%);
+  }
+
+  .sector-hero-inner {
+    position: relative;
+    width: 100%;
+    padding-top: 70px;
+    padding-bottom: clamp(60px, 8vw, 82px);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 30px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-dust-bright);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+    padding-bottom: 5px;
+  }
+
+  .back-link:hover {
+    color: var(--color-gold);
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 24px;
+  }
+
+  .sector-title {
+    max-width: 900px;
+  }
+
+  .sector-lede {
+    margin: 26px 0 0;
+    max-width: 680px;
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--color-dust-bright);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 36px;
+  }
+
+  .sector-intro {
+    background: #ffffff;
+    padding: var(--section-pad) 0;
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.82fr) minmax(360px, 1.18fr);
+    gap: clamp(48px, 7vw, 92px);
+    align-items: start;
+  }
+
+  .intro-eyebrow,
+  .scope-eyebrow,
+  .delivery-eyebrow {
+    margin-bottom: 24px;
+  }
+
+  .intro-title,
+  .scope-title {
+    color: var(--color-ink);
+  }
+
+  .intro-copy p {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.85;
+    color: var(--color-stone);
+  }
+
+  .intro-copy p + p {
+    margin-top: 22px;
+  }
+
+  .scope {
+    background: var(--color-cream);
+    padding: var(--section-pad) 0;
+  }
+
+  .scope-head {
+    margin-bottom: 52px;
+  }
+
+  .scope-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  }
+
+  .scope-card {
+    min-height: 220px;
+    background: #ffffff;
+    padding: 36px 32px;
+  }
+
+  .scope-card h3 {
+    margin: 17px 0 11px;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+
+  .scope-card p {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--color-stone-muted);
+  }
+
+  .support-band {
+    position: relative;
+    min-height: clamp(460px, 54vw, 620px);
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: var(--color-ink);
+  }
+
+  .support-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .support-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(13, 13, 13, 0.08) 25%, rgba(13, 13, 13, 0.9) 100%);
+  }
+
+  .support-inner {
+    position: relative;
+    width: 100%;
+    padding-bottom: clamp(52px, 7vw, 76px);
+  }
+
+  .support-kicker {
+    margin-bottom: 18px;
+  }
+
+  .support-inner h2 {
+    margin: 0;
+    max-width: 820px;
+    font-size: clamp(30px, 3.5vw, 48px);
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  .support-inner p {
+    margin: 22px 0 0;
+    max-width: 680px;
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--color-dust-bright);
+  }
+
+  .delivery {
+    background: var(--color-ink);
+    padding: var(--section-pad) 0;
+  }
+
+  .delivery-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.82fr) minmax(360px, 1.18fr);
+    gap: clamp(52px, 8vw, 104px);
+    align-items: start;
+  }
+
+  .delivery-title {
+    color: #ffffff;
+  }
+
+  .delivery-copy {
+    margin: 26px 0 0;
+    max-width: 440px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--color-dust-muted);
+  }
+
+  .delivery-list {
+    border-bottom: 1px solid var(--color-coal-border);
+  }
+
+  .delivery-item {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 22px;
+    border-top: 1px solid var(--color-coal-border);
+    padding: 26px 0;
+  }
+
+  .delivery-num {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--color-gold);
+  }
+
+  .delivery-item h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  .delivery-item p {
+    margin: 10px 0 0;
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--color-dust-muted);
+  }
+
+  @media (max-width: 760px) {
+    .sector-hero {
+      min-height: 620px;
+    }
+
+    .sector-hero-scrim {
+      background:
+        linear-gradient(90deg, rgba(13, 13, 13, 0.88) 0%, rgba(13, 13, 13, 0.46) 100%),
+        linear-gradient(180deg, rgba(13, 13, 13, 0.18) 18%, rgba(13, 13, 13, 0.92) 100%);
+    }
+
+    .sector-hero-inner {
+      padding-top: 48px;
+      padding-bottom: 54px;
+    }
+
+    .sector-lede {
+      font-size: 16px;
+      line-height: 1.68;
+    }
+
+    .hero-actions .btn {
+      width: 100%;
+      padding-inline: 18px;
+    }
+
+    .intro-grid,
+    .delivery-grid {
+      grid-template-columns: 1fr;
+      gap: 42px;
+    }
+
+    .scope-card {
+      min-height: 0;
+    }
+
+    .support-band {
+      min-height: 520px;
+    }
+
+    .support-inner p {
+      font-size: 16px;
+    }
+  }
+</style>

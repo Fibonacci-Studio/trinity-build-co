@@ -1,0 +1,72 @@
+---
+import IndustryDetailPage from "../../components/IndustryDetailPage.astro";
+import heroImage from "../../assets/photos/work-areas/02-apartment-communities.png";
+import supportImage from "../../assets/photos/15-exterior-facade-install.png";
+
+const capabilities = [
+  {
+    title: "Planning & Unit Coordination",
+    copy: "Unit mix, finish standards, long-lead decisions, logistics, and jurisdictional requirements coordinated before construction begins.",
+  },
+  {
+    title: "Sitework & Building Phasing",
+    copy: "Horizontal improvements and vertical starts planned to maintain trade flow and support practical occupancy milestones.",
+  },
+  {
+    title: "Unit Finish Quality Control",
+    copy: "First-unit reviews, repeatable checklists, and structured inspections protect consistency across every floor plan and building.",
+  },
+  {
+    title: "Leasing & Amenity Spaces",
+    copy: "Resident-facing spaces coordinated with the same schedule, budget, and finish expectations as the residential buildings.",
+  },
+  {
+    title: "Punch, Turnover & Closeout",
+    copy: "Building and unit completion tracked through inspections, corrections, owner acceptance, documentation, and occupancy release.",
+  },
+];
+
+const deliveryItems = [
+  {
+    title: "Consistent Unit Standards",
+    copy: "Approved benchmarks and repeatable field verification reduce finish drift as crews move through buildings and unit types.",
+  },
+  {
+    title: "Occupancy-Driven Milestones",
+    copy: "Work is organized around inspections, leasing priorities, amenity readiness, and practical building turnover dates.",
+  },
+  {
+    title: "Coordinated Trade Flow",
+    copy: "Crews, material deliveries, and inspections are sequenced to protect production without sacrificing quality or safety.",
+  },
+  {
+    title: "Clear Owner Reporting",
+    copy: "Current schedule, budget, procurement, quality, and risk information gives ownership a dependable view of progress.",
+  },
+];
+---
+
+<IndustryDetailPage
+  title="Apartment Communities"
+  seoDescription="Apartment community construction services in Phoenix and across Arizona, from planning and building phasing through unit quality control, amenities, and turnover."
+  eyebrow="Apartment Construction"
+  lede="Coordinated delivery for apartment buildings, resident amenities, site improvements, and phased occupancy across Arizona."
+  heroImage={heroImage}
+  heroAlt="Trinity Build Co. team overseeing an apartment community under construction in Phoenix"
+  heroPosition="center 48%"
+  introTitle="Built around quality at every unit."
+  introParagraphs={[
+    "Apartment communities combine the complexity of repeated residential units with the demands of commercial scheduling, shared infrastructure, amenities, inspections, and phased occupancy. Each part must move together without losing control of the details.",
+    "Trinity Build Co. manages that work with clear benchmarks, building-level schedules, proactive coordination, and transparent reporting so ownership can track progress from the first unit through community closeout.",
+  ]}
+  capabilities={capabilities}
+  supportImage={supportImage}
+  supportAlt="Trinity Build Co. crew installing a modern commercial building facade in Phoenix"
+  supportPosition="center 52%"
+  supportEyebrow="Quality at Scale"
+  supportTitle="A consistent standard from the first unit to the last."
+  supportCopy="Mockups, first-unit approvals, structured inspections, and disciplined punch management create repeatable quality across buildings, floor plans, and resident-facing spaces."
+  deliveryTitle="Turnover planned from day one."
+  deliveryCopy="Occupancy dates become more dependable when inspections, corrections, amenities, documentation, and owner acceptance are built into the schedule early."
+  deliveryItems={deliveryItems}
+/>

@@ -50,5 +50,7 @@ set these environment variables in Vercel:
   Careers mail routes to the same inbox until a dedicated address exists.
 - Leadership features Slade Gibson (President & CEO) with his real headshot; additional team
   headshots from trinityhomesaz.com are staged in `src/assets/people/` if more profiles are added.
-- Portfolio photography is interim branded imagery; sector-specific shots (multifamily,
-  apartments, mixed-use) are being produced and slot into `src/assets/photos/`.
+- Five Phoenix-specific branded visuals for multi-family, apartments, mixed-use, offices, and
+  commercial campuses are integrated across the homepage, Industries, and Portfolio pages.
+- Portfolio photography is labeled as representative imagery until completed commercial project
+  photography is available.

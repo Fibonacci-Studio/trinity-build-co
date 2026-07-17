@@ -18,7 +18,7 @@ export const business = {
   // Applications route to the main inbox until a dedicated careers address exists.
   careersEmail: "info@trinityhomesaz.com",
   domainLabel: "trinitybuildco.com",
-  rocLicense: "AZ ROC License #343291",
+  rocLicense: "Arizona ROC License #343291",
 
   address: {
     street: "15455 N Greenway Hayden Loop, Ste C19",
@@ -37,6 +37,7 @@ export const business = {
 // Primary nav — order and active-state keys mirror the design's SiteNav.
 export const navLinks = [
   { label: "About", href: "/about", key: "about" },
+  { label: "Leadership", href: "/leadership", key: "leadership" },
   { label: "Services", href: "/services", key: "services" },
   { label: "Process", href: "/process", key: "process" },
   { label: "Industries", href: "/industries", key: "industries" },

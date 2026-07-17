@@ -1,0 +1,72 @@
+---
+import IndustryDetailPage from "../../components/IndustryDetailPage.astro";
+import heroImage from "../../assets/photos/work-areas/01-multi-family-developments.png";
+import supportImage from "../../assets/photos/06-concrete-pour-superintendent.png";
+
+const capabilities = [
+  {
+    title: "Preconstruction & Budgeting",
+    copy: "Early feasibility, conceptual estimating, constructability review, and value options aligned to the development pro forma.",
+  },
+  {
+    title: "Site & Infrastructure",
+    copy: "Site logistics, utilities, civil coordination, access planning, and horizontal work sequenced for efficient vertical starts.",
+  },
+  {
+    title: "Vertical Construction",
+    copy: "Building-by-building coordination across structure, envelope, MEP systems, interiors, and life-safety requirements.",
+  },
+  {
+    title: "Amenities & Shared Spaces",
+    copy: "Leasing, clubhouse, fitness, pool, parking, and exterior spaces delivered as part of one coordinated community plan.",
+  },
+  {
+    title: "Phased Turnover",
+    copy: "Punch, inspections, owner training, and closeout organized around occupancy milestones and dependable unit release.",
+  },
+];
+
+const deliveryItems = [
+  {
+    title: "Repeatable Quality",
+    copy: "Mockups, first-in-place reviews, and consistent field checks establish a reliable standard across buildings and units.",
+  },
+  {
+    title: "Building-by-Building Scheduling",
+    copy: "Detailed phase plans keep trade flow, inspections, amenities, and turnover milestones visible to the full team.",
+  },
+  {
+    title: "Transparent Cost Control",
+    copy: "Budget updates, procurement decisions, and potential exposures are documented early so owners can act with confidence.",
+  },
+  {
+    title: "Team Alignment",
+    copy: "Owners, designers, consultants, and trade partners work from shared priorities, current information, and clear accountability.",
+  },
+];
+---
+
+<IndustryDetailPage
+  title="Multi-Family Developments"
+  seoDescription="Multi-family construction services in Phoenix and across Arizona, including preconstruction, site development, vertical construction, amenities, and phased turnover."
+  eyebrow="Multi-Family Construction"
+  lede="Development-scale planning and disciplined field execution for multi-building communities throughout the Phoenix market and across Arizona."
+  heroImage={heroImage}
+  heroAlt="Trinity Build Co. team at a branded multi-family development jobsite in Phoenix"
+  heroPosition="center 48%"
+  introTitle="One plan for the entire development."
+  introParagraphs={[
+    "Multi-family construction succeeds when sitework, buildings, amenities, procurement, and turnover are managed as one connected program. Trinity Build Co. brings commercial preconstruction discipline to that full development picture before field work begins.",
+    "From early budgets and logistics through building-by-building delivery, our approach keeps owners and design teams informed about cost, schedule, risk, and the decisions that affect long-term value.",
+  ]}
+  capabilities={capabilities}
+  supportImage={supportImage}
+  supportAlt="Trinity Build Co. superintendent overseeing a concrete pour in Phoenix"
+  supportPosition="center 50%"
+  supportEyebrow="Plan the Sequence"
+  supportTitle="Solve the development on paper before solving it in the field."
+  supportCopy="Early coordination around site access, utilities, procurement, building starts, and inspection milestones creates a more predictable path from mobilization through final turnover."
+  deliveryTitle="Predictable progress across every building."
+  deliveryCopy="The schedule is managed as a connected system, with clear dependencies and owner-facing reporting from the first release through closeout."
+  deliveryItems={deliveryItems}
+/>

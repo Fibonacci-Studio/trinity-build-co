@@ -181,7 +181,7 @@ const { active = "none", showTopBar = true } = Astro.props;
   .desktop-nav {
     display: flex;
     align-items: center;
-    gap: 26px;
+    gap: 20px;
   }
 
   .nav-link {
@@ -191,6 +191,7 @@ const { active = "none", showTopBar = true } = Astro.props;
     text-transform: uppercase;
     color: var(--color-dust-nav);
     text-decoration: none;
+    white-space: nowrap;
     transition: color 0.2s;
   }
 
@@ -307,7 +308,7 @@ const { active = "none", showTopBar = true } = Astro.props;
     text-align: center;
   }
 
-  @media (max-width: 1099px) {
+  @media (max-width: 1219px) {
     .desktop-nav {
       display: none;
     }
@@ -341,16 +342,24 @@ const { active = "none", showTopBar = true } = Astro.props;
   const links = Array.from(menu?.querySelectorAll("a") ?? []);
   let open = false;
 
+  const syncMenuHeight = () => {
+    if (!menu) return;
+    const availableHeight = Math.max(0, window.innerHeight - menu.getBoundingClientRect().top);
+    menu.style.maxHeight = `${availableHeight}px`;
+  };
+
   const setMenu = (next: boolean, returnFocus = false) => {
     open = next;
     btn?.setAttribute("aria-expanded", String(open));
     menu?.classList.toggle("is-open", open);
     document.body.classList.toggle("nav-open", open);
     if (open) {
+      syncMenuHeight();
       menu?.removeAttribute("inert");
       links[0]?.focus();
     } else {
       menu?.setAttribute("inert", "");
+      menu?.style.removeProperty("max-height");
       if (returnFocus) btn?.focus();
     }
   };
@@ -363,7 +372,8 @@ const { active = "none", showTopBar = true } = Astro.props;
   window.addEventListener(
     "resize",
     () => {
-      if (window.innerWidth >= 1100 && open) setMenu(false);
+      if (window.innerWidth >= 1220 && open) setMenu(false);
+      else if (open) syncMenuHeight();
     },
     { passive: true }
   );

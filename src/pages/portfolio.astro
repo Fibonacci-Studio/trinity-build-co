@@ -5,14 +5,16 @@ import Base from "../layouts/Base.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import PageHero from "../components/PageHero.astro";
-import facade from "../assets/photos/15-exterior-facade-install.png";
-import campus from "../assets/photos/16-night-commercial-jobsite.png";
+import multiFamily from "../assets/photos/work-areas/01-multi-family-developments.png";
+import apartments from "../assets/photos/work-areas/02-apartment-communities.png";
+import mixedUse from "../assets/photos/work-areas/03-mixed-use-developments.png";
+import office from "../assets/photos/work-areas/04-office-buildings.png";
+import campus from "../assets/photos/work-areas/05-commercial-campuses.png";
 import medical from "../assets/photos/11-medical-ti-framing.png";
 import warehouse from "../assets/photos/07-tilt-up-warehouse-crew.png";
-import podium from "../assets/photos/06-concrete-pour-superintendent.png";
 import fleet from "../assets/photos/12-branded-fleet-tool-trailer.png";
-import glass from "../assets/photos/09-glass-partition-installation.png";
 import walkthrough from "../assets/photos/03-tenant-improvement-walkthrough.png";
+import glass from "../assets/photos/09-glass-partition-installation.png";
 
 interface Project {
   image: ImageMetadata;
@@ -23,15 +25,33 @@ interface Project {
 
 const projects: Project[] = [
   {
-    image: facade,
-    alt: "Exterior facade installation on a commercial office project",
-    title: "Featured Project — Office",
+    image: multiFamily,
+    alt: "Trinity Build Co. team at a multi-family development under construction in Phoenix",
+    title: "Multi-Family Developments",
+    location: "Phoenix, AZ",
+  },
+  {
+    image: apartments,
+    alt: "Trinity Build Co. team overseeing an apartment community under construction in Phoenix",
+    title: "Apartment Communities",
+    location: "Phoenix, AZ",
+  },
+  {
+    image: mixedUse,
+    alt: "Trinity Build Co. team at a mixed-use development under construction in Phoenix",
+    title: "Mixed-Use Developments",
+    location: "Phoenix, AZ",
+  },
+  {
+    image: office,
+    alt: "Trinity Build Co. team at a commercial office building jobsite in Phoenix",
+    title: "Office Buildings",
     location: "Phoenix, AZ",
   },
   {
     image: campus,
-    alt: "Commercial campus construction at dusk",
-    title: "Commercial Campus",
+    alt: "Trinity Build Co. team at a commercial campus under construction in Phoenix",
+    title: "Commercial Campuses",
     location: "Phoenix, AZ",
   },
   {
@@ -43,13 +63,7 @@ const projects: Project[] = [
   {
     image: warehouse,
     alt: "Tilt-up warehouse construction crew on site",
-    title: "Industrial",
-    location: "Phoenix, AZ",
-  },
-  {
-    image: podium,
-    alt: "Superintendent overseeing a podium concrete pour",
-    title: "Mixed-Use Development",
+    title: "Industrial & Warehouse",
     location: "Phoenix, AZ",
   },
   {
@@ -59,15 +73,15 @@ const projects: Project[] = [
     location: "Phoenix, AZ",
   },
   {
-    image: glass,
-    alt: "Glass partition installation in a corporate office buildout",
-    title: "Corporate Office",
-    location: "Phoenix, AZ",
-  },
-  {
     image: walkthrough,
     alt: "Tenant improvement walkthrough with the project team",
     title: "Tenant Improvement",
+    location: "Phoenix, AZ",
+  },
+  {
+    image: glass,
+    alt: "Glass partition installation in a corporate office buildout",
+    title: "Office Interiors",
     location: "Phoenix, AZ",
   },
 ];
@@ -75,14 +89,14 @@ const projects: Project[] = [
 
 <Base
   title="Portfolio — Trinity Build Co."
-  description="Selected commercial construction work by Trinity Build Co. — ground-up construction and tenant improvements across Arizona."
+  description="Representative imagery for the commercial project types Trinity Build Co. pursues across Arizona, including multi-family, mixed-use, offices, and campuses."
 >
   <Nav active="portfolio" />
   <main id="main-content">
     <PageHero
-      eyebrow="Selected Work"
-      title="Our portfolio."
-      lede="Ground-up construction and tenant improvements across Arizona."
+      eyebrow="Commercial Focus"
+      title="Project types we build."
+      lede="Representative imagery for the ground-up commercial construction and tenant-improvement work we pursue across Arizona."
     />
 
     <section class="grid-section">
@@ -107,7 +121,10 @@ const projects: Project[] = [
             ))
           }
         </div>
-        <p class="grid-note">Project photography coming soon.</p>
+        <p class="grid-note">
+          Representative imagery is shown while Trinity Build Co.'s commercial project portfolio is
+          being documented.
+        </p>
       </div>
     </section>
   </main>

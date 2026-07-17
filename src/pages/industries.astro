@@ -1,16 +1,68 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import Base from "../layouts/Base.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import PageHero from "../components/PageHero.astro";
 import ImageBand from "../components/ImageBand.astro";
 import bandPhoto from "../assets/photos/19-warehouse-loading-dock.png";
+import multiFamilyPhoto from "../assets/photos/work-areas/01-multi-family-developments.png";
+import apartmentPhoto from "../assets/photos/work-areas/02-apartment-communities.png";
+import mixedUsePhoto from "../assets/photos/work-areas/03-mixed-use-developments.png";
+import officePhoto from "../assets/photos/work-areas/04-office-buildings.png";
+import campusPhoto from "../assets/photos/work-areas/05-commercial-campuses.png";
 
-const industries = [
+interface PriorityIndustry {
+  id: string;
+  title: string;
+  copy: string;
+  image: ImageMetadata;
+  alt: string;
+  href?: string;
+}
+
+const priorityIndustries: PriorityIndustry[] = [
   {
-    title: "Office",
-    copy: "Class-A office, corporate campuses, and professional buildouts designed for how teams actually work.",
+    id: "multi-family-developments",
+    title: "Multi-Family Developments",
+    copy: "Ground-up communities planned around repeatable quality, coordinated unit delivery, and dependable turnover schedules.",
+    image: multiFamilyPhoto,
+    alt: "Trinity Build Co. team at a branded multi-family development jobsite in Phoenix",
+    href: "/industries/multi-family-developments",
   },
+  {
+    id: "apartment-communities",
+    title: "Apartment Communities",
+    copy: "Apartment projects managed from sitework through amenities and punch, with disciplined sequencing across every building.",
+    image: apartmentPhoto,
+    alt: "Trinity Build Co. team overseeing an apartment community under construction in Phoenix",
+    href: "/industries/apartment-communities",
+  },
+  {
+    id: "mixed-use-developments",
+    title: "Mixed-Use Developments",
+    copy: "Complex residential, retail, and office programs coordinated as one build with aligned budgets, milestones, and stakeholders.",
+    image: mixedUsePhoto,
+    alt: "Trinity Build Co. team at a mixed-use development under construction in Phoenix",
+  },
+  {
+    id: "office-buildings",
+    title: "Office Buildings",
+    copy: "Ground-up offices, corporate environments, and professional buildouts delivered for long-term performance and flexibility.",
+    image: officePhoto,
+    alt: "Trinity Build Co. team at a commercial office building jobsite in Phoenix",
+  },
+  {
+    id: "commercial-campuses",
+    title: "Commercial Campuses",
+    copy: "Multi-building commercial sites coordinated across infrastructure, shared amenities, phased occupancy, and future growth.",
+    image: campusPhoto,
+    alt: "Trinity Build Co. team at a commercial campus under construction in Phoenix",
+  },
+];
+
+const additionalIndustries = [
   {
     title: "Medical",
     copy: "Clinics, outpatient facilities, and medical suites built to healthcare standards and compliance requirements.",
@@ -36,14 +88,6 @@ const industries = [
     copy: "Worship and community spaces built with care, stewardship, and respect for every dollar given.",
   },
   {
-    title: "Mixed-Use Developments",
-    copy: "Complex, multi-tenant projects coordinated end to end — retail, office, and residential in one build.",
-  },
-  {
-    title: "Apartment Communities",
-    copy: "Multifamily communities from podium to punch list, delivered unit by unit without missed turnovers.",
-  },
-  {
     title: "Commercial Condominiums",
     copy: "Ownable commercial space with clean unit turnover and association-ready documentation.",
   },
@@ -56,14 +100,14 @@ const industries = [
 
 <Base
   title="Industries — Trinity Build Co."
-  description="Purpose-built commercial construction experience across office, medical, industrial, retail, restaurants, churches, mixed-use, multifamily, and tenant improvements in Arizona."
+  description="Commercial construction for multi-family developments, apartment communities, mixed-use developments, office buildings, commercial campuses, and other sectors across Arizona."
 >
   <Nav active="industries" />
   <main id="main-content">
     <PageHero
       eyebrow="Where We Build"
       title="Industries we serve."
-      lede="Purpose-built experience across the commercial sectors driving Arizona's growth — each with its own codes, constraints, and stakeholders. We know them well."
+      lede="Focused experience across the multi-family, mixed-use, office, and commercial sectors driving Arizona's growth — each with its own codes, constraints, and stakeholders."
     />
 
     <ImageBand
@@ -75,11 +119,57 @@ const industries = [
       captionMaxWidth="680px"
     />
 
+    <section class="priority-sectors">
+      <div class="container">
+        <div class="priority-head" data-reveal>
+          <div>
+            <div class="eyebrow priority-eyebrow"><span>Core Project Types</span></div>
+            <h2 class="section-title priority-title">Built for Arizona's growth.</h2>
+          </div>
+          <p>
+            Representative imagery of the commercial work Trinity Build Co. is positioned to plan,
+            manage, and deliver throughout the Phoenix market.
+          </p>
+        </div>
+        <div class="priority-grid">
+          {
+            priorityIndustries.map((industry) => (
+              <article id={industry.id} class="priority-card" data-reveal>
+                <Image
+                  src={industry.image}
+                  alt={industry.alt}
+                  widths={[480, 800, 1200]}
+                  sizes="(min-width: 760px) 48vw, 100vw"
+                  quality={75}
+                  class="priority-img"
+                />
+                <div class="priority-copy">
+                  <h3>{industry.title}</h3>
+                  <p>{industry.copy}</p>
+                  {
+                    industry.href && (
+                      <a href={industry.href} class="priority-link">
+                        Explore {industry.title} →
+                      </a>
+                    )
+                  }
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
     <section class="industry-detail">
       <div class="container">
+        <div class="additional-head" data-reveal>
+          <div class="eyebrow additional-eyebrow"><span>Additional Experience</span></div>
+          <h2 class="section-title additional-title">More commercial sectors.</h2>
+        </div>
         <div class="tile-grid industry-grid">
           {
-            industries.map((industry) => (
+            additionalIndustries.map((industry) => (
               <div class="industry-card" data-reveal>
                 <span class="industry-dot" aria-hidden="true" />
                 <h3>{industry.title}</h3>
@@ -102,9 +192,151 @@ const industries = [
 </Base>
 
 <style>
+  .priority-sectors {
+    background: var(--color-cream);
+    padding: var(--section-pad) 0;
+  }
+
+  .priority-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 48px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+
+  .priority-eyebrow,
+  .additional-eyebrow {
+    margin-bottom: 24px;
+  }
+
+  .priority-title,
+  .additional-title {
+    color: var(--color-ink);
+  }
+
+  .priority-head > p {
+    margin: 0;
+    max-width: 430px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--color-stone-muted);
+  }
+
+  .priority-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .priority-card {
+    grid-column: span 2;
+    background: #ffffff;
+    scroll-margin-top: 100px;
+  }
+
+  .priority-card:nth-child(-n + 2) {
+    grid-column: span 3;
+  }
+
+  .priority-img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .priority-card:nth-child(-n + 2) .priority-img {
+    height: 330px;
+  }
+
+  .priority-copy {
+    padding: 30px 30px 34px;
+  }
+
+  .priority-copy h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+
+  .priority-copy p {
+    margin: 14px 0 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-stone-muted);
+  }
+
+  .priority-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--color-gold);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-ink);
+  }
+
+  .priority-link:hover {
+    color: var(--color-gold-dark);
+  }
+
+  @media (max-width: 899px) {
+    .priority-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .priority-card,
+    .priority-card:nth-child(-n + 2) {
+      grid-column: span 1;
+    }
+
+    .priority-card:last-child {
+      grid-column: 1 / -1;
+    }
+
+    .priority-img,
+    .priority-card:nth-child(-n + 2) .priority-img {
+      height: clamp(240px, 38vw, 330px);
+    }
+  }
+
+  @media (max-width: 559px) {
+    .priority-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .priority-card,
+    .priority-card:nth-child(-n + 2),
+    .priority-card:last-child {
+      grid-column: 1;
+    }
+
+    .priority-img,
+    .priority-card:nth-child(-n + 2) .priority-img {
+      height: clamp(220px, 58vw, 300px);
+    }
+
+    .priority-copy {
+      padding: 26px 24px 30px;
+    }
+  }
+
   .industry-detail {
     background: #ffffff;
     padding: clamp(72px, 9vw, 100px) 0 var(--section-pad);
+  }
+
+  .additional-head {
+    margin-bottom: 48px;
   }
 
   .industry-grid {
