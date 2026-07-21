@@ -5,6 +5,11 @@
   --color-ink: #0d0d0d;
   --color-gold: #c8a15a;
   --color-gold-light: #d8b472;
+  --color-sage: #7f9173;
+  --color-sage-light: #95a58a;
+  --color-sage-dark: #66775e;
+  --color-sage-soft: #edf1ea;
+  --color-sage-line: #d6ded1;
   --color-cream: #f6f3ee;
   --color-cream-hover: #fcfbf8;
 
@@ -76,7 +81,7 @@ body.nav-open {
 }
 
 ::selection {
-  background: var(--color-gold);
+  background: var(--color-sage);
   color: var(--color-ink);
 }
 
@@ -108,7 +113,7 @@ p {
   left: -9999px;
   top: 0;
   z-index: 200;
-  background: var(--color-gold);
+  background: var(--color-sage);
   color: var(--color-ink);
   padding: 12px 20px;
   font-size: 13px;
@@ -207,14 +212,14 @@ p {
   text-align: center;
 }
 
-.btn--gold {
-  background: var(--color-gold);
+.btn--sage {
+  background: var(--color-sage);
   color: var(--color-ink);
   transition: background 0.2s;
 }
 
-.btn--gold:hover {
-  background: var(--color-gold-light);
+.btn--sage:hover {
+  background: var(--color-sage-light);
 }
 
 .btn--outline {
