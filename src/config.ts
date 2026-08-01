@@ -14,7 +14,7 @@ export const business = {
   // Real business details, shared with Trinity Homes AZ (same ownership).
   phone: "602.708.9986",
   phoneHref: "tel:6027089986",
-  email: "info@trinityhomesaz.com",
+  email: "slade@trinitybuildco.com",
   // Applications route to the main inbox until a dedicated careers address exists.
   careersEmail: "info@trinityhomesaz.com",
   domainLabel: "trinitybuildco.com",
