@@ -9,7 +9,7 @@ export const business = {
   tagline: "Building Excellence. Delivering Trust.",
   description:
     "Phoenix-based commercial general contractor delivering ground-up construction, tenant improvements, and design-build projects across Arizona.",
-  url: "https://trinity-build-co.vercel.app",
+  url: "https://trinitybuildco.com",
 
   // Real business details, shared with Trinity Homes AZ (same ownership).
   phone: "602.708.9986",

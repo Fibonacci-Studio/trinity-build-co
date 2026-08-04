@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://trinity-build-co.vercel.app/sitemap-index.xml
+Sitemap: https://trinitybuildco.com/sitemap-index.xml
