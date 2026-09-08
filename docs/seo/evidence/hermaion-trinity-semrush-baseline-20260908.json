@@ -1,0 +1,917 @@
+{
+  "project": 31133981,
+  "snapshot": "6a9facb07c1d6ac0bf112a13",
+  "fetchedAt": "2026-09-08T06:40:51.164Z",
+  "reports": {
+    "45": [
+      {
+        "limit": 50,
+        "page": 0,
+        "total": 26,
+        "issue_id": 45,
+        "data": [
+          {
+            "target_url": "J:15:/@graph/0:42349646",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f92",
+            "source_url": "https://trinitybuildco.com/why-trinity"
+          },
+          {
+            "target_url": "J:15:/@graph/0:-2003470185",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f85",
+            "source_url": "https://trinitybuildco.com/services/value-engineering"
+          },
+          {
+            "target_url": "J:15:/@graph/0:-1091262696",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f81",
+            "source_url": "https://trinitybuildco.com/services/tenant-improvements"
+          },
+          {
+            "target_url": "J:15:/@graph/0:1592824608",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f91",
+            "source_url": "https://trinitybuildco.com/services/project-planning"
+          },
+          {
+            "target_url": "J:15:/@graph/0:1958901639",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f80",
+            "source_url": "https://trinitybuildco.com/services/preconstruction"
+          },
+          {
+            "target_url": "J:15:/@graph/0:1542671830",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f78",
+            "source_url": "https://trinitybuildco.com/services/ground-up-commercial-construction"
+          },
+          {
+            "target_url": "J:15:/@graph/0:-1178378994",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f7e",
+            "source_url": "https://trinitybuildco.com/services/design-build"
+          },
+          {
+            "target_url": "J:15:/@graph/0:441753331",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f79",
+            "source_url": "https://trinitybuildco.com/services/construction-management"
+          },
+          {
+            "target_url": "J:15:/@graph/0:1750625990",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f8d",
+            "source_url": "https://trinitybuildco.com/services/commercial-general-contracting"
+          },
+          {
+            "target_url": "J:15:/@graph/0:-1742921260",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f86",
+            "source_url": "https://trinitybuildco.com/services/budget-development"
+          },
+          {
+            "target_url": "J:15:/@graph/0:42349646",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f7f",
+            "source_url": "https://trinitybuildco.com/services"
+          },
+          {
+            "target_url": "J:15:/@graph/0:42349646",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f7d",
+            "source_url": "https://trinitybuildco.com/safety"
+          },
+          {
+            "target_url": "J:15:/@graph/0:42349646",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f90",
+            "source_url": "https://trinitybuildco.com/process"
+          },
+          {
+            "target_url": "J:15:/@graph/0:-2125622452",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f87",
+            "source_url": "https://trinitybuildco.com/portfolio/illuminate-community-church"
+          },
+          {
+            "target_url": "J:15:/@graph/0:-1624898229",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f88",
+            "source_url": "https://trinitybuildco.com/portfolio"
+          },
+          {
+            "target_url": "J:15:/@graph/0:42349646",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f8e",
+            "source_url": "https://trinitybuildco.com/leadership"
+          },
+          {
+            "target_url": "J:15:/@graph/0:-1074057946",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f84",
+            "source_url": "https://trinitybuildco.com/industries/office-buildings"
+          },
+          {
+            "target_url": "J:15:/@graph/0:-374967214",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f82",
+            "source_url": "https://trinitybuildco.com/industries/multi-family-developments"
+          },
+          {
+            "target_url": "J:15:/@graph/0:-1953844482",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f7b",
+            "source_url": "https://trinitybuildco.com/industries/mixed-use-developments"
+          },
+          {
+            "target_url": "J:15:/@graph/0:-1901666503",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f8c",
+            "source_url": "https://trinitybuildco.com/industries/commercial-campuses"
+          },
+          {
+            "target_url": "J:15:/@graph/0:1771569965",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f8a",
+            "source_url": "https://trinitybuildco.com/industries/apartment-communities"
+          },
+          {
+            "target_url": "J:15:/@graph/0:42349646",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f7c",
+            "source_url": "https://trinitybuildco.com/industries"
+          },
+          {
+            "target_url": "J:15:/@graph/0:42349646",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f83",
+            "source_url": "https://trinitybuildco.com/contact"
+          },
+          {
+            "target_url": "J:15:/@graph/0:42349646",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f7a",
+            "source_url": "https://trinitybuildco.com/careers"
+          },
+          {
+            "target_url": "J:15:/@graph/0:42349646",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f8b",
+            "source_url": "https://trinitybuildco.com/about"
+          },
+          {
+            "target_url": "J:15:/@graph/0:42349646",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f8f",
+            "source_url": "https://trinitybuildco.com/"
+          }
+        ]
+      }
+    ],
+    "112": [
+      {
+        "limit": 50,
+        "page": 0,
+        "total": 21,
+        "issue_id": 112,
+        "data": [
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f92",
+            "source_url": "https://trinitybuildco.com/why-trinity"
+          },
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f85",
+            "source_url": "https://trinitybuildco.com/services/value-engineering"
+          },
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f91",
+            "source_url": "https://trinitybuildco.com/services/project-planning"
+          },
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f8d",
+            "source_url": "https://trinitybuildco.com/services/commercial-general-contracting"
+          },
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f86",
+            "source_url": "https://trinitybuildco.com/services/budget-development"
+          },
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f7f",
+            "source_url": "https://trinitybuildco.com/services"
+          },
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f7d",
+            "source_url": "https://trinitybuildco.com/safety"
+          },
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f90",
+            "source_url": "https://trinitybuildco.com/process"
+          },
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f87",
+            "source_url": "https://trinitybuildco.com/portfolio/illuminate-community-church"
+          },
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f88",
+            "source_url": "https://trinitybuildco.com/portfolio"
+          },
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f8e",
+            "source_url": "https://trinitybuildco.com/leadership"
+          },
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f84",
+            "source_url": "https://trinitybuildco.com/industries/office-buildings"
+          },
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f82",
+            "source_url": "https://trinitybuildco.com/industries/multi-family-developments"
+          },
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f7b",
+            "source_url": "https://trinitybuildco.com/industries/mixed-use-developments"
+          },
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f8c",
+            "source_url": "https://trinitybuildco.com/industries/commercial-campuses"
+          },
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f8a",
+            "source_url": "https://trinitybuildco.com/industries/apartment-communities"
+          },
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f7c",
+            "source_url": "https://trinitybuildco.com/industries"
+          },
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f83",
+            "source_url": "https://trinitybuildco.com/contact"
+          },
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f7a",
+            "source_url": "https://trinitybuildco.com/careers"
+          },
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f8b",
+            "source_url": "https://trinitybuildco.com/about"
+          },
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f8f",
+            "source_url": "https://trinitybuildco.com/"
+          }
+        ]
+      }
+    ],
+    "117": [
+      {
+        "limit": 50,
+        "page": 0,
+        "total": 2,
+        "issue_id": 117,
+        "data": [
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f88",
+            "source_url": "https://trinitybuildco.com/portfolio"
+          },
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f83",
+            "source_url": "https://trinitybuildco.com/contact"
+          }
+        ]
+      }
+    ],
+    "137": [
+      {
+        "limit": 50,
+        "page": 0,
+        "total": 1,
+        "issue_id": 137,
+        "data": [
+          {
+            "target_url": "",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f74",
+            "source_url": "https://trinitybuildco.com/llms.txt"
+          }
+        ]
+      }
+    ],
+    "207": [
+      {
+        "limit": 50,
+        "page": 0,
+        "total": 1,
+        "issue_id": 207,
+        "data": [
+          {
+            "target_url": "https://trinitybuildco.com",
+            "page_id": "6a9fad1e0d1b9ebdc8ec9f75",
+            "source_url": "https://trinitybuildco.com/sitemap-0.xml"
+          }
+        ]
+      }
+    ],
+    "snapshot": [
+      {
+        "quality": {
+          "value": 94,
+          "delta": 0
+        },
+        "snapshot_id": "6a9facb07c1d6ac0bf112a13",
+        "pages_crawled": 31,
+        "finish_date": 1788849438270,
+        "errors": [
+          {
+            "id": 1,
+            "count": 0,
+            "delta": 0,
+            "checks": 30
+          },
+          {
+            "id": 2,
+            "count": 0,
+            "delta": 0,
+            "checks": 30
+          },
+          {
+            "id": 3,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 6,
+            "count": 0,
+            "delta": 0,
+            "checks": 702
+          },
+          {
+            "id": 7,
+            "count": 0,
+            "delta": 0,
+            "checks": 0
+          },
+          {
+            "id": 8,
+            "count": 0,
+            "delta": 0,
+            "checks": 393
+          },
+          {
+            "id": 9,
+            "count": 0,
+            "delta": 0,
+            "checks": 30
+          },
+          {
+            "id": 10,
+            "count": 0,
+            "delta": 0,
+            "checks": 30
+          },
+          {
+            "id": 11,
+            "count": 0,
+            "delta": 0,
+            "checks": 0
+          },
+          {
+            "id": 13,
+            "count": 0,
+            "delta": 0,
+            "checks": 264
+          },
+          {
+            "id": 15,
+            "count": 0,
+            "delta": 0,
+            "checks": 702
+          },
+          {
+            "id": 16,
+            "count": 0,
+            "delta": 0,
+            "checks": 1
+          },
+          {
+            "id": 17,
+            "count": 0,
+            "delta": 0,
+            "checks": 2
+          },
+          {
+            "id": 18,
+            "count": 0,
+            "delta": 0,
+            "checks": 25
+          },
+          {
+            "id": 19,
+            "count": 0,
+            "delta": 0,
+            "checks": 2
+          },
+          {
+            "id": 20,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 21,
+            "count": 0,
+            "delta": 0,
+            "checks": 27
+          },
+          {
+            "id": 22,
+            "count": 0,
+            "delta": 0,
+            "checks": 0
+          },
+          {
+            "id": 23,
+            "count": 0,
+            "delta": 0,
+            "checks": 0
+          },
+          {
+            "id": 24,
+            "count": 0,
+            "delta": 0,
+            "checks": 0
+          },
+          {
+            "id": 25,
+            "count": 0,
+            "delta": 0,
+            "checks": 0
+          },
+          {
+            "id": 26,
+            "count": 0,
+            "delta": 0,
+            "checks": 0
+          },
+          {
+            "id": 27,
+            "count": 0,
+            "delta": 0,
+            "checks": 2
+          },
+          {
+            "id": 28,
+            "count": 0,
+            "delta": 0,
+            "checks": 2
+          },
+          {
+            "id": 29,
+            "count": 0,
+            "delta": 0,
+            "checks": 2
+          },
+          {
+            "id": 30,
+            "count": 0,
+            "delta": 0,
+            "checks": 264
+          },
+          {
+            "id": 32,
+            "count": 0,
+            "delta": 0,
+            "checks": 0
+          },
+          {
+            "id": 33,
+            "count": 0,
+            "delta": 0,
+            "checks": 578
+          },
+          {
+            "id": 38,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 39,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 40,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 41,
+            "count": 0,
+            "delta": 0,
+            "checks": 28
+          },
+          {
+            "id": 42,
+            "count": 0,
+            "delta": 0,
+            "checks": 2
+          },
+          {
+            "id": 43,
+            "count": 0,
+            "delta": 0,
+            "checks": 2
+          },
+          {
+            "id": 44,
+            "count": 0,
+            "delta": 0,
+            "checks": 533
+          },
+          {
+            "id": 45,
+            "count": 26,
+            "delta": 0,
+            "checks": 57
+          },
+          {
+            "id": 46,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 111,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          }
+        ],
+        "warnings": [
+          {
+            "id": 12,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 14,
+            "count": 0,
+            "delta": 0,
+            "checks": 0
+          },
+          {
+            "id": 31,
+            "count": 0,
+            "delta": 0,
+            "checks": 392
+          },
+          {
+            "id": 101,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 102,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 103,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 105,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 106,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 108,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 109,
+            "count": 0,
+            "delta": 0,
+            "checks": 578
+          },
+          {
+            "id": 110,
+            "count": 0,
+            "delta": 0,
+            "checks": 132
+          },
+          {
+            "id": 112,
+            "count": 21,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 113,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 114,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 115,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 116,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 117,
+            "count": 2,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 120,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 121,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 122,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 123,
+            "count": 0,
+            "delta": 0,
+            "checks": 392
+          },
+          {
+            "id": 124,
+            "count": 0,
+            "delta": 0,
+            "checks": 1
+          },
+          {
+            "id": 125,
+            "count": 0,
+            "delta": 0,
+            "checks": 2
+          },
+          {
+            "id": 126,
+            "count": 0,
+            "delta": 0,
+            "checks": 0
+          },
+          {
+            "id": 127,
+            "count": 0,
+            "delta": 0,
+            "checks": 2
+          },
+          {
+            "id": 128,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 129,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 130,
+            "count": 0,
+            "delta": 0,
+            "checks": 160
+          },
+          {
+            "id": 131,
+            "count": 0,
+            "delta": 0,
+            "checks": 28
+          },
+          {
+            "id": 132,
+            "count": 0,
+            "delta": 0,
+            "checks": 28
+          },
+          {
+            "id": 133,
+            "count": 0,
+            "delta": 0,
+            "checks": 27
+          },
+          {
+            "id": 134,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 135,
+            "count": 0,
+            "delta": 0,
+            "checks": 28
+          },
+          {
+            "id": 136,
+            "count": 0,
+            "delta": 0,
+            "checks": 533
+          }
+        ],
+        "notices": [
+          {
+            "id": 104,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 137,
+            "count": 1,
+            "delta": 0,
+            "checks": 1
+          },
+          {
+            "id": 4,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 201,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 202,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 203,
+            "count": 0,
+            "delta": 0,
+            "checks": 1
+          },
+          {
+            "id": 204,
+            "count": 0,
+            "delta": 0,
+            "checks": 0
+          },
+          {
+            "id": 205,
+            "count": 0,
+            "delta": 0,
+            "checks": 2
+          },
+          {
+            "id": 206,
+            "count": 0,
+            "delta": 0,
+            "checks": 0
+          },
+          {
+            "id": 207,
+            "count": 1,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 208,
+            "count": 0,
+            "delta": 0,
+            "checks": 0
+          },
+          {
+            "id": 209,
+            "count": 0,
+            "delta": 0,
+            "checks": 0
+          },
+          {
+            "id": 210,
+            "count": 0,
+            "delta": 0,
+            "checks": 0
+          },
+          {
+            "id": 211,
+            "count": 0,
+            "delta": 0,
+            "checks": 0
+          },
+          {
+            "id": 212,
+            "count": 0,
+            "delta": 0,
+            "checks": 27
+          },
+          {
+            "id": 213,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 214,
+            "count": 0,
+            "delta": 0,
+            "checks": 578
+          },
+          {
+            "id": 215,
+            "count": 0,
+            "delta": 0,
+            "checks": 418
+          },
+          {
+            "id": 216,
+            "count": 0,
+            "delta": 0,
+            "checks": 928
+          },
+          {
+            "id": 217,
+            "count": 0,
+            "delta": 0,
+            "checks": 890
+          },
+          {
+            "id": 218,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 219,
+            "count": 0,
+            "delta": 0,
+            "checks": 1
+          },
+          {
+            "id": 220,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 221,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 222,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          },
+          {
+            "id": 223,
+            "count": 0,
+            "delta": 0,
+            "checks": 26
+          }
+        ]
+      }
+    ]
+  }
+}

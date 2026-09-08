@@ -39,3 +39,15 @@ All26 candidate pages have measured text/HTML above10%, with script/style text e
 Production deployment `dpl_BbSDpzHdbmBZYwDrFXPviSTiNrQM` served exact commit `c663c15d9b323d7b0e3f1d643dd136d9665f9a9a`. The protected candidate's homepage, sitemap and llms index were verified before promotion; canonical production Home, Contact, Portfolio, sitemap and llms requests then returned200 with the corrected content.
 
 A fresh included Semrush crawl on September8 returned **99% Site Health, 0errors, 1warning, 0notices**, compared with94%,26errors,23warnings,2notices. All structured-data errors, low-word-count warnings, missing-llms notice and orphan-sitemap notice cleared. The remaining warning was the Careers page's text/HTML ratio rounded to0.10. No checks were excluded or hidden. Careers now includes practical application guidance based on its existing email workflow and links to published services/process, without new job, compensation or hiring-policy claims. Its production build and the same full52 website tests pass; another deployment/crawl is required to verify that last warning.
+
+## Final production acceptance
+
+Observed at 2026-09-08T07:24:10.614752+00:00: deployment `dpl_HLtQ4dxcUsRTN9n1qLc1JEvz8W8K` serves exact code commit `17b4ece08268167c9b0a48ec71c0edbdb5e1ccd3`. The protected candidate Careers page and then canonical `https://trinitybuildco.com/careers` both contain the application guidance, correct canonical and existing email workflow. Build and all52 website tests remain green.
+
+A fresh included mobile crawl of retained Semrush project **31133981** finished with **100% Site Health, zero errors, zero warnings and zero notices**, across31 crawled URLs (30healthy,1redirect). The issue page explicitly shows All0 and each severity0; the low-text check shows0failed/26successful. No checks were excluded and no issue was hidden. This is the result for the configured crawl and checks, not a promise of search ranking or verification of unconnected Google Analytics/Search Console or unavailable plan features.
+
+## Project consolidation
+
+Retained **31133981 / TrinityBuildCo**, domain `trinitybuildco.com`; removed duplicate31133964 only after preserving its configuration and moving its four keywords to the retained campaign. The retained Position Tracking campaign is **31133981_5439722**, with25keywords, Google desktop, Arizona/US, English. The existing region was preserved. Site Audit is weekly on Saturday, mobile,100-page limit, without check exclusions. Backlink Audit was started using the existing account capability; its result has a separate acceptance status. No disavow/removal outreach was sent.
+
+The official Semrush MCP is authenticated and available to Codex. Only existing included account allowances were used. No subscription, purchase, refill, paid add-on or renewal was activated. Hermaion's own Semrush connection is a separately tested/deployed feature; it does not follow automatically from connecting Codex.

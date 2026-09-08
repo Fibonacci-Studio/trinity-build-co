@@ -1,0 +1,74 @@
+{
+  "31133981_5439722": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"total\":1,\"limit\":20,\"offset\":0,\"data\":{\"0\":{\"Pi\":\"11057787800536853184\",\"Ph\":\"commercial contractor trinity build co phoenix arizona\",\"Kb\":\"20260908\",\"Tg\":{},\"In\":{\"0\":\"c\"},\"Cp\":\"0\",\"Nq\":\"0\",\"Gs\":\"0\",\"Dt\":{\"20260908\":{\"*.trinitybuildco.com/*\":\"-\"}},\"Be\":{\"*.trinitybuildco.com/*\":\"-\"},\"Fi\":{\"*.trinitybuildco.com/*\":\"-\"},\"Diff\":{\"*.trinitybuildco.com/*\":0},\"Diff1\":{\"*.trinitybuildco.com/*\":0},\"Diff7\":{\"*.trinitybuildco.com/*\":0},\"Diff30\":{\"*.trinitybuildco.com/*\":0},\"Vi\":{\"20260908\":{\"*.trinitybuildco.com/*\":0},\"Diff\":{\"*.trinitybuildco.com/*\":0}},\"Sov\":{\"20260908\":{\"*.trinitybuildco.com/*\":0},\"Diff\":{\"*.trinitybuildco.com/*\":0}},\"Sf\":{\"20260908\":[\"org\",\"geo\",\"rel\",\"rev\",\"vid\",\"res\"]},\"Sfc\":null,\"Tr\":{\"20260908\":{\"*.trinitybuildco.com/*\":0}},\"Tc\":{\"20260908\":{\"*.trinitybuildco.com/*\":0}},\"Lu\":{\"20260908\":{\"*.trinitybuildco.com/*\":\"\"}},\"Lt\":{\"20260908\":{\"*.trinitybuildco.com/*\":[]}}}}}"
+      }
+    ],
+    "isError": false
+  },
+  "31133964_5439697": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"total\":4,\"limit\":20,\"offset\":0,\"data\":{\"0\":{\"Pi\":\"1131717603774150839\",\"Ph\":\"5125 e madison st phoenix az 85034\",\"Kb\":\"20260908\",\"Tg\":{},\"In\":{\"0\":\"i\"},\"Cp\":\"0\",\"Nq\":\"50\",\"Gs\":\"0\",\"Dt\":{\"20260908\":{\"*.trinitybuildco.com/*\":\"-\"}},\"Be\":{\"*.trinitybuildco.com/*\":\"-\"},\"Fi\":{\"*.trinitybuildco.com/*\":\"-\"},\"Diff\":{\"*.trinitybuildco.com/*\":0},\"Diff1\":{\"*.trinitybuildco.com/*\":0},\"Diff7\":{\"*.trinitybuildco.com/*\":0},\"Diff30\":{\"*.trinitybuildco.com/*\":0},\"Vi\":{\"20260908\":{\"*.trinitybuildco.com/*\":0},\"Diff\":{\"*.trinitybuildco.com/*\":0}},\"Sov\":{\"20260908\":{\"*.trinitybuildco.com/*\":0},\"Diff\":{\"*.trinitybuildco.com/*\":0}},\"Sf\":{\"20260908\":[\"org\",\"rev\",\"vid\",\"aio\"]},\"Sfc\":null,\"Tr\":{\"20260908\":{\"*.trinitybuildco.com/*\":0}},\"Tc\":{\"20260908\":{\"*.trinitybuildco.com/*\":0}},\"Lu\":{\"20260908\":{\"*.trinitybuildco.com/*\":\"\"}},\"Lt\":{\"20260908\":{\"*.trinitybuildco.com/*\":[]}}},\"1\":{\"Pi\":\"15960167268328326303\",\"Ph\":\"construction company office\",\"Kb\":\"20260908\",\"Tg\":{},\"In\":{\"0\":\"c\"},\"Cp\":\"8\",\"Nq\":\"110\",\"Gs\":\"0\",\"Dt\":{\"20260908\":{\"*.trinitybuildco.com/*\":\"-\"}},\"Be\":{\"*.trinitybuildco.com/*\":\"-\"},\"Fi\":{\"*.trinitybuildco.com/*\":\"-\"},\"Diff\":{\"*.trinitybuildco.com/*\":0},\"Diff1\":{\"*.trinitybuildco.com/*\":0},\"Diff7\":{\"*.trinitybuildco.com/*\":0},\"Diff30\":{\"*.trinitybuildco.com/*\":0},\"Vi\":{\"20260908\":{\"*.trinitybuildco.com/*\":0},\"Diff\":{\"*.trinitybuildco.com/*\":0}},\"Sov\":{\"20260908\":{\"*.trinitybuildco.com/*\":0},\"Diff\":{\"*.trinitybuildco.com/*\":0}},\"Sf\":{\"20260908\":[\"org\",\"geo\",\"rel\",\"img\",\"rev\",\"vid\",\"res\"]},\"Sfc\":null,\"Tr\":{\"20260908\":{\"*.trinitybuildco.com/*\":0}},\"Tc\":{\"20260908\":{\"*.trinitybuildco.com/*\":0}},\"Lu\":{\"20260908\":{\"*.trinitybuildco.com/*\":\"\"}},\"Lt\":{\"20260908\":{\"*.trinitybuildco.com/*\":[]}}},\"2\":{\"Pi\":\"4326555613980871110\",\"Ph\":\"trinity building\",\"Kb\":\"20260908\",\"Tg\":{},\"In\":{\"0\":\"c\"},\"Cp\":\"2.7\",\"Nq\":\"320\",\"Gs\":\"0\",\"Dt\":{\"20260908\":{\"*.trinitybuildco.com/*\":\"-\"}},\"Be\":{\"*.trinitybuildco.com/*\":\"-\"},\"Fi\":{\"*.trinitybuildco.com/*\":\"-\"},\"Diff\":{\"*.trinitybuildco.com/*\":0},\"Diff1\":{\"*.trinitybuildco.com/*\":0},\"Diff7\":{\"*.trinitybuildco.com/*\":0},\"Diff30\":{\"*.trinitybuildco.com/*\":0},\"Vi\":{\"20260908\":{\"*.trinitybuildco.com/*\":0},\"Diff\":{\"*.trinitybuildco.com/*\":0}},\"Sov\":{\"20260908\":{\"*.trinitybuildco.com/*\":0},\"Diff\":{\"*.trinitybuildco.com/*\":0}},\"Sf\":{\"20260908\":[\"org\",\"geo\",\"img\",\"rev\",\"vid\",\"stl\",\"res\"]},\"Sfc\":null,\"Tr\":{\"20260908\":{\"*.trinitybuildco.com/*\":0}},\"Tc\":{\"20260908\":{\"*.trinitybuildco.com/*\":0}},\"Lu\":{\"20260908\":{\"*.trinitybuildco.com/*\":\"\"}},\"Lt\":{\"20260908\":{\"*.trinitybuildco.com/*\":[]}}},\"3\":{\"Pi\":\"17155714959174878885\",\"Ph\":\"working buildings\",\"Kb\":\"20260908\",\"Tg\":{},\"In\":{\"0\":\"i\",\"1\":\"t\"},\"Cp\":\"4.09\",\"Nq\":\"110\",\"Gs\":\"0\",\"Dt\":{\"20260908\":{\"*.trinitybuildco.com/*\":\"-\"}},\"Be\":{\"*.trinitybuildco.com/*\":\"-\"},\"Fi\":{\"*.trinitybuildco.com/*\":\"-\"},\"Diff\":{\"*.trinitybuildco.com/*\":0},\"Diff1\":{\"*.trinitybuildco.com/*\":0},\"Diff7\":{\"*.trinitybuildco.com/*\":0},\"Diff30\":{\"*.trinitybuildco.com/*\":0},\"Vi\":{\"20260908\":{\"*.trinitybuildco.com/*\":0},\"Diff\":{\"*.trinitybuildco.com/*\":0}},\"Sov\":{\"20260908\":{\"*.trinitybuildco.com/*\":0},\"Diff\":{\"*.trinitybuildco.com/*\":0}},\"Sf\":{\"20260908\":[\"org\",\"img\",\"rev\",\"vid\",\"kng\",\"res\"]},\"Sfc\":null,\"Tr\":{\"20260908\":{\"*.trinitybuildco.com/*\":0}},\"Tc\":{\"20260908\":{\"*.trinitybuildco.com/*\":0}},\"Lu\":{\"20260908\":{\"*.trinitybuildco.com/*\":\"\"}},\"Lt\":{\"20260908\":{\"*.trinitybuildco.com/*\":[]}}}}}"
+      }
+    ],
+    "isError": false
+  },
+  "info-31133981": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"id\":31133981,\"url\":\"trinitybuildco.com\",\"name\":\"TrinityBuildCo\",\"status\":\"FINISHED\",\"errors\":26,\"warnings\":23,\"notices\":2,\"broken\":1,\"blocked\":0,\"redirected\":1,\"healthy\":2,\"haveIssues\":27,\"haveIssuesDelta\":0,\"defects\":{\"112\":21,\"117\":2,\"137\":1,\"207\":1,\"45\":26},\"markups\":{\"twitterCard\":26,\"openGraph\":26,\"schemaOrg\":0,\"microfomats\":0},\"depths\":{\"0\":6,\"1\":25},\"crawlSubdomains\":true,\"respectCrawlDelay\":false,\"user_agent_type\":8,\"last_audit\":1788849438270,\"last_failed_audit\":0,\"next_audit\":1789195209179,\"running_pages_crawled\":0,\"running_pages_limit\":0,\"pages_crawled\":31,\"pages_limit\":100,\"total_checks\":9819,\"errors_delta\":0,\"warnings_delta\":0,\"notices_delta\":0,\"mask_allow\":[],\"mask_disallow\":[],\"removedParameters\":[],\"excluded_checks\":[]}"
+      }
+    ],
+    "isError": false
+  },
+  "snapshots-31133981": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[{\"snapshot_id\":\"6a9facb07c1d6ac0bf112a13\",\"finish_date\":1788849438270}]"
+      }
+    ],
+    "isError": false
+  },
+  "campaigns-31133981": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"project_id\":\"31133981\",\"targets\":null,\"limits\":{\"targets\":1}}"
+      }
+    ],
+    "isError": false
+  },
+  "info-31133964": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"id\":31133964,\"url\":\"trinitybuildco.com\",\"name\":\"trinitybuildco.com\",\"status\":\"FINISHED\",\"errors\":26,\"warnings\":23,\"notices\":2,\"broken\":1,\"blocked\":0,\"redirected\":1,\"healthy\":2,\"haveIssues\":27,\"haveIssuesDelta\":0,\"defects\":{\"112\":21,\"117\":2,\"137\":1,\"207\":1,\"45\":26},\"markups\":{\"twitterCard\":26,\"openGraph\":26,\"schemaOrg\":0,\"microfomats\":0},\"depths\":{\"0\":6,\"1\":25},\"crawlSubdomains\":false,\"respectCrawlDelay\":false,\"user_agent_type\":7,\"last_audit\":1788849167501,\"last_failed_audit\":0,\"next_audit\":-1,\"running_pages_crawled\":0,\"running_pages_limit\":0,\"pages_crawled\":31,\"pages_limit\":100,\"total_checks\":9767,\"errors_delta\":0,\"warnings_delta\":0,\"notices_delta\":0,\"mask_allow\":[],\"mask_disallow\":[],\"removedParameters\":[],\"excluded_checks\":[]}"
+      }
+    ],
+    "isError": false
+  },
+  "snapshots-31133964": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[{\"snapshot_id\":\"6a9fab95360b06655c91be05\",\"finish_date\":1788849167501}]"
+      }
+    ],
+    "isError": false
+  },
+  "campaigns-31133964": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"project_id\":\"31133964\",\"targets\":null,\"limits\":{\"targets\":1}}"
+      }
+    ],
+    "isError": false
+  }
+}
