@@ -332,6 +332,7 @@ const { rows = 5, location = "page" } = Astro.props;
 
 <script>
   import { track } from "@vercel/analytics";
+  import { captureDeliveredInquiry } from "../lib/hermaion-capture";
 
   // ── Custom select (button + listbox), synced to the hidden native select ──
   document.querySelectorAll<HTMLElement>("[data-custom-select]").forEach((field) => {
@@ -456,6 +457,12 @@ const { rows = 5, location = "page" } = Astro.props;
         form.hidden = true;
         success.hidden = false;
         if (!out.ignored) {
+          // Capture only a legitimate delivered inquiry. Keep email success independent.
+          void captureDeliveredInquiry(payload, { httpOk: res.ok, ok: out.ok, ignored: out.ignored }, {
+            siteKey: import.meta.env.PUBLIC_HERMAION_SITE_KEY,
+            pageUrl: window.location.href,
+            referrer: document.referrer,
+          });
           const projectType = String(payload.type || "not_specified");
           track("Lead Form Success", {
             form_location: formLocation,

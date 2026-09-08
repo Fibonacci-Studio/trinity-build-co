@@ -129,6 +129,18 @@ const schema = {
     <slot />
     <script>
       import { track } from "@vercel/analytics";
+      import { captureReducedPageview } from "../lib/hermaion-capture";
+
+      // Explicit opt-in; this static site performs full navigations, not SPA history hooks.
+      if (import.meta.env.PUBLIC_HERMAION_TRACK_PAGEVIEWS === "true") {
+        let storage: Storage | undefined;
+        try { storage = window.sessionStorage; } catch { /* Storage can be disabled. */ }
+        void captureReducedPageview({
+          siteKey: import.meta.env.PUBLIC_HERMAION_SITE_KEY,
+          pageUrl: window.location.href,
+          referrer: document.referrer,
+        }, { enabled: true, storage });
+      }
 
       // Conversion events intentionally exclude names, emails, phone numbers,
       // messages, and other lead data. Custom events require Vercel Pro/Enterprise.
