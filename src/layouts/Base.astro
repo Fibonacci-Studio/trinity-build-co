@@ -31,10 +31,11 @@ const robots = noindex
 
 // Keep the global entity graph conservative until leadership claims and official
 // profiles are client-approved. The legal name and ROC number mirror the
-// client-supplied Arizona ROC record; no street address is asserted yet.
+// client-supplied Arizona ROC record. Organization does not assert a physical
+// LocalBusiness location until a legitimate street address is approved.
 // Page-specific WebPage data is safe because it mirrors the visible document.
 const organizationSchema = {
-  "@type": "GeneralContractor",
+  "@type": "Organization",
   "@id": `${siteURL}#organization`,
   name: business.name,
   legalName: business.legalName,

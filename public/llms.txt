@@ -1,0 +1,28 @@
+# Trinity Build Co.
+
+> Phoenix-based commercial general contractor serving Arizona. Trinity Build Co LLC, Arizona ROC #365726, KB-1 Dual Building Contractor.
+
+This index links to the company's published information. The portfolio distinguishes a named project case study from general commercial capabilities. No street address is currently published.
+
+## Company
+
+- [Home](https://trinitybuildco.com/): Company overview and commercial construction services.
+- [About](https://trinitybuildco.com/about): Company approach and values.
+- [Leadership](https://trinitybuildco.com/leadership): Published leadership information.
+- [Contact](https://trinitybuildco.com/contact): Current phone, email, license link, and project inquiry form.
+
+## Construction
+
+- [Services](https://trinitybuildco.com/services): Ground-up construction, tenant improvements, design-build, construction management, and preconstruction.
+- [Industries](https://trinitybuildco.com/industries): Commercial sectors served.
+- [Process](https://trinitybuildco.com/process): Discover, plan, collaborate, build, deliver, and support.
+- [Safety and quality](https://trinitybuildco.com/safety): Published project practices.
+
+## Work
+
+- [Portfolio](https://trinitybuildco.com/portfolio): Featured case study and commercial capabilities.
+- [Illuminate Community Church](https://trinitybuildco.com/portfolio/illuminate-community-church): Scottsdale church renovation completed in 2024, with photographed hospitality, meeting, gathering, and restroom spaces.
+
+## Optional
+
+- [Sitemap](https://trinitybuildco.com/sitemap-index.xml): Complete index of public pages.

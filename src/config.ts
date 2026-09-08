@@ -9,7 +9,7 @@ export const business = {
   tagline: "Building Excellence. Delivering Trust.",
   description:
     "Phoenix-based commercial general contractor delivering ground-up construction, tenant improvements, and design-build projects across Arizona.",
-  url: "https://trinitybuildco.com",
+  url: "https://trinitybuildco.com/",
 
   // Currently published business details. Confirm each item in docs/seo/client-fact-and-project-intake.md
   // before expanding it in copy, profiles, or structured data.

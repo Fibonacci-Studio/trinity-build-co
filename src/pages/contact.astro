@@ -49,6 +49,37 @@ const contactRows = [
             <ContactForm rows={6} location="contact_page" />
           </div>
         </div>
+        <div class="contact-guidance">
+          <h3>What to include in your inquiry</h3>
+          <p>
+            Trinity works with commercial owners and project teams across Arizona. Whether
+            you are planning a new building or adapting an existing space, a few details
+            help make the first conversation useful:
+          </p>
+          <ul>
+            <li>The project city and whether the site is new, existing, or still being evaluated.</li>
+            <li>How the space will be used, the work you have in mind, and any occupied areas.</li>
+            <li>Your target schedule, budget range if known, and the decisions still ahead.</li>
+            <li>Whether an architect, drawings, or a construction team is already in place.</li>
+          </ul>
+          <p>
+            You do not need a finished design to start a conversation. Use the message
+            field for a short overview; do not include confidential plans or sensitive
+            financial information in the form.
+          </p>
+          <h3>Choose the right starting point</h3>
+          <p>
+            For a new facility, explore <a href="/services/ground-up-commercial-construction">ground-up construction</a>.
+            For an existing commercial space, review <a href="/services/tenant-improvements">tenant improvements</a>.
+            If scope, cost, or sequencing is still taking shape,
+            <a href="/services/preconstruction">preconstruction planning</a> can help frame those questions.
+          </p>
+          <p>
+            Our <a href="/process">construction process</a> begins with goals, site conditions,
+            budget, and schedule before moving into planning and team coordination.
+            Prefer to talk first? Call or email using the contact details above.
+          </p>
+        </div>
       </div>
     </section>
   </main>
@@ -94,6 +125,25 @@ const contactRows = [
     line-height: 1.35;
     text-transform: uppercase;
   }
+
+  .contact-guidance {
+    max-width: 820px;
+    margin-top: 64px;
+    color: var(--color-dust-muted);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  .contact-guidance h3 {
+    color: #ffffff;
+    font-size: 19px;
+    margin: 28px 0 12px;
+  }
+
+  .contact-guidance p { margin: 12px 0; }
+  .contact-guidance ul { padding-left: 22px; }
+  .contact-guidance li + li { margin-top: 8px; }
+  .contact-guidance a { color: var(--color-gold-light); text-underline-offset: 3px; }
 
   .contact-img {
     width: 100%;
