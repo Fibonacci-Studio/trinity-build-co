@@ -1,0 +1,89 @@
+---
+import IndustryDetailPage from "../../components/IndustryDetailPage.astro";
+import heroImage from "../../assets/photos/work-areas/03-mixed-use-developments.png";
+import supportImage from "../../assets/photos/20-site-entrance-fencing.png";
+
+const capabilities = [
+  {
+    title: "Program & Preconstruction Planning",
+    copy: "Coordinate the residential, retail, office, parking, site, and public-space requirements in one working scope, budget, milestone plan, and decision log.",
+  },
+  {
+    title: "Shared Site & Infrastructure",
+    copy: "Plan utilities, access, loading, parking, fire access, drainage, pedestrian routes, and other shared systems around the needs of every building use.",
+  },
+  {
+    title: "Use-Specific Coordination",
+    copy: "Track the structural, MEP, life-safety, acoustic, envelope, and finish interfaces that change where residential and commercial programs meet.",
+  },
+  {
+    title: "Tenant & Stakeholder Logistics",
+    copy: "Organize access, approvals, information, deliveries, and handoffs for owners, designers, utilities, tenants, and trade partners as the project develops.",
+  },
+  {
+    title: "Phasing & Turnover",
+    copy: "Build inspections, tenant readiness, common-area completion, life-safety requirements, and occupancy milestones into a coordinated release plan.",
+  },
+];
+
+const deliveryItems = [
+  {
+    title: "Interface Management",
+    copy: "Responsibility and information are tracked where building uses, systems, scopes, and schedules intersect so gaps can be addressed early.",
+  },
+  {
+    title: "Milestone Alignment",
+    copy: "Design, permitting, utility, procurement, tenant, construction, and occupancy dates are reviewed as one connected sequence.",
+  },
+  {
+    title: "Decision Visibility",
+    copy: "Current assumptions, approvals, cost considerations, and open questions give ownership a clear view of decisions affecting the full program.",
+  },
+  {
+    title: "Phased Site Control",
+    copy: "Logistics and safety planning adapt as work zones, completed areas, tenant activity, and public access change through the project.",
+  },
+];
+
+const faqs = [
+  {
+    question: "What makes mixed-use construction coordination different?",
+    answer: "Residential, retail, office, parking, and public areas can have different systems, finish expectations, tenant decisions, inspection paths, operating hours, and occupancy goals while sharing the same structure, utilities, access, and site. The delivery plan must make those interfaces and responsibilities visible.",
+  },
+  {
+    question: "How can phased occupancy be planned on a mixed-use project?",
+    answer: "The team can map each intended release against life-safety conditions, permanent or temporary access, utilities, inspections, tenant readiness, shared-area completion, public separation, and authority requirements. The final sequence depends on the approved documents, jurisdiction, contracts, and owner priorities.",
+  },
+  {
+    question: "When should construction planning begin for a mixed-use development?",
+    answer: "Construction input is most useful while the team can still evaluate logistics, system interfaces, scope boundaries, procurement, phasing, budget assumptions, and constructability without disrupting completed design. Trinity Build Co.'s role and timing are defined by the selected delivery method and agreement.",
+  },
+];
+---
+
+<IndustryDetailPage
+  title="Mixed-Use Developments"
+  seoTitle="Mixed-Use Construction Phoenix, AZ | Trinity Build Co."
+  seoDescription="Mixed-use construction in Phoenix and across Arizona, coordinating residential, retail, office, sitework, shared systems, and phased turnover."
+  eyebrow="Mixed-Use Construction"
+  lede="Coordinated construction planning for developments that bring residential, retail, office, parking, and shared public spaces together in one program."
+  heroImage={heroImage}
+  heroAlt="Mixed-use development under construction"
+  heroPosition="center 48%"
+  introTitle="One coordinated plan for every use."
+  introParagraphs={[
+    "Mixed-use developments combine building programs with different occupants, systems, schedules, access needs, and inspection paths. Their shared structures, utilities, circulation, parking, and public spaces make the connections between scopes just as important as the individual spaces themselves.",
+    "Trinity Build Co. approaches the work as one coordinated program. Early planning identifies the interfaces, decision owners, long-lead items, tenant requirements, and phased milestones that influence cost, schedule, constructability, and occupancy across the development.",
+  ]}
+  capabilities={capabilities}
+  supportImage={supportImage}
+  supportAlt="Construction site entrance with perimeter fencing"
+  supportPosition="center 52%"
+  supportEyebrow="Coordinate the Interfaces"
+  supportTitle="The intersections deserve their own plan."
+  supportCopy="Clear scope boundaries, shared milestones, current decision logs, and coordinated site logistics help the team manage the points where residential, commercial, public, and infrastructure work come together."
+  deliveryTitle="Keep every part of the program connected."
+  deliveryCopy="Mixed-use work becomes more predictable when the team can see how one decision, handoff, or delay affects the other buildings, tenants, systems, and occupancy goals."
+  deliveryItems={deliveryItems}
+  faqs={faqs}
+/>

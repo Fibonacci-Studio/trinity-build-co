@@ -66,7 +66,7 @@ const steps = [
 
 <Base
   title="The Trinity Way — Trinity Build Co."
-  description="A proven six-step process — Discover, Plan, Collaborate, Build, Deliver, Support — that ensures predictable outcomes and exceptional results on every commercial project."
+  description="Explore Trinity Build Co.'s six-step commercial construction process: discover, plan, collaborate, build, deliver, and support."
 >
   <Nav active="process" />
   <main id="main-content">
@@ -83,7 +83,7 @@ const steps = [
             <div class="step-row" data-reveal>
               <div class="step-num">{String(i + 1).padStart(2, "0")}</div>
               <div>
-                <h3 class="step-title">{step.title}</h3>
+                <h2 class="step-title">{step.title}</h2>
                 <p class="step-copy">{step.copy}</p>
               </div>
               <div class="step-bullets">
@@ -105,8 +105,8 @@ const steps = [
     <section class="promise">
       <Image
         src={promisePhoto}
-        alt="Trinity Build Co. superintendent overseeing a concrete pour"
-        widths={[768, 1280, 1920]}
+        alt="Concrete pour in progress"
+        widths={[480, 768, 1280, 1920]}
         sizes="100vw"
         quality={72}
         class="promise-img"
@@ -147,7 +147,7 @@ const steps = [
     font-size: clamp(40px, 4vw, 56px);
     font-weight: 800;
     letter-spacing: 0.04em;
-    color: var(--color-gold);
+    color: var(--color-gold-dark);
     line-height: 1;
   }
 

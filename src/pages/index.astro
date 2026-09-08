@@ -12,6 +12,9 @@ import apartmentPhoto from "../assets/photos/work-areas/02-apartment-communities
 import mixedUsePhoto from "../assets/photos/work-areas/03-mixed-use-developments.png";
 import officePhoto from "../assets/photos/work-areas/04-office-buildings.png";
 import campusPhoto from "../assets/photos/work-areas/05-commercial-campuses.png";
+import illuminateBar from "../assets/photos/projects/illuminate-community-church/illuminate-bar-kitchen.jpg";
+import illuminateLounge from "../assets/photos/projects/illuminate-community-church/illuminate-lounge.jpg";
+import illuminateRestroom from "../assets/photos/projects/illuminate-community-church/illuminate-restroom-floral.jpg";
 
 const capabilities = [
   "Ground-Up Construction",
@@ -23,38 +26,47 @@ const services = [
   {
     title: "Commercial General Contracting",
     copy: "Full-scope delivery of commercial projects, managed with precision from permit to closeout.",
+    href: "/services/commercial-general-contracting",
   },
   {
     title: "Design-Build",
     copy: "A single accountable team from concept through completion — faster decisions, fewer change orders.",
+    href: "/services/design-build",
   },
   {
     title: "Construction Management",
     copy: "Owner-side leadership that protects budget, schedule, and quality at every phase.",
+    href: "/services/construction-management",
   },
   {
     title: "Preconstruction Services",
     copy: "Planning, budget development, scheduling, value engineering, and hands-on management before construction begins.",
+    href: "/services/preconstruction",
   },
   {
     title: "Budget Development",
     copy: "Accurate, transparent budgets built early — and defended through delivery.",
+    href: "/services/budget-development",
   },
   {
     title: "Value Engineering",
     copy: "Smart alternatives that reduce cost without compromising design intent or quality.",
+    href: "/services/value-engineering",
   },
   {
     title: "Project Planning",
     copy: "Realistic schedules, clear milestones, and proactive coordination across every trade.",
+    href: "/services/project-planning",
   },
   {
     title: "Ground-Up Construction",
     copy: "New commercial construction delivered on time, on budget, and built to last.",
+    href: "/services/ground-up-commercial-construction",
   },
   {
     title: "Tenant Improvements",
     copy: "Fast-track interior buildouts that minimize downtime for tenants and owners.",
+    href: "/services/tenant-improvements",
   },
 ];
 
@@ -73,35 +85,35 @@ const priorityIndustries = [
     slug: "multi-family-developments",
     href: "/industries/multi-family-developments",
     image: multiFamilyPhoto,
-    alt: "Trinity Build Co. team at a branded multi-family development jobsite in Phoenix",
+    alt: "Multi-family development under construction",
   },
   {
     title: "Apartment Communities",
     slug: "apartment-communities",
     href: "/industries/apartment-communities",
     image: apartmentPhoto,
-    alt: "Trinity Build Co. team overseeing an apartment community under construction in Phoenix",
+    alt: "Apartment community under construction",
   },
   {
     title: "Mixed-Use Developments",
     slug: "mixed-use-developments",
-    href: "/industries#mixed-use-developments",
+    href: "/industries/mixed-use-developments",
     image: mixedUsePhoto,
-    alt: "Trinity Build Co. team at a mixed-use development under construction in Phoenix",
+    alt: "Mixed-use development under construction",
   },
   {
     title: "Office Buildings",
     slug: "office-buildings",
-    href: "/industries#office-buildings",
+    href: "/industries/office-buildings",
     image: officePhoto,
-    alt: "Trinity Build Co. team at a commercial office building jobsite in Phoenix",
+    alt: "Commercial office construction site",
   },
   {
     title: "Commercial Campuses",
     slug: "commercial-campuses",
-    href: "/industries#commercial-campuses",
+    href: "/industries/commercial-campuses",
     image: campusPhoto,
-    alt: "Trinity Build Co. team at a commercial campus under construction in Phoenix",
+    alt: "Commercial campus under construction",
   },
 ];
 
@@ -141,14 +153,13 @@ const whyItems = [
 const contactRows = [
   { label: "Phone", value: business.phone, href: business.phoneHref },
   { label: "Email", value: business.email, href: `mailto:${business.email}` },
-  { label: "Office", value: business.addressLabel },
-  { label: "License", value: business.rocLicense },
+  { label: "License", value: business.rocLicense, href: business.rocLicenseUrl },
 ];
 ---
 
 <Base
-  title="Trinity Build Co. — Commercial General Contractor | Phoenix, Arizona"
-  description="Ground-up commercial construction, tenant improvements, and design-build across Arizona — delivered with disciplined preconstruction, transparent budgets, and institutional rigor."
+  title="Trinity Build Co. | Phoenix Commercial General Contractor"
+  description="Trinity Build Co. is a Phoenix commercial general contractor for ground-up construction, tenant improvements, design-build, and preconstruction across Arizona."
 >
   <Nav active="home" />
   <main id="main-content">
@@ -158,10 +169,11 @@ const contactRows = [
         <Image
           src={heroPhoto}
           alt=""
-          widths={[768, 1280, 1920]}
+          widths={[480, 768, 1280, 1920]}
           sizes="100vw"
           loading="eager"
           fetchpriority="high"
+          decoding="sync"
           quality={72}
           class="hero-img"
         />
@@ -169,14 +181,15 @@ const contactRows = [
         <div class="hero-scrim hero-scrim--y"></div>
       </div>
       <div class="container hero-inner">
-        <div class="eyebrow"><span>Commercial General Contractor — Phoenix, Arizona</span></div>
-        <h1 class="hero-title">Building Excellence.<br /><span>Delivering Trust.</span></h1>
+        <div class="eyebrow"><span>Phoenix, Arizona Commercial General Contractor</span></div>
+        <h1 class="hero-title">Trinity Build Co.<br /><span>Commercial Construction.</span></h1>
         <p class="hero-lede">
-          Ground-up commercial construction, tenant improvements, and design-build — delivered
-          with the discipline, transparency, and financial rigor of an institutional partner.
+          Trinity Build Co. provides commercial construction services across Arizona, including
+          preconstruction, design-build, construction management, tenant improvements, and
+          ground-up commercial construction.
         </p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn--sage">Start Your Project</a>
+          <a href="#contact" class="btn btn--sage" data-analytics-cta="start_project" data-analytics-placement="homepage_hero">Start Your Project</a>
           <a href="#services" class="btn btn--outline">View Our Capabilities</a>
         </div>
         <div class="hero-caps">
@@ -323,11 +336,12 @@ const contactRows = [
         <div class="tile-grid services-grid">
           {
             services.map((service, i) => (
-              <div class="service-card" data-reveal>
+              <a href={service.href} class="service-card" data-reveal>
                 <div class="num">{String(i + 1).padStart(2, "0")}</div>
                 <h3>{service.title}</h3>
                 <p>{service.copy}</p>
-              </div>
+                <span class="service-link">Explore service →</span>
+              </a>
             ))
           }
         </div>
@@ -395,71 +409,77 @@ const contactRows = [
       <div class="container">
         <div class="section-head">
           <div data-reveal>
-            <div class="eyebrow head-eyebrow"><span>Commercial Focus</span></div>
-            <h2 class="section-title dark-on-light">Project Types We Build</h2>
+            <div class="eyebrow head-eyebrow"><span>Featured Project</span></div>
+            <h2 class="section-title dark-on-light">Built for community.</h2>
           </div>
           <div class="head-side" data-reveal>
-            <p>Representative imagery for the commercial work we pursue across Arizona.</p>
-            <a href="/portfolio" class="arrow-link arrow-link--dark head-link">View Project Types →</a>
+            <p>
+              Explore the hospitality-forward renovation of Illuminate Community Church in
+              Scottsdale.
+            </p>
+            <a
+              href="/portfolio/illuminate-community-church"
+              class="arrow-link arrow-link--dark head-link"
+            >View Case Study →</a>
           </div>
         </div>
         <div class="portfolio-grid">
           <a
-            href="/industries/multi-family-developments"
+            href="/portfolio/illuminate-community-church"
             class="portfolio-item"
-            aria-label="Explore Multi-Family Developments"
+            aria-label="View the Illuminate Community Church renovation case study"
             data-reveal
           >
             <Image
-              src={multiFamilyPhoto}
-              alt="Trinity Build Co. team at a multi-family development under construction in Phoenix"
-              widths={[640, 1000, 1400]}
+              src={illuminateBar}
+              alt="Custom patterned-tile café bar at Illuminate Community Church"
+              widths={[480, 640, 1000, 1400]}
               sizes="(min-width: 900px) 56vw, 100vw"
               quality={75}
               class="portfolio-img portfolio-img--featured"
             />
             <div class="portfolio-caption">
-              <span class="caption-title">Multi-Family Developments</span>
-              <span class="caption-loc">Phoenix, AZ</span>
+              <span class="caption-title">Illuminate Community Church</span>
+              <span class="caption-loc">Scottsdale, Arizona</span>
             </div>
           </a>
           <div class="portfolio-col">
             <a
-              href="/industries/apartment-communities"
+              href="/portfolio/illuminate-community-church"
               class="portfolio-item"
-              aria-label="Explore Apartment Communities"
+              aria-label="View the Illuminate Community Church connect lounge"
               data-reveal
             >
               <Image
-                src={apartmentPhoto}
-                alt="Trinity Build Co. team overseeing an apartment community under construction in Phoenix"
+                src={illuminateLounge}
+                alt="Connect lounge with leather seating and blue shelving"
                 widths={[480, 800, 1200]}
                 sizes="(min-width: 900px) 42vw, 100vw"
                 quality={75}
                 class="portfolio-img portfolio-img--stack"
               />
               <div class="portfolio-caption">
-                <span class="caption-title">Apartment Communities</span>
-                <span class="caption-loc">Phoenix, AZ</span>
+                <span class="caption-title">Connect Lounge</span>
+                <span class="caption-loc">Warm, welcoming gathering space</span>
               </div>
             </a>
             <a
-              href="/industries#mixed-use-developments"
+              href="/portfolio/illuminate-community-church"
               class="portfolio-item"
-              aria-label="Explore Mixed-Use Developments"
+              aria-label="View the Illuminate Community Church renovated restrooms"
               data-reveal
             >
               <Image
-                src={mixedUsePhoto}
-                alt="Trinity Build Co. team at a mixed-use development under construction in Phoenix"
+                src={illuminateRestroom}
+                alt="Renovated restroom with floral wallpaper and custom vanity"
                 widths={[480, 800, 1200]}
                 sizes="(min-width: 900px) 42vw, 100vw"
                 quality={75}
                 class="portfolio-img portfolio-img--stack"
               />
               <div class="portfolio-caption">
-                <span class="caption-title">Mixed-Use Developments</span>
-                <span class="caption-loc">Phoenix, AZ</span>
+                <span class="caption-title">Refined Restrooms</span>
+                <span class="caption-loc">Detailed finishes throughout</span>
               </div>
             </a>
           </div>
@@ -480,7 +500,7 @@ const contactRows = [
           <ContactRows rows={contactRows} />
         </div>
         <div data-reveal>
-          <ContactForm rows={5} />
+          <ContactForm rows={5} location="homepage" />
         </div>
       </div>
     </section>
@@ -679,6 +699,14 @@ const contactRows = [
     margin-bottom: 24px;
   }
 
+  .industries .head-eyebrow span,
+  .services .head-eyebrow span,
+  .why .head-eyebrow span,
+  .portfolio .head-eyebrow span,
+  .about .about-eyebrow span {
+    color: var(--color-gold-dark);
+  }
+
   .dark-on-light {
     color: var(--color-ink);
   }
@@ -766,6 +794,7 @@ const contactRows = [
 
   .mission-card .kicker {
     margin-bottom: 18px;
+    color: var(--color-gold-dark);
   }
 
   .mission-card p {
@@ -807,6 +836,84 @@ const contactRows = [
     color: var(--color-char);
   }
 
+  @media (max-width: 679px) {
+    .about {
+      padding-bottom: 48px;
+    }
+
+    .mission-grid {
+      gap: 14px;
+      margin-top: 48px;
+    }
+
+    .mission-card {
+      padding: 30px 26px;
+    }
+
+    .mission-card .kicker {
+      margin-bottom: 14px;
+    }
+
+    .mission-card p {
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .values-strip {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0;
+      margin-top: 36px;
+      padding: 0;
+      align-items: stretch;
+      justify-content: initial;
+    }
+
+    .value-item {
+      min-width: 0;
+      min-height: 52px;
+      padding: 0 8px;
+      border-bottom: 1px solid var(--color-line);
+    }
+
+    .value-item:nth-child(odd) {
+      border-right: 1px solid var(--color-line);
+    }
+
+    .value-item:nth-last-child(-n + 2) {
+      border-bottom: 0;
+    }
+
+    .value-dot {
+      width: 5px;
+      height: 5px;
+      flex: none;
+    }
+
+    .value-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+    }
+
+    .services {
+      padding-top: 56px;
+    }
+
+    .services .section-head {
+      gap: 24px;
+      margin-bottom: 38px;
+    }
+
+    .services .head-eyebrow {
+      margin-bottom: 18px;
+    }
+
+    .services .section-title {
+      font-size: clamp(30px, 8.2vw, 35px);
+      line-height: 1.08;
+    }
+  }
+
   /* ── Services ── */
   .services {
     background: var(--color-cream);
@@ -818,13 +925,21 @@ const contactRows = [
   }
 
   .service-card {
+    display: block;
     background: #ffffff;
     padding: 38px 34px;
     transition: background 0.2s;
+    color: inherit;
+    text-decoration: none;
   }
 
   .service-card:hover {
     background: var(--color-cream-hover);
+  }
+
+  .service-card:focus-visible {
+    outline: 3px solid var(--color-sage);
+    outline-offset: 3px;
   }
 
   .service-card h3 {
@@ -836,11 +951,25 @@ const contactRows = [
     color: var(--color-ink);
   }
 
+  .service-card .num {
+    color: var(--color-gold-dark);
+  }
+
   .service-card p {
     margin: 0;
     font-size: 15px;
     line-height: 1.65;
     color: var(--color-stone-muted);
+  }
+
+  .service-link {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-sage-dark);
   }
 
   /* ── Process ── */
@@ -1200,7 +1329,7 @@ const contactRows = [
     font-weight: 500;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--color-caption);
+    color: var(--color-stone-muted);
   }
 
   @media (max-width: 899px) {

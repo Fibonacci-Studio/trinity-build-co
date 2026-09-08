@@ -1,0 +1,905 @@
+---
+import { Image } from "astro:assets";
+import Base from "../../layouts/Base.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import { business } from "../../config";
+import barKitchen from "../../assets/photos/projects/illuminate-community-church/illuminate-bar-kitchen.jpg";
+import barTile from "../../assets/photos/projects/illuminate-community-church/illuminate-bar-tile.jpg";
+import bathFloating from "../../assets/photos/projects/illuminate-community-church/illuminate-bath-floating.jpg";
+import diningGarage from "../../assets/photos/projects/illuminate-community-church/illuminate-dining-garage.jpg";
+import island from "../../assets/photos/projects/illuminate-community-church/illuminate-island.jpg";
+import kitchenBlue from "../../assets/photos/projects/illuminate-community-church/illuminate-kitchen-blue.jpg";
+import kitchenFridge from "../../assets/photos/projects/illuminate-community-church/illuminate-kitchen-fridge.jpg";
+import lounge from "../../assets/photos/projects/illuminate-community-church/illuminate-lounge.jpg";
+import meetingBlue from "../../assets/photos/projects/illuminate-community-church/illuminate-meeting-blue.jpg";
+import multipurpose from "../../assets/photos/projects/illuminate-community-church/illuminate-multipurpose.jpg";
+import projectCourtyard from "../../assets/photos/projects/illuminate-community-church/illuminate-project.jpg";
+import restroomFloral from "../../assets/photos/projects/illuminate-community-church/illuminate-restroom-floral.jpg";
+import restroomTile from "../../assets/photos/projects/illuminate-community-church/illuminate-restroom-tile.jpg";
+import welcome from "../../assets/photos/projects/illuminate-community-church/illuminate-welcome.jpg";
+import exterior from "../../assets/photos/projects/illuminate-community-church/illuminate-welcome2.jpg";
+
+const projectPath = "/portfolio/illuminate-community-church";
+const siteUrl = Astro.site?.href ?? business.url;
+const projectUrl = new URL(projectPath, siteUrl).href;
+
+const projectFacts = [
+  ["Project", "Illuminate Community Church"],
+  ["Location", "Scottsdale, Arizona"],
+  ["Sector", "Faith & Community"],
+  ["Completed", "2024"],
+  ["Scope", "Church renovation and interior buildout"],
+];
+
+const gallery = [
+  {
+    image: diningGarage,
+    alt: "Open dining and gathering area with glass garage-style doors",
+    label: "Open dining and gathering space",
+    layout: "gallery-card--wide",
+  },
+  {
+    image: meetingBlue,
+    alt: "Church meeting room with a deep-blue feature wall and built-in shelving",
+    label: "Meeting room",
+    layout: "gallery-card--standard",
+  },
+  {
+    image: bathFloating,
+    alt: "Floating restroom vanity with white tile and black-framed mirror",
+    label: "Floating vanity",
+    layout: "gallery-card--portrait",
+  },
+  {
+    image: island,
+    alt: "Long hospitality kitchen island beneath woven pendant lighting",
+    label: "Hospitality kitchen island",
+    layout: "gallery-card--wide",
+  },
+  {
+    image: barTile,
+    alt: "Custom church café bar finished with patterned tile",
+    label: "Patterned-tile bar",
+    layout: "gallery-card--standard",
+  },
+  {
+    image: multipurpose,
+    alt: "Large multipurpose room with wood-look flooring",
+    label: "Multipurpose hall",
+    layout: "gallery-card--wide",
+  },
+  {
+    image: kitchenBlue,
+    alt: "Hospitality kitchen with blue cabinetry and pass-through doors",
+    label: "Custom blue cabinetry",
+    layout: "gallery-card--standard",
+  },
+  {
+    image: restroomTile,
+    alt: "Renovated church restroom with dark tile and coordinated vanities",
+    label: "Restroom finishes",
+    layout: "gallery-card--wide",
+  },
+  {
+    image: welcome,
+    alt: "Wood welcome sign inside Illuminate Community Church",
+    label: "Welcome to Illuminate",
+    layout: "gallery-card--standard",
+  },
+  {
+    image: projectCourtyard,
+    alt: "Outdoor gathering courtyard at Illuminate Community Church",
+    label: "Outdoor gathering area",
+    layout: "gallery-card--portrait",
+  },
+];
+
+const scopeItems = [
+  "Lounge and connection zones",
+  "Custom bar and millwork",
+  "Patterned tile and finish coordination",
+  "Full hospitality kitchen",
+  "Meeting and office spaces",
+  "Multipurpose gathering hall",
+  "Renovated restrooms",
+  "Wood-look flooring throughout",
+];
+
+const structuredData = [
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: business.url,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Portfolio",
+        item: new URL("/portfolio", siteUrl).href,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Illuminate Community Church",
+        item: projectUrl,
+      },
+    ],
+  },
+  {
+    "@type": "Article",
+    headline: "Illuminate Community Church Renovation",
+    description:
+      "A Scottsdale church renovation with custom millwork, a hospitality kitchen, flexible gathering spaces, bold tile, and refined restrooms.",
+    url: projectUrl,
+    image: [exterior.src, barKitchen.src, lounge.src].map((src) => new URL(src, siteUrl).href),
+    datePublished: "2026-08-22",
+    dateModified: "2026-08-22",
+    author: { "@id": `${siteUrl}#organization` },
+    publisher: { "@id": `${siteUrl}#organization` },
+    about: ["Church renovation", "Commercial interior buildout", "Scottsdale construction"],
+    temporalCoverage: "2024",
+    contentLocation: {
+      "@type": "Place",
+      name: "Scottsdale, Arizona",
+    },
+  },
+];
+---
+
+<Base
+  title="Illuminate Community Church Renovation | Trinity Build Co."
+  description="Explore a Scottsdale church renovation featuring custom millwork, a hospitality kitchen, gathering spaces, bold tile, and refined restrooms."
+  ogImage={exterior.src}
+  structuredData={structuredData}
+>
+  <Nav active="portfolio" />
+  <main id="main-content">
+    <section class="project-hero">
+      <div class="project-hero-media" aria-hidden="true">
+        <Image
+          src={exterior}
+          alt=""
+          widths={[640, 960, 1200]}
+          sizes="100vw"
+          quality={78}
+          loading="eager"
+          fetchpriority="high"
+          decoding="sync"
+          class="project-hero-image"
+        />
+        <div class="project-hero-scrim"></div>
+      </div>
+      <div class="container project-hero-inner">
+        <a href="/portfolio" class="project-back">← Back to portfolio</a>
+        <div class="project-kicker">Church Renovation</div>
+        <h1>Illuminate Community Church</h1>
+        <p>
+          A bright, hospitality-forward renovation shaped for connection, service, and the needs
+          of a growing Scottsdale congregation.
+        </p>
+      </div>
+      <div class="project-hero-meta">
+        <div class="container project-hero-meta-inner">
+          <span>Scottsdale, Arizona</span>
+          <span>Faith & Community</span>
+          <span>Completed 2024</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-overview">
+      <div class="container project-overview-grid">
+        <div data-reveal>
+          <div class="eyebrow"><span>The Project</span></div>
+          <h2>Open square footage, transformed into a place to gather.</h2>
+          <p>
+            When Illuminate Community Church set out to transform its Scottsdale building, the
+            goal was a space that felt bright, warm, and anything but institutional. The completed
+            renovation turned open square footage into a welcoming series of connected spaces: a
+            lounge to linger in, a statement bar and full hospitality kitchen, flexible meeting and
+            multipurpose rooms, and refined restrooms finished with the same care as the rest.
+          </p>
+        </div>
+        <dl class="project-facts" data-reveal>
+          {
+            projectFacts.map(([label, value]) => (
+              <div>
+                <dt>{label}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </section>
+
+    <section class="project-feature project-feature--light">
+      <div class="container project-feature-grid">
+        <div class="project-feature-copy" data-reveal>
+          <span class="project-feature-label">Welcome & Connect</span>
+          <h2>A first impression that says stay a while.</h2>
+          <p>
+            The connect lounge pairs warm wood floors and tan leather seating with a deep-blue
+            feature wall and gallery shelving—a bright, relaxed space that welcomes guests and
+            gives conversations room to continue.
+          </p>
+        </div>
+        <div class="project-feature-media" data-reveal>
+          <Image
+            src={lounge}
+            alt="Illuminate Community Church connect lounge with leather seating and blue shelving"
+            widths={[480, 800, 1200]}
+            sizes="(min-width: 900px) 50vw, 100vw"
+            quality={76}
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="project-feature project-feature--dark">
+      <div class="container project-feature-grid project-feature-grid--reverse">
+        <div class="project-feature-media" data-reveal>
+          <Image
+            src={barKitchen}
+            alt="Custom café bar with blue patterned tile at Illuminate Community Church"
+            widths={[480, 800, 1200]}
+            sizes="(min-width: 900px) 50vw, 100vw"
+            quality={76}
+            loading="lazy"
+          />
+        </div>
+        <div class="project-feature-copy" data-reveal>
+          <span class="project-feature-label">Custom Millwork & Tile</span>
+          <h2>A statement bar, wrapped in bold tile.</h2>
+          <p>
+            A custom bar anchors the main gathering space, its face wrapped in blue
+            star-patterned tile beneath exposed wood beams and woven pendants. Glass garage-style
+            doors lift to connect the room with natural light and the outdoors.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-feature project-feature--light">
+      <div class="container project-feature-grid">
+        <div class="project-feature-copy" data-reveal>
+          <span class="project-feature-label">Hospitality Kitchen</span>
+          <h2>A kitchen built to host and serve.</h2>
+          <p>
+            Behind the bar, a full hospitality kitchen—stainless refrigeration, generous prep
+            space, and clean custom cabinetry—gives the church capacity to support events,
+            gatherings, and community programs with ease.
+          </p>
+        </div>
+        <div class="project-feature-media" data-reveal>
+          <Image
+            src={kitchenFridge}
+            alt="Hospitality kitchen with stainless refrigeration and blue cabinetry"
+            widths={[480, 800, 1200]}
+            sizes="(min-width: 900px) 50vw, 100vw"
+            quality={76}
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="project-feature project-feature--dark">
+      <div class="container project-feature-grid project-feature-grid--reverse">
+        <div class="project-feature-media project-feature-media--restroom" data-reveal>
+          <Image
+            src={restroomFloral}
+            alt="Renovated church restroom with coordinated mirrors, tile, and floral accents"
+            widths={[480, 800, 1200]}
+            sizes="(min-width: 900px) 50vw, 100vw"
+            quality={76}
+            loading="lazy"
+          />
+        </div>
+        <div class="project-feature-copy" data-reveal>
+          <span class="project-feature-label">Refined Restrooms</span>
+          <h2>Details carried all the way through.</h2>
+          <p>
+            Even the restrooms carry the design language forward with crisp tile, floating
+            vanities, floral and patterned accents, and finish selections that feel considered and
+            complete.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-statement">
+      <div class="container project-statement-inner" data-reveal>
+        <span aria-hidden="true">“</span>
+        <blockquote>
+          Bright, bold, and built to bring people together—exactly what a growing church needs
+          from its home.
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="project-gallery">
+      <div class="container">
+        <div class="project-gallery-head" data-reveal>
+          <div>
+            <div class="eyebrow"><span>Project Gallery</span></div>
+            <h2>Inside the completed renovation.</h2>
+          </div>
+          <span class="project-gallery-place">Scottsdale, Arizona · 2024</span>
+        </div>
+        <div class="project-gallery-grid">
+          {
+            gallery.map((item) => (
+              <figure class:list={["gallery-card", item.layout]} data-reveal>
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  widths={[400, 720, 1100]}
+                  sizes="(min-width: 900px) 50vw, 100vw"
+                  quality={74}
+                  loading="lazy"
+                />
+                <figcaption>{item.label}</figcaption>
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="project-scope">
+      <div class="container">
+        <div class="project-scope-head" data-reveal>
+          <div class="eyebrow"><span>Scope Delivered</span></div>
+          <h2>Everything, under one roof.</h2>
+        </div>
+        <div class="project-scope-grid" data-reveal>
+          {
+            scopeItems.map((item) => (
+              <div class="project-scope-item">
+                <span aria-hidden="true">✓</span>
+                <strong>{item}</strong>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="project-next">
+      <div class="container project-next-inner" data-reveal>
+        <div>
+          <span class="project-feature-label">Faith & Community Construction</span>
+          <h2>Planning a space that brings people together?</h2>
+          <p>
+            Talk with Trinity Build Co. about the scope, schedule, and coordination needs for your
+            church, community, or commercial interior project.
+          </p>
+        </div>
+        <a
+          href="/contact"
+          class="btn btn--sage"
+          data-analytics-cta="start_project"
+          data-analytics-placement="illuminate_case_study"
+        >Start a Conversation</a>
+      </div>
+    </section>
+  </main>
+  <Footer showCta={false} />
+</Base>
+
+<style>
+  .project-hero {
+    position: relative;
+    min-height: clamp(620px, 82vh, 860px);
+    overflow: hidden;
+    background: var(--color-ink);
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .project-hero-media,
+  .project-hero-scrim {
+    position: absolute;
+    inset: 0;
+  }
+
+  .project-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+  }
+
+  .project-hero-scrim {
+    background:
+      linear-gradient(270deg, rgba(5, 5, 5, 0.88) 0%, rgba(5, 5, 5, 0.55) 54%, rgba(5, 5, 5, 0.12) 82%),
+      linear-gradient(0deg, rgba(5, 5, 5, 0.94) 0%, rgba(5, 5, 5, 0.08) 62%);
+  }
+
+  .project-hero-inner {
+    position: relative;
+    z-index: 1;
+    padding-left: 52%;
+    padding-top: 100px;
+    padding-bottom: 118px;
+  }
+
+  .project-back {
+    display: inline-block;
+    margin-bottom: 40px;
+    color: var(--color-dust);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .project-back:hover {
+    color: var(--color-gold-light);
+  }
+
+  .project-kicker,
+  .project-feature-label {
+    display: block;
+    color: var(--color-gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    line-height: 1.5;
+    text-transform: uppercase;
+  }
+
+  .project-hero h1 {
+    max-width: 620px;
+    margin: 20px 0 0;
+    color: #ffffff;
+    font-size: clamp(44px, 5vw, 72px);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 0.96;
+    text-wrap: balance;
+  }
+
+  .project-hero-inner > p {
+    max-width: 680px;
+    margin: 28px 0 0;
+    color: var(--color-dust-bright);
+    font-size: clamp(17px, 1.6vw, 21px);
+    line-height: 1.65;
+  }
+
+  .project-hero-meta {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .project-hero-meta-inner {
+    display: flex;
+    gap: 14px 36px;
+    flex-wrap: wrap;
+    padding-block: 24px;
+  }
+
+  .project-hero-meta span {
+    color: var(--color-dust);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .project-overview,
+  .project-scope {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    padding: clamp(80px, 10vw, 132px) 0;
+  }
+
+  .project-overview-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+    gap: clamp(48px, 8vw, 110px);
+    align-items: start;
+  }
+
+  .project-overview .eyebrow,
+  .project-gallery .eyebrow,
+  .project-scope .eyebrow {
+    margin-bottom: 24px;
+  }
+
+  .project-overview h2,
+  .project-feature h2,
+  .project-gallery h2,
+  .project-scope h2,
+  .project-next h2 {
+    margin: 0;
+    font-size: clamp(30px, 4vw, 52px);
+    font-weight: 750;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  .project-overview p,
+  .project-feature p,
+  .project-next p {
+    margin: 24px 0 0;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  .project-overview p {
+    max-width: 690px;
+    color: var(--color-stone);
+  }
+
+  .project-facts {
+    margin: 0;
+    border-top: 1px solid var(--color-line-soft);
+  }
+
+  .project-facts div {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 24px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--color-line-soft);
+  }
+
+  .project-facts dt {
+    color: var(--color-stone-muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .project-facts dd {
+    margin: 0;
+    color: var(--color-ink);
+    font-size: 14px;
+    font-weight: 650;
+    line-height: 1.45;
+  }
+
+  .project-feature {
+    padding: clamp(72px, 9vw, 112px) 0;
+  }
+
+  .project-feature--light {
+    background: #ffffff;
+    color: var(--color-ink);
+  }
+
+  .project-overview .eyebrow span,
+  .project-scope .eyebrow span,
+  .project-feature--light .project-feature-label,
+  .project-next .project-feature-label {
+    color: var(--color-gold-dark);
+  }
+
+  .project-feature--dark {
+    background: var(--color-ink);
+    color: #ffffff;
+  }
+
+  .project-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(42px, 7vw, 88px);
+    align-items: center;
+  }
+
+  .project-feature-copy p {
+    max-width: 600px;
+    color: var(--color-stone);
+  }
+
+  .project-feature--dark .project-feature-copy p {
+    color: var(--color-dust-muted);
+  }
+
+  .project-feature-copy h2 {
+    margin-top: 16px;
+  }
+
+  .project-feature-media {
+    min-height: 420px;
+    overflow: hidden;
+    background: var(--color-coal-input);
+  }
+
+  .project-feature-media :global(img) {
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    object-fit: cover;
+  }
+
+  .project-feature-media--restroom :global(img) {
+    object-position: center 42%;
+  }
+
+  .project-statement {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(200, 161, 90, 0.17), transparent 55%),
+      #080808;
+    padding: clamp(88px, 12vw, 154px) 0;
+  }
+
+  .project-statement-inner {
+    max-width: 1000px;
+    text-align: center;
+  }
+
+  .project-statement-inner > span {
+    color: var(--color-gold);
+    font-size: 72px;
+    font-weight: 800;
+    line-height: 0.6;
+  }
+
+  .project-statement blockquote {
+    margin: 28px 0 0;
+    color: #ffffff;
+    font-size: clamp(28px, 4.2vw, 52px);
+    font-weight: 750;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  .project-gallery {
+    background: #11100f;
+    padding: clamp(80px, 10vw, 128px) 0;
+  }
+
+  .project-gallery-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+
+  .project-gallery h2 {
+    color: #ffffff;
+  }
+
+  .project-gallery-place {
+    color: var(--color-dust-label);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .project-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .gallery-card {
+    position: relative;
+    grid-column: span 5;
+    min-height: 340px;
+    margin: 0;
+    overflow: hidden;
+    background: var(--color-coal-input);
+  }
+
+  .gallery-card--wide {
+    grid-column: span 7;
+  }
+
+  .gallery-card--portrait {
+    grid-column: span 5;
+  }
+
+  .gallery-card :global(img) {
+    width: 100%;
+    height: 100%;
+    min-height: 340px;
+    object-fit: cover;
+    transition: transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .gallery-card--portrait :global(img) {
+    object-position: center 45%;
+  }
+
+  .gallery-card::after {
+    content: "";
+    position: absolute;
+    inset: 40% 0 0;
+    background: linear-gradient(transparent, rgba(5, 5, 5, 0.75));
+    pointer-events: none;
+  }
+
+  .gallery-card:hover :global(img) {
+    transform: scale(1.025);
+  }
+
+  .gallery-card figcaption {
+    position: absolute;
+    z-index: 1;
+    right: 20px;
+    bottom: 18px;
+    left: 20px;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .project-scope-head {
+    max-width: 720px;
+  }
+
+  .project-scope-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1px;
+    margin-top: 54px;
+    border: 1px solid var(--color-line-grid);
+    background: var(--color-line-grid);
+  }
+
+  .project-scope-item {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    min-height: 96px;
+    padding: 24px;
+    background: var(--color-cream);
+  }
+
+  .project-scope-item span {
+    color: var(--color-sage-dark);
+    font-weight: 800;
+  }
+
+  .project-scope-item strong {
+    color: var(--color-ink);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .project-next {
+    background: #ffffff;
+    color: var(--color-ink);
+    padding: clamp(80px, 10vw, 126px) 0;
+  }
+
+  .project-next-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 56px;
+  }
+
+  .project-next h2 {
+    max-width: 760px;
+    margin-top: 16px;
+  }
+
+  .project-next p {
+    max-width: 640px;
+    color: var(--color-stone);
+  }
+
+  .project-next .btn {
+    flex: none;
+  }
+
+  @media (max-width: 899px) {
+    .project-overview-grid,
+    .project-feature-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .project-feature-grid--reverse .project-feature-media {
+      order: 2;
+    }
+
+    .project-feature-grid--reverse .project-feature-copy {
+      order: 1;
+    }
+
+    .project-scope-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .project-next-inner {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 679px) {
+    .project-hero {
+      min-height: 680px;
+    }
+
+    .project-hero-image {
+      object-position: right 48%;
+    }
+
+    .project-hero-scrim {
+      background:
+        linear-gradient(90deg, rgba(5, 5, 5, 0.82) 0%, rgba(5, 5, 5, 0.24) 66%),
+        linear-gradient(0deg, rgba(5, 5, 5, 0.96) 0%, rgba(5, 5, 5, 0.08) 62%);
+    }
+
+    .project-hero-inner {
+      padding-left: var(--gutter);
+      padding-top: 82px;
+      padding-bottom: 150px;
+    }
+
+    .project-hero h1 {
+      max-width: 920px;
+      font-size: clamp(44px, 7vw, 92px);
+    }
+
+    .project-hero-meta-inner {
+      gap: 12px 22px;
+    }
+
+    .project-facts div {
+      grid-template-columns: 86px 1fr;
+    }
+
+    .project-feature-media,
+    .project-feature-media :global(img) {
+      min-height: 280px;
+    }
+
+    .project-gallery-head {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .project-gallery-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-card,
+    .gallery-card--wide,
+    .gallery-card--portrait {
+      grid-column: 1;
+      min-height: 260px;
+    }
+
+    .gallery-card :global(img) {
+      min-height: 260px;
+    }
+
+    .project-scope-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gallery-card :global(img) {
+      transition: none;
+    }
+  }
+</style>

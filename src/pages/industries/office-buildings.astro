@@ -1,0 +1,89 @@
+---
+import IndustryDetailPage from "../../components/IndustryDetailPage.astro";
+import heroImage from "../../assets/photos/work-areas/04-office-buildings.png";
+import supportImage from "../../assets/photos/09-glass-partition-installation.png";
+
+const capabilities = [
+  {
+    title: "Preconstruction & Workplace Planning",
+    copy: "Review program, budget, schedule, permitting, constructability, system criteria, finish expectations, and future flexibility before field work begins.",
+  },
+  {
+    title: "Site, Structure & Envelope",
+    copy: "Coordinate site improvements, foundations, structural systems, roofing, glazing, exterior finishes, weather protection, and shell completion.",
+  },
+  {
+    title: "Building Systems",
+    copy: "Plan power, lighting, HVAC, plumbing, fire protection, controls, technology pathways, and equipment access around performance and maintainability.",
+  },
+  {
+    title: "Interiors & Tenant Coordination",
+    copy: "Organize partitions, ceilings, millwork, finishes, specialty features, furniture interfaces, landlord criteria, and tenant decisions within the project schedule.",
+  },
+  {
+    title: "Testing, Punch & Turnover",
+    copy: "Coordinate inspections, system testing, corrections, owner training, record information, occupancy requirements, and closeout deliverables defined by the agreement.",
+  },
+];
+
+const deliveryItems = [
+  {
+    title: "Core & Interior Alignment",
+    copy: "Base-building systems, shell milestones, tenant requirements, and interior decisions stay connected so downstream work has the information it needs.",
+  },
+  {
+    title: "Long-Lead Visibility",
+    copy: "Glazing, electrical equipment, mechanical equipment, controls, finish materials, and specialty items are tracked against approvals and required dates.",
+  },
+  {
+    title: "Detail Coordination",
+    copy: "Mockups, first-in-place reviews, above-ceiling coordination, and documented quality checks help protect visible finishes and concealed systems.",
+  },
+  {
+    title: "Organized Closeout",
+    copy: "Punch, testing, training, occupancy, and document requirements are planned early instead of being left to the final weeks of construction.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Does office construction include both shell and interior work?",
+    answer: "Office assignments may include ground-up construction, core-and-shell work, complete interiors, tenant improvements, or a defined combination. The project documents and contract establish the actual scope, while coordination keeps shell systems, landlord criteria, tenant requirements, and turnover milestones connected.",
+  },
+  {
+    question: "Can office improvements be phased around an occupied building?",
+    answer: "Phasing may be possible when the team plans work zones, access, noise and dust controls, utility interruptions, deliveries, life safety, temporary conditions, and daily communication around building operations. Feasibility and requirements depend on the property, authorities, contract, and approved project plan.",
+  },
+  {
+    question: "Which long-lead decisions matter on an office project?",
+    answer: "Potential long-lead items can include electrical and mechanical equipment, controls, glazing, doors and hardware, specialty lighting, finish materials, technology components, and custom millwork. Actual lead times change, so procurement tracking should be based on current selections, approvals, suppliers, and schedule needs.",
+  },
+];
+---
+
+<IndustryDetailPage
+  title="Office Buildings"
+  seoTitle="Office Building Construction Phoenix, AZ | Trinity Build Co."
+  seoDescription="Office building construction in Phoenix and across Arizona, including ground-up offices, core-and-shell work, interiors, MEP coordination, and turnover."
+  eyebrow="Office Construction"
+  lede="Ground-up offices, core-and-shell buildings, professional interiors, and workplace improvements coordinated for performance, flexibility, and daily use."
+  heroImage={heroImage}
+  heroAlt="Commercial office construction site"
+  heroPosition="center 48%"
+  introTitle="Workplaces built around how they operate."
+  introParagraphs={[
+    "Office construction must connect the building shell, environmental systems, life safety, technology, acoustics, finishes, and tenant requirements without losing sight of schedule, maintainability, or future change. The right delivery plan depends on whether the assignment is ground-up, core and shell, a full build-out, or a phased improvement in an active property.",
+    "Trinity Build Co. coordinates those requirements through practical preconstruction, current project controls, disciplined field supervision, and defined turnover planning. The project agreement establishes the exact scope while the team keeps owner, design, building, and tenant decisions aligned with the work.",
+  ]}
+  capabilities={capabilities}
+  supportImage={supportImage}
+  supportAlt="Glass partition installation in an office buildout"
+  supportPosition="center 50%"
+  supportEyebrow="Built for Daily Use"
+  supportTitle="Performance lives in the details."
+  supportCopy="System access, controls, acoustics, lighting, finish transitions, hardware, and closeout information shape how an office performs after occupancy. Coordinating those details early supports a cleaner path to turnover."
+  deliveryTitle="Connect shell, systems, and interiors."
+  deliveryCopy="Office projects move more smoothly when the base building, tenant scope, procurement, inspections, and occupancy requirements share one current schedule and decision process."
+  deliveryItems={deliveryItems}
+  faqs={faqs}
+/>

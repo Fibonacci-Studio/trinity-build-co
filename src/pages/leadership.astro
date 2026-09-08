@@ -16,7 +16,7 @@ const bio = [
 
 <Base
   title="Leadership — Trinity Build Co."
-  description="Slade Gibson, President & CEO of Trinity Build Co., brings over 25 years of construction experience and a reputation for integrity, disciplined execution, and lasting client relationships."
+  description="Meet Slade Gibson and the leadership approach behind Trinity Build Co.'s commercial construction work across Arizona."
 >
   <Nav active="leadership" />
   <main id="main-content">
@@ -32,7 +32,7 @@ const bio = [
           <div class="portrait-slot">
             <Image
               src={sladePortrait}
-              alt="Slade Gibson, President & CEO of Trinity Build Co."
+              alt="Slade Gibson of Trinity Build Co."
               widths={[480, 720, 1000]}
               sizes="(min-width: 900px) 36vw, 100vw"
               quality={82}
@@ -58,7 +58,10 @@ const bio = [
           The team that wins your work is the team that builds it. No bait and switch — senior
           people, start to finish.
         </p>
-        <a href="/careers" class="btn btn--outline philosophy-btn">Join the Team</a>
+        <div class="philosophy-actions">
+          <a href="/services" class="btn btn--outline philosophy-btn">Explore Services</a>
+          <a href="/contact" class="btn btn--outline philosophy-btn" data-analytics-cta="schedule_consultation" data-analytics-placement="leadership_page">Schedule a Consultation</a>
+        </div>
       </div>
     </section>
   </main>
@@ -115,6 +118,7 @@ const bio = [
   .leader-kicker .kicker {
     letter-spacing: 0.3em;
     font-size: 12px;
+    color: var(--color-gold-dark);
   }
 
   .leader-name {
@@ -174,7 +178,15 @@ const bio = [
     max-width: 860px;
   }
 
-  .philosophy-btn {
+  .philosophy-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
     margin-top: 44px;
+  }
+
+  .philosophy-btn {
+    margin-top: 0;
   }
 </style>

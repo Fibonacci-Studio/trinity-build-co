@@ -44,15 +44,31 @@ const deliveryItems = [
     copy: "Current schedule, budget, procurement, quality, and risk information gives ownership a dependable view of progress.",
   },
 ];
+
+const faqs = [
+  {
+    question: "What are the main preconstruction priorities for an apartment community?",
+    answer: "Useful early priorities include validating scope and assumptions, coordinating unit types and finish standards, reviewing site and utility constraints, planning building starts, identifying long-lead decisions, mapping permit and inspection requirements, and aligning the budget and schedule with the owner's intended turnover sequence.",
+  },
+  {
+    question: "How are amenities and resident-facing spaces coordinated?",
+    answer: "Leasing areas, clubhouses, fitness rooms, pools, landscape, parking, and other shared spaces should be included in the procurement, quality, inspection, and turnover plan—not treated as separate last-minute work. The agreement and project documents establish which spaces and responsibilities are included.",
+  },
+  {
+    question: "What goes into unit punch and building turnover?",
+    answer: "Turnover planning may include unit and common-area inspections, correction tracking, required testing, authority approvals, owner reviews, training, record information, keys and access items, and other closeout deliverables. Requirements vary by jurisdiction, contract, building, and intended occupancy milestone.",
+  },
+];
 ---
 
 <IndustryDetailPage
   title="Apartment Communities"
-  seoDescription="Apartment community construction services in Phoenix and across Arizona, from planning and building phasing through unit quality control, amenities, and turnover."
+  seoTitle="Apartment Construction Phoenix, AZ | Trinity Build Co."
+  seoDescription="Apartment construction services in Phoenix and across Arizona, from planning and phasing through amenities, quality control, and turnover."
   eyebrow="Apartment Construction"
   lede="Coordinated delivery for apartment buildings, resident amenities, site improvements, and phased occupancy across Arizona."
   heroImage={heroImage}
-  heroAlt="Trinity Build Co. team overseeing an apartment community under construction in Phoenix"
+  heroAlt="Apartment community under construction"
   heroPosition="center 48%"
   introTitle="Built around quality at every unit."
   introParagraphs={[
@@ -61,7 +77,7 @@ const deliveryItems = [
   ]}
   capabilities={capabilities}
   supportImage={supportImage}
-  supportAlt="Trinity Build Co. crew installing a modern commercial building facade in Phoenix"
+  supportAlt="Commercial facade installation"
   supportPosition="center 52%"
   supportEyebrow="Quality at Scale"
   supportTitle="A consistent standard from the first unit to the last."
@@ -69,4 +85,5 @@ const deliveryItems = [
   deliveryTitle="Turnover planned from day one."
   deliveryCopy="Occupancy dates become more dependable when inspections, corrections, amenities, documentation, and owner acceptance are built into the schedule early."
   deliveryItems={deliveryItems}
+  faqs={faqs}
 />

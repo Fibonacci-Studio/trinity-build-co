@@ -48,7 +48,7 @@ const { active = "none", showTopBar = true } = Astro.props;
           </a>
         ))
       }
-      <a href="/contact" class="nav-cta">Schedule a Consultation</a>
+      <a href="/contact" class="nav-cta" data-analytics-cta="schedule_consultation" data-analytics-placement="desktop_nav">Schedule a Consultation</a>
     </nav>
 
     <button
@@ -74,7 +74,7 @@ const { active = "none", showTopBar = true } = Astro.props;
       }
       <a href="/contact" class="mobile-link">Contact</a>
       <div class="mobile-menu-foot">
-        <a href="/contact" class="btn btn--sage">Schedule a Consultation</a>
+        <a href="/contact" class="btn btn--sage" data-analytics-cta="schedule_consultation" data-analytics-placement="mobile_nav">Schedule a Consultation</a>
         <a href={business.phoneHref} class="mobile-phone">{business.phone}</a>
       </div>
     </nav>

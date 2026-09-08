@@ -15,92 +15,141 @@ import warehouse from "../assets/photos/07-tilt-up-warehouse-crew.png";
 import fleet from "../assets/photos/12-branded-fleet-tool-trailer.png";
 import walkthrough from "../assets/photos/03-tenant-improvement-walkthrough.png";
 import glass from "../assets/photos/09-glass-partition-installation.png";
+import illuminateBar from "../assets/photos/projects/illuminate-community-church/illuminate-bar-kitchen.jpg";
+import illuminateLounge from "../assets/photos/projects/illuminate-community-church/illuminate-lounge.jpg";
 
 interface Project {
   image: ImageMetadata;
   alt: string;
   title: string;
-  location: string;
+  href?: string;
 }
 
 const projects: Project[] = [
   {
     image: multiFamily,
-    alt: "Trinity Build Co. team at a multi-family development under construction in Phoenix",
+    alt: "Multi-family development under construction",
     title: "Multi-Family Developments",
-    location: "Phoenix, AZ",
+    href: "/industries/multi-family-developments",
   },
   {
     image: apartments,
-    alt: "Trinity Build Co. team overseeing an apartment community under construction in Phoenix",
+    alt: "Apartment community under construction",
     title: "Apartment Communities",
-    location: "Phoenix, AZ",
+    href: "/industries/apartment-communities",
   },
   {
     image: mixedUse,
-    alt: "Trinity Build Co. team at a mixed-use development under construction in Phoenix",
+    alt: "Mixed-use development under construction",
     title: "Mixed-Use Developments",
-    location: "Phoenix, AZ",
+    href: "/industries/mixed-use-developments",
   },
   {
     image: office,
-    alt: "Trinity Build Co. team at a commercial office building jobsite in Phoenix",
+    alt: "Commercial office construction site",
     title: "Office Buildings",
-    location: "Phoenix, AZ",
+    href: "/industries/office-buildings",
   },
   {
     image: campus,
-    alt: "Trinity Build Co. team at a commercial campus under construction in Phoenix",
+    alt: "Commercial campus under construction",
     title: "Commercial Campuses",
-    location: "Phoenix, AZ",
+    href: "/industries/commercial-campuses",
   },
   {
     image: medical,
-    alt: "Medical tenant-improvement framing in progress",
+    alt: "Medical tenant-improvement framing",
     title: "Medical",
-    location: "Phoenix, AZ",
   },
   {
     image: warehouse,
-    alt: "Tilt-up warehouse construction crew on site",
+    alt: "Tilt-up warehouse construction site",
     title: "Industrial & Warehouse",
-    location: "Phoenix, AZ",
   },
   {
     image: fleet,
-    alt: "Trinity Build Co. branded fleet and tool trailer at a retail jobsite",
+    alt: "Construction vehicles and tool trailer",
     title: "Retail",
-    location: "Phoenix, AZ",
   },
   {
     image: walkthrough,
-    alt: "Tenant improvement walkthrough with the project team",
+    alt: "Walkthrough inside a tenant-improvement space",
     title: "Tenant Improvement",
-    location: "Phoenix, AZ",
   },
   {
     image: glass,
-    alt: "Glass partition installation in a corporate office buildout",
+    alt: "Glass partition installation in an office buildout",
     title: "Office Interiors",
-    location: "Phoenix, AZ",
   },
 ];
 ---
 
 <Base
-  title="Portfolio — Trinity Build Co."
-  description="Representative imagery for the commercial project types Trinity Build Co. pursues across Arizona, including multi-family, mixed-use, offices, and campuses."
+  title="Featured Commercial Projects | Trinity Build Co."
+  description="Explore Trinity Build Co. commercial projects and the construction sectors the company serves across Arizona."
+  ogImage={illuminateBar.src}
 >
   <Nav active="portfolio" />
   <main id="main-content">
     <PageHero
-      eyebrow="Commercial Focus"
-      title="Project types we build."
-      lede="Representative imagery for the ground-up commercial construction and tenant-improvement work we pursue across Arizona."
+      eyebrow="Featured Projects"
+      title="Spaces built to work—and bring people together."
+      titleMaxWidth="1040px"
     />
+
+    <section class="featured-project">
+      <div class="container">
+        <a
+          href="/portfolio/illuminate-community-church"
+          class="featured-project-card"
+          aria-label="View the Illuminate Community Church renovation case study"
+          data-reveal
+        >
+          <div class="featured-project-copy">
+            <span class="featured-project-kicker">Project Spotlight</span>
+            <h2>Illuminate Community Church</h2>
+            <p>
+              A high-end Scottsdale church renovation shaped around hospitality and connection,
+              with a custom café bar, full kitchen, gathering spaces, meeting rooms, and refined
+              restrooms.
+            </p>
+            <span class="featured-project-link">View Case Study →</span>
+          </div>
+          <div class="featured-project-media">
+            <Image
+              src={illuminateBar}
+              alt="Custom patterned-tile café bar at Illuminate Community Church"
+              widths={[560, 800, 1200]}
+              sizes="(min-width: 900px) 50vw, 100vw"
+              quality={78}
+              loading="eager"
+              class="featured-project-img"
+            />
+            <div class="featured-project-image-label">Scottsdale, AZ · Church Renovation</div>
+          </div>
+        </a>
+        <div class="featured-project-secondary" data-reveal>
+          <Image
+            src={illuminateLounge}
+            alt="Connect lounge inside Illuminate Community Church"
+            widths={[480, 800, 1200]}
+            sizes="(min-width: 760px) 44vw, 100vw"
+            quality={75}
+            loading="lazy"
+          />
+          <div>
+            <span>Completed 2024</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="grid-section">
       <div class="container">
+        <div class="capability-head" data-reveal>
+          <div class="eyebrow"><span>Commercial Capabilities</span></div>
+          <h2>Project types we are built to deliver.</h2>
+        </div>
         <div class="project-grid">
           {
             projects.map((project) => (
@@ -114,17 +163,20 @@ const projects: Project[] = [
                   class="project-img"
                 />
                 <div class="project-caption">
-                  <span class="caption-title">{project.title}</span>
-                  <span class="caption-loc">{project.location}</span>
+                  {
+                    project.href ? (
+                      <a class="caption-title caption-title--link" href={project.href}>
+                        {project.title}
+                      </a>
+                    ) : (
+                      <span class="caption-title">{project.title}</span>
+                    )
+                  }
                 </div>
               </div>
             ))
           }
         </div>
-        <p class="grid-note">
-          Representative imagery is shown while Trinity Build Co.'s commercial project portfolio is
-          being documented.
-        </p>
       </div>
     </section>
   </main>
@@ -132,9 +184,157 @@ const projects: Project[] = [
 </Base>
 
 <style>
+  .featured-project {
+    background: var(--color-ink);
+    padding: 0 0 clamp(76px, 9vw, 112px);
+  }
+
+  .featured-project-card {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    overflow: hidden;
+    border: 1px solid rgba(200, 161, 90, 0.4);
+    color: inherit;
+    text-decoration: none;
+    background: linear-gradient(130deg, #171512, #0d0d0d 58%);
+    transition: border-color 0.25s;
+  }
+
+  .featured-project-card:hover {
+    border-color: var(--color-gold);
+  }
+
+  .featured-project-card:focus-visible {
+    outline: 2px solid var(--color-gold-light);
+    outline-offset: 5px;
+  }
+
+  .featured-project-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(36px, 5vw, 64px);
+  }
+
+  .featured-project-kicker {
+    color: var(--color-gold);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    line-height: 1.5;
+    text-transform: uppercase;
+  }
+
+  .featured-project-copy h2,
+  .capability-head h2 {
+    margin: 18px 0 0;
+    font-size: clamp(30px, 4vw, 50px);
+    font-weight: 750;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  .featured-project-copy p {
+    max-width: 520px;
+    margin: 22px 0 0;
+    color: var(--color-dust-muted);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .featured-project-link {
+    margin-top: 30px;
+    color: var(--color-gold-light);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+  }
+
+  .featured-project-media {
+    position: relative;
+    min-height: 470px;
+    overflow: hidden;
+    background: #171512;
+  }
+
+  .featured-project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .featured-project-card:hover .featured-project-img {
+    transform: scale(1.025);
+  }
+
+  .featured-project-media::after {
+    content: "";
+    position: absolute;
+    inset: 55% 0 0;
+    background: linear-gradient(transparent, rgba(5, 5, 5, 0.72));
+  }
+
+  .featured-project-image-label {
+    position: absolute;
+    z-index: 1;
+    right: 26px;
+    bottom: 24px;
+    left: 26px;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .featured-project-secondary {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.38fr) minmax(0, 0.62fr);
+    align-items: center;
+    gap: clamp(28px, 5vw, 64px);
+    margin-top: 22px;
+    padding: 22px;
+    border: 1px solid var(--color-coal-border);
+  }
+
+  .featured-project-secondary :global(img) {
+    width: 100%;
+    max-height: 230px;
+    object-fit: cover;
+  }
+
+  .featured-project-secondary span {
+    color: var(--color-gold);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
   .grid-section {
     background: #ffffff;
     padding: clamp(72px, 9vw, 100px) 0 var(--section-pad);
+  }
+
+  .capability-head {
+    max-width: 780px;
+    margin-bottom: 54px;
+    color: var(--color-ink);
+  }
+
+  .capability-head .eyebrow {
+    margin-bottom: 20px;
+  }
+
+  .capability-head .eyebrow span {
+    color: var(--color-gold-dark);
+  }
+
+  .capability-head h2 {
+    margin-top: 0;
   }
 
   .project-grid {
@@ -166,29 +366,38 @@ const projects: Project[] = [
     color: var(--color-ink);
   }
 
-  .caption-loc {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--color-caption);
+  .caption-title--link {
+    text-decoration-color: var(--color-gold);
+    text-underline-offset: 5px;
+    text-decoration-thickness: 1px;
   }
 
-  .grid-note {
-    margin: 56px 0 0;
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--color-caption);
-    text-align: center;
+  .caption-title--link:hover {
+    color: var(--color-sage-dark);
   }
 
   @media (max-width: 759px) {
+    .featured-project-card,
+    .featured-project-secondary {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-project-media {
+      min-height: 320px;
+    }
+
     .project-grid {
       grid-template-columns: 1fr;
     }
 
     .project-img {
       height: clamp(240px, 56vw, 420px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .featured-project-img {
+      transition: none;
     }
   }
 </style>

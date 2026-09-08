@@ -1,0 +1,23 @@
+---
+import ServiceDetailPage from "../../components/ServiceDetailPage.astro";
+import { serviceBySlug, servicePages, type ServicePage } from "../../data/servicePages";
+
+export function getStaticPaths() {
+  return servicePages.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+interface Props {
+  service: ServicePage;
+}
+
+const { service } = Astro.props;
+const relatedServices = service.relatedSlugs.flatMap((slug) => {
+  const related = serviceBySlug.get(slug);
+  return related ? [{ title: related.title, href: `/services/${related.slug}` }] : [];
+});
+---
+
+<ServiceDetailPage service={service} relatedServices={relatedServices} />

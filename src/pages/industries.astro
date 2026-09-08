@@ -28,7 +28,7 @@ const priorityIndustries: PriorityIndustry[] = [
     title: "Multi-Family Developments",
     copy: "Ground-up communities planned around repeatable quality, coordinated unit delivery, and dependable turnover schedules.",
     image: multiFamilyPhoto,
-    alt: "Trinity Build Co. team at a branded multi-family development jobsite in Phoenix",
+    alt: "Multi-family development under construction",
     href: "/industries/multi-family-developments",
   },
   {
@@ -36,7 +36,7 @@ const priorityIndustries: PriorityIndustry[] = [
     title: "Apartment Communities",
     copy: "Apartment projects managed from sitework through amenities and punch, with disciplined sequencing across every building.",
     image: apartmentPhoto,
-    alt: "Trinity Build Co. team overseeing an apartment community under construction in Phoenix",
+    alt: "Apartment community under construction",
     href: "/industries/apartment-communities",
   },
   {
@@ -44,21 +44,24 @@ const priorityIndustries: PriorityIndustry[] = [
     title: "Mixed-Use Developments",
     copy: "Complex residential, retail, and office programs coordinated as one build with aligned budgets, milestones, and stakeholders.",
     image: mixedUsePhoto,
-    alt: "Trinity Build Co. team at a mixed-use development under construction in Phoenix",
+    alt: "Mixed-use development under construction",
+    href: "/industries/mixed-use-developments",
   },
   {
     id: "office-buildings",
     title: "Office Buildings",
     copy: "Ground-up offices, corporate environments, and professional buildouts delivered for long-term performance and flexibility.",
     image: officePhoto,
-    alt: "Trinity Build Co. team at a commercial office building jobsite in Phoenix",
+    alt: "Commercial office construction site",
+    href: "/industries/office-buildings",
   },
   {
     id: "commercial-campuses",
     title: "Commercial Campuses",
     copy: "Multi-building commercial sites coordinated across infrastructure, shared amenities, phased occupancy, and future growth.",
     image: campusPhoto,
-    alt: "Trinity Build Co. team at a commercial campus under construction in Phoenix",
+    alt: "Commercial campus under construction",
+    href: "/industries/commercial-campuses",
   },
 ];
 
@@ -100,7 +103,7 @@ const additionalIndustries = [
 
 <Base
   title="Industries — Trinity Build Co."
-  description="Commercial construction for multi-family developments, apartment communities, mixed-use developments, office buildings, commercial campuses, and other sectors across Arizona."
+  description="Commercial construction for multi-family, apartments, mixed-use, offices, campuses, medical, warehouse, retail, and other Arizona sectors."
 >
   <Nav active="industries" />
   <main id="main-content">
@@ -112,7 +115,7 @@ const additionalIndustries = [
 
     <ImageBand
       image={bandPhoto}
-      alt="Trinity Build Co. crew at a commercial warehouse loading dock"
+      alt="Commercial warehouse loading dock"
       height="clamp(300px, 38vw, 480px)"
       gradient="linear-gradient(180deg, rgba(13,13,13,0.5) 0%, rgba(13,13,13,0.12) 42%, rgba(13,13,13,0.66) 100%)"
       caption="From loading docks to lobbies — the range to build it, the focus to build it right."
@@ -127,8 +130,8 @@ const additionalIndustries = [
             <h2 class="section-title priority-title">Built for Arizona's growth.</h2>
           </div>
           <p>
-            Representative imagery of the commercial work Trinity Build Co. is positioned to plan,
-            manage, and deliver throughout the Phoenix market.
+            Commercial sectors Trinity Build Co. is positioned to plan, manage, and deliver
+            throughout the Phoenix market.
           </p>
         </div>
         <div class="priority-grid">
@@ -209,6 +212,11 @@ const additionalIndustries = [
   .priority-eyebrow,
   .additional-eyebrow {
     margin-bottom: 24px;
+  }
+
+  .priority-eyebrow span,
+  .additional-eyebrow span {
+    color: var(--color-gold-dark);
   }
 
   .priority-title,

@@ -4,14 +4,21 @@ import type { ImageMetadata } from "astro";
 import Base from "../layouts/Base.astro";
 import Nav from "./Nav.astro";
 import Footer from "./Footer.astro";
+import { business } from "../config";
 
 interface DetailItem {
   title: string;
   copy: string;
 }
 
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
 interface Props {
   title: string;
+  seoTitle?: string;
   seoDescription: string;
   eyebrow: string;
   lede: string;
@@ -30,10 +37,12 @@ interface Props {
   deliveryTitle: string;
   deliveryCopy: string;
   deliveryItems: DetailItem[];
+  faqs: FAQItem[];
 }
 
 const {
   title,
+  seoTitle = `${title} Construction | Trinity Build Co.`,
   seoDescription,
   eyebrow,
   lede,
@@ -52,21 +61,80 @@ const {
   deliveryTitle,
   deliveryCopy,
   deliveryItems,
+  faqs,
 } = Astro.props;
+
+const siteURL = Astro.site?.href ?? business.url;
+const canonical = new URL(Astro.url.pathname, siteURL).href;
+const industryServiceName = `${title} Construction`;
+const structuredData = [
+  {
+    "@type": "Service",
+    "@id": `${canonical}#service`,
+    name: industryServiceName,
+    serviceType: industryServiceName,
+    description: seoDescription,
+    url: canonical,
+    provider: { "@id": `${siteURL}#organization` },
+    areaServed: business.areaServed.map((name) => ({ "@type": "Place", name })),
+  },
+  {
+    "@type": "BreadcrumbList",
+    "@id": `${canonical}#breadcrumbs`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteURL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Industries",
+        item: new URL("/industries", siteURL).href,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: title,
+        item: canonical,
+      },
+    ],
+  },
+  {
+    "@type": "FAQPage",
+    "@id": `${canonical}#faqs`,
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  },
+];
 ---
 
-<Base title={`${title} - Trinity Build Co.`} description={seoDescription}>
+<Base
+  title={seoTitle}
+  description={seoDescription}
+  ogImage={heroImage.src}
+  structuredData={structuredData}
+>
   <Nav active="industries" />
   <main id="main-content">
     <section class="sector-hero">
       <Image
         src={heroImage}
         alt={heroAlt}
-        widths={[768, 1280, 1920]}
+        widths={[480, 768, 1280, 1920]}
         sizes="100vw"
         loading="eager"
         fetchpriority="high"
-        quality={76}
+        decoding="sync"
+        quality={68}
         class="sector-hero-img"
         style={`object-position: ${heroPosition}`}
       />
@@ -77,7 +145,7 @@ const {
         <h1 class="page-title sector-title">{title}</h1>
         <p class="sector-lede">{lede}</p>
         <div class="hero-actions">
-          <a href="/contact" class="btn btn--sage">Start Your Project</a>
+          <a href="/contact" class="btn btn--sage" data-analytics-cta="start_project" data-analytics-placement="industry_hero">Start Your Project</a>
           <a href="/industries" class="btn btn--outline">View All Industries</a>
         </div>
       </div>
@@ -119,9 +187,9 @@ const {
       <Image
         src={supportImage}
         alt={supportAlt}
-        widths={[768, 1280, 1920]}
+        widths={[480, 768, 1280, 1920]}
         sizes="100vw"
-        quality={76}
+        quality={68}
         class="support-img"
         style={`object-position: ${supportPosition}`}
       />
@@ -153,6 +221,44 @@ const {
             ))
           }
         </div>
+      </div>
+    </section>
+
+    <section class="faqs" aria-labelledby="industry-faq-title">
+      <div class="container faq-grid">
+        <div data-reveal>
+          <div class="eyebrow faq-eyebrow"><span>Common Questions</span></div>
+          <h2 id="industry-faq-title" class="section-title faq-title">Planning for {title.toLowerCase()}.</h2>
+          <p class="faq-intro">
+            Project-specific answers depend on the documents, delivery method, contracts,
+            jurisdiction, site conditions, and selected scope.
+          </p>
+        </div>
+        <div class="faq-list">
+          {
+            faqs.map((faq, index) => (
+              <details class="faq-item" data-reveal open={index === 0}>
+                <summary>{faq.question}</summary>
+                <p>{faq.answer}</p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="related-services" aria-labelledby="related-services-title">
+      <div class="container related-services-inner">
+        <div>
+          <div class="eyebrow related-eyebrow"><span>Related Services</span></div>
+          <h2 id="related-services-title" class="section-title related-title">Plan the next step.</h2>
+        </div>
+        <nav class="related-links" aria-label="Related commercial construction services">
+          <a href="/services/preconstruction">Preconstruction</a>
+          <a href="/services/construction-management">Construction Management</a>
+          <a href="/services/design-build">Design-Build</a>
+          <a href="/services/ground-up-commercial-construction">Ground-Up Construction</a>
+        </nav>
       </div>
     </section>
   </main>
@@ -247,12 +353,21 @@ const {
 
   .intro-eyebrow,
   .scope-eyebrow,
-  .delivery-eyebrow {
+  .delivery-eyebrow,
+  .faq-eyebrow {
     margin-bottom: 24px;
   }
 
+  .intro-eyebrow span,
+  .scope-eyebrow span,
+  .faq-eyebrow span,
+  .related-eyebrow span {
+    color: var(--color-gold-dark);
+  }
+
   .intro-title,
-  .scope-title {
+  .scope-title,
+  .faq-title {
     color: var(--color-ink);
   }
 
@@ -284,6 +399,10 @@ const {
     min-height: 220px;
     background: #ffffff;
     padding: 36px 32px;
+  }
+
+  .scope-card .num {
+    color: var(--color-gold-dark);
   }
 
   .scope-card h3 {
@@ -416,6 +535,120 @@ const {
     color: var(--color-dust-muted);
   }
 
+  .faqs {
+    background: var(--color-cream);
+    padding: var(--section-pad) 0;
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.82fr) minmax(360px, 1.18fr);
+    gap: clamp(48px, 7vw, 92px);
+    align-items: start;
+  }
+
+  .faq-intro {
+    max-width: 440px;
+    margin: 24px 0 0;
+    color: var(--color-stone-muted);
+    font-size: 15px;
+    line-height: 1.72;
+  }
+
+  .faq-list {
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .faq-item {
+    border-top: 1px solid var(--color-line);
+  }
+
+  .faq-item summary {
+    position: relative;
+    padding: 24px 42px 24px 0;
+    color: var(--color-ink);
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.45;
+    list-style: none;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    top: 22px;
+    right: 0;
+    color: var(--color-gold-dark);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .faq-item[open] summary::after {
+    content: "−";
+  }
+
+  .faq-item p {
+    margin: -2px 0 26px;
+    padding-right: 30px;
+    color: var(--color-stone);
+    font-size: 15px;
+    line-height: 1.76;
+  }
+
+  .related-services {
+    background: #ffffff;
+    padding: clamp(64px, 8vw, 88px) 0;
+  }
+
+  .related-services-inner {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.75fr) minmax(320px, 1.25fr);
+    gap: clamp(42px, 7vw, 88px);
+    align-items: start;
+  }
+
+  .related-eyebrow {
+    margin-bottom: 22px;
+  }
+
+  .related-title {
+    color: var(--color-ink);
+  }
+
+  .related-links {
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .related-links a {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 0;
+    border-top: 1px solid var(--color-line);
+    color: var(--color-ink);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .related-links a::after {
+    content: "→";
+    color: var(--color-gold);
+  }
+
+  .related-links a:hover {
+    color: var(--color-sage-dark);
+  }
+
   @media (max-width: 760px) {
     .sector-hero {
       min-height: 620px;
@@ -443,7 +676,9 @@ const {
     }
 
     .intro-grid,
-    .delivery-grid {
+    .delivery-grid,
+    .faq-grid,
+    .related-services-inner {
       grid-template-columns: 1fr;
       gap: 42px;
     }

@@ -11,14 +11,13 @@ import sitePhoto from "../assets/photos/20-site-entrance-fencing.png";
 const contactRows = [
   { label: "Phone", value: business.phone, href: business.phoneHref },
   { label: "Email", value: business.email, href: `mailto:${business.email}` },
-  { label: "Office", value: business.addressLabel },
-  { label: "License", value: business.rocLicense },
+  { label: "License", value: business.rocLicense, href: business.rocLicenseUrl },
   { label: "Careers", value: business.careersEmail, href: `mailto:${business.careersEmail}` },
 ];
 ---
 
 <Base
-  title="Contact — Trinity Build Co."
+  title="Contact a Phoenix General Contractor | Trinity Build Co."
   description="Tell us about your project and a member of our leadership team will respond within one business day. Phoenix, Arizona commercial general contractor."
 >
   <Nav active="none" />
@@ -34,10 +33,11 @@ const contactRows = [
 
         <div class="contact-grid">
           <div data-reveal>
+            <h2 class="contact-section-title">Contact Trinity Build Co.</h2>
             <ContactRows rows={contactRows} large />
             <Image
               src={sitePhoto}
-              alt="Trinity Build Co. site entrance with branded fencing"
+              alt="Construction site entrance with perimeter fencing"
               widths={[480, 800, 1200]}
               sizes="(min-width: 900px) 48vw, 100vw"
               quality={75}
@@ -45,7 +45,8 @@ const contactRows = [
             />
           </div>
           <div data-reveal>
-            <ContactForm rows={6} />
+            <h2 class="contact-section-title">Tell us about your project.</h2>
+            <ContactForm rows={6} location="contact_page" />
           </div>
         </div>
       </div>
@@ -82,6 +83,16 @@ const contactRows = [
     gap: 80px;
     align-items: start;
     margin-top: 80px;
+  }
+
+  .contact-section-title {
+    margin: 0 0 28px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.35;
+    text-transform: uppercase;
   }
 
   .contact-img {

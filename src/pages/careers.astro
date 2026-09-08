@@ -39,7 +39,7 @@ const applyHref = (role: string) =>
 ---
 
 <Base
-  title="Careers — Trinity Build Co."
+  title="Construction Careers in Phoenix | Trinity Build Co."
   description="Build your career at Trinity Build Co. — real ownership, growth and mentorship, and a team that has your back. Open roles in Phoenix, Arizona."
 >
   <Nav active="none" />
@@ -67,7 +67,7 @@ const applyHref = (role: string) =>
           </div>
           <Image
             src={teamPhoto}
-            alt="Trinity Build Co. team reviewing plans on a jobsite"
+            alt="Construction team reviewing plans"
             widths={[480, 800, 1200]}
             sizes="(min-width: 900px) 48vw, 100vw"
             quality={75}
@@ -91,7 +91,7 @@ const applyHref = (role: string) =>
 
     <ImageBand
       image={bandPhoto}
-      alt="Trinity Build Co. branded cap with tools and materials on site"
+      alt="Work cap beside construction tools and building materials"
       height="clamp(280px, 34vw, 440px)"
       gradient="linear-gradient(180deg, rgba(13,13,13,0.5) 0%, rgba(13,13,13,0.12) 44%, rgba(13,13,13,0.66) 100%)"
       caption="The values on the wall are the values on the site."
@@ -142,6 +142,11 @@ const applyHref = (role: string) =>
     margin-bottom: 24px;
   }
 
+  .offer-eyebrow span,
+  .roles-eyebrow span {
+    color: var(--color-gold-dark);
+  }
+
   .offer-title {
     color: var(--color-ink);
   }
@@ -173,6 +178,10 @@ const applyHref = (role: string) =>
   .perk-card {
     background: #ffffff;
     padding: 38px 34px;
+  }
+
+  .perk-card .num {
+    color: var(--color-gold-dark);
   }
 
   .perk-card h3 {
@@ -245,7 +254,7 @@ const applyHref = (role: string) =>
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--color-caption);
+    color: var(--color-stone-muted);
   }
 
   .role-apply {
@@ -253,7 +262,7 @@ const applyHref = (role: string) =>
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--color-gold);
+    color: var(--color-gold-dark);
   }
 
   @media (max-width: 560px) {

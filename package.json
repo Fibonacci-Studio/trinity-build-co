@@ -17,9 +17,13 @@
     "@astrojs/vercel": "^10.0.2",
     "@fontsource-variable/archivo": "^5.2.8",
     "@tailwindcss/vite": "4.2.2",
+    "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
-    "astro": "6.0.8",
+    "astro": "^6.4.8",
     "resend": "^6.9.4",
     "tailwindcss": "4.2.2"
+  },
+  "devDependencies": {
+    "vite": "^7.3.6"
   }
 }

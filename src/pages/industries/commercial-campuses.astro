@@ -1,0 +1,89 @@
+---
+import IndustryDetailPage from "../../components/IndustryDetailPage.astro";
+import heroImage from "../../assets/photos/work-areas/05-commercial-campuses.png";
+import supportImage from "../../assets/photos/18-mechanical-room-inspection.png";
+
+const capabilities = [
+  {
+    title: "Program-Level Preconstruction",
+    copy: "Organize building scopes, shared infrastructure, phasing, budget structure, milestone assumptions, procurement needs, and decision responsibilities across the campus program.",
+  },
+  {
+    title: "Site & Campus Infrastructure",
+    copy: "Coordinate grading, drainage, utilities, fire access, roads, parking, lighting, landscape, pedestrian routes, and connections serving multiple buildings.",
+  },
+  {
+    title: "Multi-Building Sequencing",
+    copy: "Plan building starts, trade flow, shared equipment, inspections, material routes, and turnover milestones around practical site access and program priorities.",
+  },
+  {
+    title: "Shared Amenities & Public Areas",
+    copy: "Integrate common entries, gathering areas, landscape, circulation, signage, security, and other shared spaces into the campus schedule and quality plan.",
+  },
+  {
+    title: "Occupancy & Future Growth",
+    copy: "Account for phased operations, completed zones, temporary conditions, utility capacity, expansion interfaces, and closeout requirements as the site evolves.",
+  },
+];
+
+const deliveryItems = [
+  {
+    title: "Program Schedule",
+    copy: "Building-level schedules roll into one campus view so shared constraints, critical interfaces, inspections, and owner milestones stay visible.",
+  },
+  {
+    title: "Common Quality Standards",
+    copy: "Approved benchmarks, repeated details, first-in-place reviews, and consistent field checks support a coordinated standard across the site.",
+  },
+  {
+    title: "Zone-Based Logistics",
+    copy: "Access, deliveries, workforce flow, public separation, emergency routes, and completed areas are managed as conditions change from phase to phase.",
+  },
+  {
+    title: "Consolidated Reporting",
+    copy: "Ownership receives a connected view of schedule, cost, procurement, decisions, quality, risk, and turnover across the campus rather than isolated building updates.",
+  },
+];
+
+const faqs = [
+  {
+    question: "How are multiple buildings coordinated as one campus program?",
+    answer: "A campus-level plan connects each building schedule to shared roads, utilities, drainage, fire access, parking, landscape, security, public areas, procurement, inspections, and owner milestones. Building-level controls then preserve the detail needed to manage individual scopes and turnover requirements.",
+  },
+  {
+    question: "Can a commercial campus be delivered in phases?",
+    answer: "Campus work can be organized around defined phases when completed areas, active operations, temporary conditions, emergency access, utility service, public separation, inspections, and future tie-ins are addressed in the plan. The approved sequence depends on the site, jurisdiction, contracts, and owner priorities.",
+  },
+  {
+    question: "Why should future expansion be considered during construction planning?",
+    answer: "Early expansion planning can identify utility capacity, access routes, structural or system interfaces, temporary conditions, protection needs, and areas that should remain available for later work. Any future-ready provisions must be specifically designed, documented, priced, approved, and included in the project scope.",
+  },
+];
+---
+
+<IndustryDetailPage
+  title="Commercial Campuses"
+  seoTitle="Commercial Campus Construction Phoenix | Trinity Build Co."
+  seoDescription="Commercial campus construction in Phoenix and across Arizona, coordinating multiple buildings, site infrastructure, shared amenities, phasing, and expansion."
+  eyebrow="Commercial Campus Construction"
+  lede="Program-level planning and field coordination for multi-building commercial sites with shared infrastructure, amenities, occupancy goals, and future phases."
+  heroImage={heroImage}
+  heroAlt="Commercial campus under construction"
+  heroPosition="center 50%"
+  introTitle="Multiple buildings, one connected program."
+  introParagraphs={[
+    "Commercial campuses operate as systems. Buildings depend on shared roads, utilities, drainage, life-safety access, parking, landscape, security, public spaces, and operational milestones. A decision in one phase can affect access, capacity, sequencing, or occupancy elsewhere on the site.",
+    "Trinity Build Co. coordinates that work at both the program and building level. Campus-wide planning keeps shared conditions visible, while building-level controls give each scope the detail required for procurement, field execution, inspections, quality, and turnover.",
+  ]}
+  capabilities={capabilities}
+  supportImage={supportImage}
+  supportAlt="Mechanical room inspection"
+  supportPosition="center 52%"
+  supportEyebrow="Shared Systems"
+  supportTitle="Campus infrastructure connects every phase."
+  supportCopy="Utility capacity, controls, access, drainage, fire protection, technology pathways, and maintainability should be coordinated with the same care as the individual buildings they support."
+  deliveryTitle="Manage the campus and each building."
+  deliveryCopy="A useful campus plan shows the full program without hiding building-level detail, giving ownership a current view of shared risks, phase priorities, and readiness for occupancy."
+  deliveryItems={deliveryItems}
+  faqs={faqs}
+/>

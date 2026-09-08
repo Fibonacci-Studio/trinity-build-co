@@ -1,9 +1,11 @@
 import type { APIRoute } from 'astro';
 
 // Proposal-request endpoint. Validates + rate-limits every submission, then
-// delivers the lead via Resend when RESEND_API_KEY and CONTACT_TO_EMAIL are
-// configured. Without those env vars it logs the lead and still returns
-// success so the site works end-to-end from day one.
+// delivers the lead via Resend when CONTACT_RESEND_API_KEY (or RESEND_API_KEY)
+// and CONTACT_TO_EMAIL are configured. CONTACT_TO_EMAIL may contain a
+// comma-separated recipient list.
+// Without those env vars it returns an explicit service error;
+// the form keeps a direct email link visible as a reliable fallback.
 
 export const prerender = false;
 
@@ -13,7 +15,7 @@ const json = (body: Record<string, unknown>, status = 200) =>
     headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
   });
 
-const isValidEmail = (value: string) => /.+@.+\..+/.test(value);
+const isValidEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
 // Best-effort in-memory rate limit (per warm instance).
 const RATE_LIMIT = 5;
@@ -47,6 +49,13 @@ const escapeHtml = (value: string) =>
 export const GET: APIRoute = async () => json({ ok: false, error: 'Method not allowed.' }, 405);
 
 export const POST: APIRoute = async ({ request }) => {
+  const startedAt = Date.now();
+  const requestId = request.headers.get('x-vercel-id') || 'local';
+
+  console.log(
+    JSON.stringify({ level: 'info', msg: 'contact_request_started', route: '/api/contact', requestId })
+  );
+
   try {
     const origin = request.headers.get('origin');
     if (origin) {
@@ -80,7 +89,7 @@ export const POST: APIRoute = async ({ request }) => {
     const message = String(data.message || '').trim();
     const botField = String(data['bot-field'] || '').trim();
 
-    if (botField) return json({ ok: true }); // honeypot tripped — pretend success
+    if (botField) return json({ ok: true, ignored: true }); // honeypot tripped — pretend success
     if (!name || !email) return json({ ok: false, error: 'Please fill in your name and email.' }, 400);
     if (!isValidEmail(email)) return json({ ok: false, error: 'Please enter a valid email address.' }, 400);
     if (type && !(type in PROJECT_TYPES)) return json({ ok: false, error: 'Invalid project type.' }, 400);
@@ -94,50 +103,91 @@ export const POST: APIRoute = async ({ request }) => {
     ].some(Boolean);
     if (tooLong) return json({ ok: false, error: 'One or more fields are too long.' }, 400);
 
-    const apiKey = import.meta.env.RESEND_API_KEY;
-    const toEmail = import.meta.env.CONTACT_TO_EMAIL;
+    const apiKey = import.meta.env.CONTACT_RESEND_API_KEY || import.meta.env.RESEND_API_KEY;
+    const toEmails = String(import.meta.env.CONTACT_TO_EMAIL || '')
+      .split(',')
+      .map((address) => address.trim())
+      .filter(Boolean);
 
-    if (apiKey && toEmail) {
-      const { Resend } = await import('resend');
-      const resend = new Resend(apiKey);
-      const rows = [
-        ['Name', name],
-        ['Company', company || '—'],
-        ['Email', email],
-        ['Phone', phone || '—'],
-        ['Project type', PROJECT_TYPES[type] || '—'],
-        ['Message', message || '—'],
-      ]
-        .map(
-          ([label, value]) =>
-            `<tr><td style="padding:6px 16px 6px 0;color:#6b6862;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;vertical-align:top">${label}</td><td style="padding:6px 0;font-size:15px;color:#0d0d0d;white-space:pre-wrap">${escapeHtml(String(value))}</td></tr>`
-        )
-        .join('');
-
-      const { error } = await resend.emails.send({
-        from: import.meta.env.CONTACT_FROM_EMAIL || 'Trinity Build Co. <onboarding@resend.dev>',
-        to: [toEmail],
-        replyTo: email,
-        subject: `Proposal request — ${name}${company ? ` (${company})` : ''}`,
-        html: `<h2 style="font-size:16px;letter-spacing:0.08em;text-transform:uppercase">New proposal request</h2><table>${rows}</table>`,
-      });
-      if (error) {
-        console.error('Resend error', error);
-        return json({ ok: false, error: 'Something went wrong sending your request.' }, 500);
-      }
-    } else {
-      console.log('[contact] lead received (email delivery not configured):', {
-        name,
-        company,
-        email,
-        phone,
-        type,
-      });
+    if (!apiKey || !toEmails.length || toEmails.some((address) => !isValidEmail(address))) {
+      console.error(
+        JSON.stringify({
+          level: 'error',
+          msg: 'contact_delivery_not_configured',
+          route: '/api/contact',
+          requestId,
+          ms: Date.now() - startedAt,
+        })
+      );
+      return json(
+        {
+          ok: false,
+          error: 'Online requests are temporarily unavailable. Please email slade@trinitybuildco.com directly.',
+        },
+        503
+      );
     }
+
+    const { Resend } = await import('resend');
+    const resend = new Resend(apiKey);
+    const rows = [
+      ['Name', name],
+      ['Company', company || '—'],
+      ['Email', email],
+      ['Phone', phone || '—'],
+      ['Project type', PROJECT_TYPES[type] || '—'],
+      ['Message', message || '—'],
+    ]
+      .map(
+        ([label, value]) =>
+          `<tr><td style="padding:6px 16px 6px 0;color:#6b6862;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;vertical-align:top">${label}</td><td style="padding:6px 0;font-size:15px;color:#0d0d0d;white-space:pre-wrap">${escapeHtml(String(value))}</td></tr>`
+      )
+      .join('');
+
+    const { error } = await resend.emails.send({
+      from: import.meta.env.CONTACT_FROM_EMAIL || 'Trinity Build Co. <onboarding@resend.dev>',
+      to: toEmails,
+      replyTo: email,
+      subject: `Proposal request — ${name}${company ? ` (${company})` : ''}`,
+      html: `<h2 style="font-size:16px;letter-spacing:0.08em;text-transform:uppercase">New proposal request</h2><table>${rows}</table>`,
+    });
+    if (error) {
+      console.error(
+        JSON.stringify({
+          level: 'error',
+          msg: 'contact_delivery_failed',
+          route: '/api/contact',
+          requestId,
+          ms: Date.now() - startedAt,
+          provider: 'resend',
+        })
+      );
+      return json({ ok: false, error: 'Something went wrong sending your request.' }, 500);
+    }
+
+    console.log(
+      JSON.stringify({
+        level: 'info',
+        msg: 'contact_delivery_succeeded',
+        route: '/api/contact',
+        requestId,
+        projectType: PROJECT_TYPES[type] || 'Not specified',
+        ms: Date.now() - startedAt,
+      })
+    );
 
     return json({ ok: true });
   } catch (error) {
-    console.error('Contact form error', error);
+    console.error(
+      JSON.stringify({
+        level: 'error',
+        msg: 'contact_request_failed',
+        route: '/api/contact',
+        requestId,
+        error: error instanceof Error ? error.message : String(error),
+        ms: Date.now() - startedAt,
+      })
+    );
     return json({ ok: false, error: 'Something went wrong sending your request.' }, 500);
   }
 };

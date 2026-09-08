@@ -67,7 +67,7 @@ const qualitySteps = [
           </div>
           <Image
             src={safetyPhoto}
-            alt="Trinity Build Co. crew in a safety huddle on a jobsite"
+            alt="Construction safety huddle"
             widths={[480, 800, 1200]}
             sizes="(min-width: 900px) 48vw, 100vw"
             quality={75}
@@ -136,6 +136,11 @@ const qualitySteps = [
     margin-bottom: 24px;
   }
 
+  .safety-eyebrow span,
+  .quality-eyebrow span {
+    color: var(--color-gold-dark);
+  }
+
   .safety-title {
     color: var(--color-ink);
   }
@@ -167,6 +172,11 @@ const qualitySteps = [
   .pillar-card {
     background: #ffffff;
     padding: 38px 34px;
+  }
+
+  .pillar-card .num,
+  .quality-card .num {
+    color: var(--color-gold-dark);
   }
 
   .pillar-card h3 {

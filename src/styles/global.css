@@ -5,6 +5,7 @@
   --color-ink: #0d0d0d;
   --color-gold: #c8a15a;
   --color-gold-light: #d8b472;
+  --color-gold-dark: #87642b;
   --color-sage: #7f9173;
   --color-sage-light: #95a58a;
   --color-sage-dark: #66775e;
@@ -99,6 +100,13 @@ button {
 
 p {
   text-wrap: pretty;
+}
+
+img,
+picture {
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 /* ── Layout primitives ─────────────────────────────────────────────────────── */
@@ -294,18 +302,4 @@ p {
 .tile-grid--dark {
   background: var(--color-coal-grid);
   border-color: var(--color-coal-grid);
-}
-
-/* ── Scroll reveal (gated on .js-reveal so no-JS users see everything) ─────── */
-.js-reveal [data-reveal] {
-  opacity: 0;
-  transform: translateY(14px);
-  transition:
-    opacity 0.55s ease,
-    transform 0.55s ease;
-}
-
-.js-reveal [data-reveal].is-visible {
-  opacity: 1;
-  transform: none;
 }

@@ -3,12 +3,13 @@ import { business, projectTypes } from "../config";
 
 interface Props {
   rows?: number;
+  location?: string;
 }
 
-const { rows = 5 } = Astro.props;
+const { rows = 5, location = "page" } = Astro.props;
 ---
 
-<div class="form-wrap" data-contact-form data-endpoint={business.formEndpoint}>
+<div class="form-wrap" data-contact-form data-endpoint={business.formEndpoint} data-form-location={location}>
   <form class="contact-form" novalidate>
     <input
       type="text"
@@ -97,6 +98,9 @@ const { rows = 5 } = Astro.props;
     </p>
     <p class="form-error span-2" role="alert" hidden></p>
     <button type="submit" class="btn btn--sage span-2">Request a Proposal</button>
+    <p class="form-direct span-2">
+      Prefer email? <a href={`mailto:${business.email}`}>Email {business.email}</a> directly.
+    </p>
   </form>
 
   <div class="form-success" hidden>
@@ -180,7 +184,7 @@ const { rows = 5 } = Astro.props;
   }
 
   .select-value.is-placeholder {
-    color: var(--color-dust-faint);
+    color: var(--color-dust-muted);
   }
 
   .select-chevron {
@@ -261,6 +265,19 @@ const { rows = 5 } = Astro.props;
     color: #e08f7c;
   }
 
+  .form-direct {
+    margin: -2px 0 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--color-dust-muted);
+    text-align: center;
+  }
+
+  .form-direct a {
+    color: var(--color-sage-light);
+    text-underline-offset: 3px;
+  }
+
   .form-success {
     border: 1px solid var(--color-coal-border);
     padding: 64px 48px;
@@ -314,6 +331,8 @@ const { rows = 5 } = Astro.props;
 </style>
 
 <script>
+  import { track } from "@vercel/analytics";
+
   // ── Custom select (button + listbox), synced to the hidden native select ──
   document.querySelectorAll<HTMLElement>("[data-custom-select]").forEach((field) => {
     const select = field.querySelector<HTMLSelectElement>("select");
@@ -407,6 +426,7 @@ const { rows = 5 } = Astro.props;
     const errorEl = wrap.querySelector<HTMLElement>(".form-error");
     const button = wrap.querySelector<HTMLButtonElement>("button[type=submit]");
     const endpoint = wrap.dataset.endpoint || "/api/contact";
+    const formLocation = wrap.dataset.formLocation || "page";
     if (!form || !success || !button) return;
 
     form.addEventListener("submit", async (event) => {
@@ -427,10 +447,21 @@ const { rows = 5 } = Astro.props;
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
         });
-        const out = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
+        const out = (await res.json().catch(() => ({}))) as {
+          ok?: boolean;
+          ignored?: boolean;
+          error?: string;
+        };
         if (!res.ok || !out.ok) throw new Error(out.error || "Something went wrong.");
         form.hidden = true;
         success.hidden = false;
+        if (!out.ignored) {
+          const projectType = String(payload.type || "not_specified");
+          track("Lead Form Success", {
+            form_location: formLocation,
+            project_type: projectType,
+          });
+        }
       } catch (err) {
         if (errorEl) {
           errorEl.textContent =

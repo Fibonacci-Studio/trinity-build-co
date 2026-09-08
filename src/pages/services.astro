@@ -4,98 +4,13 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import PageHero from "../components/PageHero.astro";
 import ImageBand from "../components/ImageBand.astro";
+import { servicePages } from "../data/servicePages";
 import bandPhoto from "../assets/photos/13-hardhat-plans-detail.png";
-
-const services = [
-  {
-    title: "Commercial General Contracting",
-    copy: "Full-scope delivery of commercial projects — permits, trades, schedule, and budget managed under one roof, with weekly reporting you can act on.",
-    bullets: [
-      "Full project delivery, permit to punch list",
-      "Vetted trade partners, self-performed supervision",
-      "Weekly reporting on cost, schedule, and risk",
-    ],
-  },
-  {
-    title: "Design-Build",
-    copy: "One contract, one accountable team. Architect and builder aligned from day one — faster decisions, fewer change orders, and a budget that holds.",
-    bullets: [
-      "Single point of accountability",
-      "Design and cost developed together",
-      "Compressed delivery timelines",
-    ],
-  },
-  {
-    title: "Construction Management",
-    copy: "Owner-side leadership across every phase — an advocate who protects your budget, schedule, and quality while you stay focused on your business.",
-    bullets: [
-      "Owner's advocate at the table",
-      "Bid leveling and trade prequalification",
-      "Cost and schedule control, fully transparent",
-    ],
-  },
-  {
-    title: "Preconstruction Services",
-    copy: "The phase where projects are won or lost. Long before ground breaks, we align scope, budget, and schedule — solving problems on paper while changes are still cheap, so you commit to your project with real numbers and a real plan.",
-    bullets: [
-      "Planning — feasibility, site logistics, and constructability",
-      "Budget development from concept through GMP",
-      "Scheduling — realistic milestones and long-lead procurement",
-      "Value engineering with documented tradeoffs",
-      "Preconstruction management and permitting support",
-    ],
-  },
-  {
-    title: "Budget Development",
-    copy: "Accurate, transparent budgets built early and reconciled continuously as design evolves — no padded numbers, no surprises at GMP.",
-    bullets: [
-      "Conceptual through GMP estimating",
-      "Line-item transparency",
-      "Continuous design-to-budget reconciliation",
-    ],
-  },
-  {
-    title: "Value Engineering",
-    copy: "Smart alternatives that reduce cost without compromising design intent — documented options with clear tradeoffs, so you decide with full information.",
-    bullets: [
-      "Alternatives that protect design intent",
-      "Lifecycle cost, not just first cost",
-      "Documented options and tradeoffs",
-    ],
-  },
-  {
-    title: "Project Planning",
-    copy: "Realistic schedules with real milestones. Long-lead items procured early, trades coordinated before mobilization, and progress you can verify.",
-    bullets: [
-      "CPM schedules with honest milestones",
-      "Long-lead procurement mapped early",
-      "Trade coordination before mobilization",
-    ],
-  },
-  {
-    title: "Ground-Up Commercial Construction",
-    copy: "New commercial construction from sitework through shell and interiors — sequenced tightly, supervised daily, and built for durability.",
-    bullets: [
-      "Sitework through shell and interiors",
-      "Tight sequencing across all trades",
-      "Built for durability and low operating cost",
-    ],
-  },
-  {
-    title: "Tenant Improvements",
-    copy: "Fast-track interior buildouts that minimize downtime — including occupied-space and after-hours work, coordinated with landlords and property managers.",
-    bullets: [
-      "Occupied-space and after-hours work",
-      "Landlord and PM coordination",
-      "Speed without sacrificing finish quality",
-    ],
-  },
-];
 ---
 
 <Base
-  title="Services — Trinity Build Co."
-  description="Nine core commercial construction services, one accountable team — general contracting, design-build, construction management, preconstruction, and tenant improvements in Phoenix, Arizona."
+  title="Commercial Construction Services | Trinity Build Co."
+  description="Phoenix and Arizona commercial construction services: general contracting, design-build, construction management, preconstruction, and tenant improvements."
 >
   <Nav active="services" />
   <main id="main-content">
@@ -108,7 +23,7 @@ const services = [
 
     <ImageBand
       image={bandPhoto}
-      alt="Trinity Build Co. hardhat resting on construction plans"
+      alt="Hardhat resting on construction plans"
       height="clamp(320px, 42vw, 520px)"
       gradient="linear-gradient(180deg, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0.1) 40%, rgba(13,13,13,0.72) 100%)"
       objectPosition="center 46%"
@@ -119,15 +34,18 @@ const services = [
     <section class="services-detail">
       <div class="container">
         {
-          services.map((service, i) => (
-            <div class="service-row" data-reveal>
+          servicePages.map((service, i) => (
+            <div class="service-row" id={service.id} data-reveal>
               <div class="service-num">{String(i + 1).padStart(2, "0")}</div>
               <div>
-                <h3 class="service-title">{service.title}</h3>
-                <p class="service-copy">{service.copy}</p>
+                <h2 class="service-title">
+                  <a href={`/services/${service.slug}`}>{service.title}</a>
+                </h2>
+                <p class="service-copy">{service.hubCopy}</p>
+                <a class="service-detail-link" href={`/services/${service.slug}`}>View Service Details →</a>
               </div>
               <div class="service-bullets">
-                {service.bullets.map((bullet) => (
+                {service.hubBullets.map((bullet) => (
                   <div class="bullet">
                     <span class="bullet-dash" aria-hidden="true">
                       —
@@ -141,7 +59,7 @@ const services = [
         }
 
         <div class="services-cta">
-          <a href="/contact" class="btn btn--sage">Request a Proposal</a>
+          <a href="/contact" class="btn btn--sage" data-analytics-cta="request_proposal" data-analytics-placement="services_page">Request a Proposal</a>
           <a href="/process" class="btn btn--outline-dark">See How We Work</a>
         </div>
       </div>
@@ -159,6 +77,7 @@ const services = [
   .service-row {
     border-top: 1px solid var(--color-line);
     padding: 46px 0;
+    scroll-margin-top: 112px;
     display: grid;
     grid-template-columns: minmax(70px, 90px) minmax(320px, 1.15fr) minmax(280px, 0.85fr);
     gap: 40px;
@@ -172,7 +91,7 @@ const services = [
     font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.2em;
-    color: var(--color-gold);
+    color: var(--color-gold-dark);
   }
 
   .service-title {
@@ -184,11 +103,35 @@ const services = [
     color: var(--color-ink);
   }
 
+  .service-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .service-title a:hover {
+    color: var(--color-sage-dark);
+  }
+
   .service-copy {
     margin: 0;
     font-size: 16px;
     line-height: 1.75;
     color: var(--color-stone);
+  }
+
+  .service-detail-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--color-sage-dark);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .service-detail-link:hover {
+    color: var(--color-gold-dark);
   }
 
   .service-bullets {

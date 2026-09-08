@@ -1,5 +1,6 @@
 ---
 import "@fontsource-variable/archivo";
+import archivoLatinFont from "@fontsource-variable/archivo/files/archivo-latin-wght-normal.woff2?url";
 import "../styles/global.css";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import { business } from "../config";
@@ -9,6 +10,7 @@ interface Props {
   description?: string;
   ogImage?: string;
   noindex?: boolean;
+  structuredData?: Record<string, unknown>[];
 }
 
 const {
@@ -16,58 +18,46 @@ const {
   description = business.description,
   ogImage = "/og-image.jpg",
   noindex = false,
+  structuredData = [],
 } = Astro.props;
 
 const siteURL = Astro.site?.href ?? business.url;
 const resolvedOgImage = new URL(ogImage, siteURL).href;
 const canonical = new URL(Astro.url.pathname, siteURL).href;
+const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
 const robots = noindex
   ? "noindex, nofollow"
   : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 
+// Keep the global entity graph conservative until leadership claims and official
+// profiles are client-approved. The legal name and ROC number mirror the
+// client-supplied Arizona ROC record; no street address is asserted yet.
+// Page-specific WebPage data is safe because it mirrors the visible document.
+const organizationSchema = {
+  "@type": "GeneralContractor",
+  "@id": `${siteURL}#organization`,
+  name: business.name,
+  legalName: business.legalName,
+  slogan: business.tagline,
+  description: business.description,
+  url: siteURL,
+  logo: new URL("/icon-512.png", siteURL).href,
+  image: resolvedOgImage,
+  telephone: "+16027089986",
+  email: business.email,
+  areaServed: business.areaServed,
+  identifier: {
+    "@type": "PropertyValue",
+    propertyID: "Arizona Registrar of Contractors",
+    value: business.rocLicenseNumber,
+  },
+  ...(business.sameAs.length ? { sameAs: business.sameAs } : {}),
+};
+
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "GeneralContractor",
-      "@id": `${siteURL}#organization`,
-      name: business.name,
-      slogan: business.tagline,
-      description: business.description,
-      url: siteURL,
-      logo: new URL("/icon-512.png", siteURL).href,
-      image: resolvedOgImage,
-      telephone: "+16027089986",
-      email: business.email,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: business.address.street,
-        addressLocality: business.address.locality,
-        addressRegion: business.address.region,
-        postalCode: business.address.postalCode,
-        addressCountry: business.address.country,
-      },
-      areaServed: business.areaServed,
-      founder: {
-        "@type": "Person",
-        name: "Slade Gibson",
-        jobTitle: "President & CEO",
-      },
-      hasCredential: {
-        "@type": "EducationalOccupationalCredential",
-        credentialCategory: "license",
-        name: business.rocLicense,
-        recognizedBy: { "@type": "Organization", name: "Arizona Registrar of Contractors" },
-      },
-      knowsAbout: [
-        "Commercial general contracting",
-        "Design-build",
-        "Construction management",
-        "Preconstruction services",
-        "Ground-up commercial construction",
-        "Tenant improvements",
-      ],
-    },
+    organizationSchema,
     {
       "@type": "WebSite",
       "@id": `${siteURL}#website`,
@@ -77,6 +67,21 @@ const schema = {
       publisher: { "@id": `${siteURL}#organization` },
       inLanguage: "en-US",
     },
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      url: canonical,
+      name: title,
+      description,
+      isPartOf: { "@id": `${siteURL}#website` },
+      about: { "@id": `${siteURL}#organization` },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: resolvedOgImage,
+      },
+      inLanguage: "en-US",
+    },
+    ...structuredData,
   ],
 };
 ---
@@ -88,6 +93,7 @@ const schema = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="robots" content={robots} />
+    {googleSiteVerification && <meta name="google-site-verification" content={googleSiteVerification} />}
     <meta name="format-detection" content="telephone=no" />
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#0D0D0D" />
@@ -96,15 +102,13 @@ const schema = {
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <script is:inline>
-      (function () {
-        try {
-          if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            document.documentElement.classList.add("js-reveal");
-          }
-        } catch (e) {}
-      })();
-    </script>
+    <link
+      rel="preload"
+      href={archivoLatinFont}
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -124,23 +128,46 @@ const schema = {
     <a class="skip-link" href="#main-content">Skip to content</a>
     <slot />
     <script>
-      const root = document.documentElement;
-      if (root.classList.contains("js-reveal") && "IntersectionObserver" in window) {
-        const observer = new IntersectionObserver(
-          (entries, obs) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                obs.unobserve(entry.target);
-              }
-            });
-          },
-          { rootMargin: "0px 0px -8% 0px", threshold: 0.04 }
-        );
-        document.querySelectorAll("[data-reveal]").forEach((el) => observer.observe(el));
-      } else {
-        document.querySelectorAll("[data-reveal]").forEach((el) => el.classList.add("is-visible"));
-      }
+      import { track } from "@vercel/analytics";
+
+      // Conversion events intentionally exclude names, emails, phone numbers,
+      // messages, and other lead data. Custom events require Vercel Pro/Enterprise.
+      const disableImageDragging = () => {
+        document.querySelectorAll("img").forEach((image) => {
+          image.draggable = false;
+        });
+      };
+
+      disableImageDragging();
+      document.addEventListener("astro:page-load", disableImageDragging);
+      document.addEventListener("dragstart", (event) => {
+        if ((event.target as Element | null)?.closest("img, picture")) {
+          event.preventDefault();
+        }
+      });
+
+      document.addEventListener("click", (event) => {
+        const link = (event.target as Element | null)?.closest<HTMLAnchorElement>("a[href]");
+        if (!link) return;
+
+        const href = link.getAttribute("href") || "";
+        const placement =
+          link.dataset.analyticsPlacement ||
+          (link.closest("header") ? "header" : link.closest("footer") ? "footer" : "page");
+
+        if (href.startsWith("tel:")) {
+          track("Phone Click", { placement });
+        } else if (href.startsWith("mailto:")) {
+          track("Email Click", { placement });
+        }
+
+        if (link.dataset.analyticsCta) {
+          track("CTA Click", {
+            placement,
+            cta: link.dataset.analyticsCta,
+          });
+        }
+      });
     </script>
     <SpeedInsights />
   </body>

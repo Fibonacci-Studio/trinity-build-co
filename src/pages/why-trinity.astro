@@ -44,7 +44,7 @@ const differentiators = [
 
 <Base
   title="Why Trinity — Trinity Build Co."
-  description="Eight commitments we make on every project — disciplined preconstruction, financial stewardship, transparent communication, experienced leadership, and quality without compromise."
+  description="Why clients consider Trinity Build Co.: disciplined preconstruction, clear communication, financial stewardship, experienced leadership, and quality."
 >
   <Nav active="why" />
   <main id="main-content">
@@ -62,7 +62,7 @@ const differentiators = [
             differentiators.map((diff, i) => (
               <div class="diff-card" data-reveal>
                 <div class="num">{String(i + 1).padStart(2, "0")}</div>
-                <h3>{diff.title}</h3>
+                <h2>{diff.title}</h2>
                 <p>{diff.copy}</p>
               </div>
             ))
@@ -74,8 +74,8 @@ const differentiators = [
     <section class="brand-promise">
       <Image
         src={promisePhoto}
-        alt="Trinity Build Co. team inspecting a mechanical room"
-        widths={[768, 1280, 1920]}
+        alt="Mechanical room inspection"
+        widths={[480, 768, 1280, 1920]}
         sizes="100vw"
         quality={72}
         class="promise-img"
@@ -109,7 +109,11 @@ const differentiators = [
     padding: 46px 44px;
   }
 
-  .diff-card h3 {
+  .diff-card .num {
+    color: var(--color-gold-dark);
+  }
+
+  .diff-card h2 {
     margin: 16px 0 12px;
     font-size: 18px;
     font-weight: 700;

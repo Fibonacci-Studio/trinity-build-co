@@ -5,30 +5,34 @@
 
 export const business = {
   name: "Trinity Build Co.",
-  legalName: "Trinity Build Co.",
+  legalName: "Trinity Build Co LLC",
   tagline: "Building Excellence. Delivering Trust.",
   description:
     "Phoenix-based commercial general contractor delivering ground-up construction, tenant improvements, and design-build projects across Arizona.",
   url: "https://trinitybuildco.com",
 
-  // Real business details, shared with Trinity Homes AZ (same ownership).
+  // Currently published business details. Confirm each item in docs/seo/client-fact-and-project-intake.md
+  // before expanding it in copy, profiles, or structured data.
   phone: "602.708.9986",
   phoneHref: "tel:6027089986",
   email: "slade@trinitybuildco.com",
-  // Applications route to the main inbox until a dedicated careers address exists.
-  careersEmail: "info@trinityhomesaz.com",
+  // Applications route to the main company inbox until a dedicated careers address exists.
+  careersEmail: "slade@trinitybuildco.com",
   domainLabel: "trinitybuildco.com",
-  rocLicense: "Arizona ROC License #343291",
+  rocLicenseNumber: "365726",
+  rocClassification: "KB-1 Dual Building Contractor",
+  rocLicense: "Arizona ROC #365726 · KB-1 Dual Building Contractor",
+  rocLicenseUrl:
+    "https://azroc.my.site.com/AZRoc/s/contractor-search?licenseId=a0ocs00000N0QzlAAF",
+  legalDisclosure:
+    "Trinity Build Co LLC · Arizona ROC #365726 · KB-1 Dual Building Contractor",
 
-  address: {
-    street: "15455 N Greenway Hayden Loop, Ste C19",
-    locality: "Scottsdale",
-    region: "AZ",
-    postalCode: "85260",
-    country: "US",
-  },
-  addressLabel: "15455 N Greenway Hayden Loop, Ste C19, Scottsdale, AZ 85260",
+  // Do not publish a street address until Trinity Build Co LLC has a legitimate,
+  // client-approved operating location that can be represented consistently.
   areaServed: ["Phoenix, AZ", "Scottsdale, AZ", "Arizona"],
+
+  // Add only client-controlled, approved company profiles.
+  sameAs: [] as string[],
 
   // The contact form posts here.
   formEndpoint: "/api/contact",

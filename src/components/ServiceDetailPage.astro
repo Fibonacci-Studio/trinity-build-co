@@ -1,0 +1,760 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import Nav from "./Nav.astro";
+import Footer from "./Footer.astro";
+import { business } from "../config";
+import type { ServicePage } from "../data/servicePages";
+
+interface RelatedService {
+  title: string;
+  href: string;
+}
+
+interface Props {
+  service: ServicePage;
+  relatedServices: RelatedService[];
+}
+
+const { service, relatedServices } = Astro.props;
+const siteURL = Astro.site?.href ?? business.url;
+const canonical = new URL(Astro.url.pathname, siteURL).href;
+
+const structuredData = [
+  {
+    "@type": "Service",
+    "@id": `${canonical}#service`,
+    name: service.title,
+    serviceType: service.title,
+    description: service.seoDescription,
+    url: canonical,
+    provider: { "@id": `${siteURL}#organization` },
+    areaServed: business.areaServed.map((name) => ({
+      "@type": "AdministrativeArea",
+      name,
+    })),
+  },
+  {
+    "@type": "BreadcrumbList",
+    "@id": `${canonical}#breadcrumbs`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteURL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Services",
+        item: new URL("/services", siteURL).href,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: service.title,
+        item: canonical,
+      },
+    ],
+  },
+  {
+    "@type": "FAQPage",
+    "@id": `${canonical}#faqs`,
+    mainEntity: service.faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  },
+];
+---
+
+<Base
+  title={service.seoTitle}
+  description={service.seoDescription}
+  ogImage={service.heroImage.src}
+  structuredData={structuredData}
+>
+  <Nav active="services" />
+  <main id="main-content">
+    <section class="service-hero">
+      <Image
+        src={service.heroImage}
+        alt={service.heroAlt}
+        widths={[480, 768, 1280, 1920]}
+        sizes="100vw"
+        loading="eager"
+        fetchpriority="high"
+        decoding="sync"
+        quality={68}
+        class="service-hero-img"
+        style={`object-position: ${service.heroPosition ?? "center 50%"}`}
+      />
+      <div class="service-hero-scrim" aria-hidden="true"></div>
+      <div class="container service-hero-inner">
+        <a href="/services" class="back-link">All Services</a>
+        <div class="eyebrow hero-eyebrow"><span>{service.eyebrow}</span></div>
+        <h1 class="page-title service-title">{service.title}</h1>
+        <p class="service-lede">{service.lede}</p>
+        <div class="hero-actions">
+          <a
+            href="/contact"
+            class="btn btn--sage"
+            data-analytics-cta="discuss_project"
+            data-analytics-placement={`service_${service.slug}_hero`}
+          >Discuss Your Project</a>
+          <a href="#service-scope" class="btn btn--outline">Explore the Service</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-intro">
+      <div class="container intro-grid">
+        <div data-reveal>
+          <div class="eyebrow intro-eyebrow"><span>Service Approach</span></div>
+          <h2 class="section-title intro-title">{service.introTitle}</h2>
+        </div>
+        <div class="intro-copy" data-reveal>
+          {service.introParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </div>
+    </section>
+
+    <section id="service-scope" class="scope">
+      <div class="container">
+        <div class="scope-head" data-reveal>
+          <div class="eyebrow scope-eyebrow"><span>Service Scope</span></div>
+          <h2 class="section-title scope-title">{service.capabilitiesTitle}</h2>
+        </div>
+        <div class="tile-grid scope-grid">
+          {
+            service.capabilities.map((capability, index) => (
+              <article class="scope-card" data-reveal>
+                <div class="num">{String(index + 1).padStart(2, "0")}</div>
+                <h3>{capability.title}</h3>
+                <p>{capability.copy}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="support-band">
+      <Image
+        src={service.supportImage}
+        alt={service.supportAlt}
+        widths={[480, 768, 1280, 1920]}
+        sizes="100vw"
+        quality={68}
+        class="support-img"
+        style={`object-position: ${service.supportPosition ?? "center 50%"}`}
+      />
+      <div class="support-scrim" aria-hidden="true"></div>
+      <div class="container support-inner" data-reveal>
+        <div class="kicker support-kicker">{service.supportEyebrow}</div>
+        <h2>{service.supportTitle}</h2>
+        <p>{service.supportCopy}</p>
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="container process-grid">
+        <div data-reveal>
+          <div class="eyebrow process-eyebrow"><span>How the Work Moves</span></div>
+          <h2 class="section-title process-title">{service.processTitle}</h2>
+          <p class="process-copy">{service.processCopy}</p>
+        </div>
+        <div class="process-list">
+          {
+            service.processItems.map((item, index) => (
+              <article class="process-item" data-reveal>
+                <span class="process-num">{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.copy}</p>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="project-fit">
+      <div class="container">
+        <div class="fit-head" data-reveal>
+          <div>
+            <div class="eyebrow fit-eyebrow"><span>Project Fit</span></div>
+            <h2 class="section-title fit-title">{service.fitTitle}</h2>
+          </div>
+          <p>{service.fitCopy}</p>
+        </div>
+        <div class="fit-grid">
+          {
+            service.fitItems.map((item) => (
+              <article class="fit-card" data-reveal>
+                <h3>{item.title}</h3>
+                <p>{item.copy}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="faqs" aria-labelledby="faq-title">
+      <div class="container faq-grid">
+        <div data-reveal>
+          <div class="eyebrow faq-eyebrow"><span>Common Questions</span></div>
+          <h2 id="faq-title" class="section-title faq-title">What owners ask about {service.shortTitle.toLowerCase()}.</h2>
+          <p class="faq-intro">
+            Project-specific answers depend on the documents, delivery method, contracts, jurisdiction,
+            site conditions, and selected scope.
+          </p>
+        </div>
+        <div class="faq-list">
+          {
+            service.faqs.map((faq, index) => (
+              <details class="faq-item" data-reveal open={index === 0}>
+                <summary>{faq.question}</summary>
+                <p>{faq.answer}</p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="related-services" aria-labelledby="related-services-title">
+      <div class="container related-services-inner">
+        <div>
+          <div class="eyebrow related-eyebrow"><span>Related Services</span></div>
+          <h2 id="related-services-title" class="section-title related-title">Build the right team around the work.</h2>
+        </div>
+        <nav class="related-links" aria-label="Related commercial construction services">
+          {relatedServices.map((related) => <a href={related.href}>{related.title}</a>)}
+        </nav>
+      </div>
+    </section>
+
+    <section class="service-cta">
+      <div class="container service-cta-inner" data-reveal>
+        <div>
+          <div class="eyebrow cta-eyebrow"><span>Start the Conversation</span></div>
+          <h2>Bring us the project you are planning.</h2>
+          <p>Share the current stage, location, scope, and priorities. We will help identify a practical next conversation.</p>
+        </div>
+        <a
+          href="/contact"
+          class="btn btn--sage"
+          data-analytics-cta="request_consultation"
+          data-analytics-placement={`service_${service.slug}_footer`}
+        >Request a Consultation</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .service-hero {
+    position: relative;
+    min-height: clamp(590px, 72vh, 700px);
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: var(--color-ink);
+  }
+
+  .service-hero-img,
+  .support-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .service-hero-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(13, 13, 13, 0.95) 0%, rgba(13, 13, 13, 0.72) 50%, rgba(13, 13, 13, 0.24) 100%),
+      linear-gradient(180deg, rgba(13, 13, 13, 0.12) 22%, rgba(13, 13, 13, 0.88) 100%);
+  }
+
+  .service-hero-inner {
+    position: relative;
+    width: 100%;
+    padding-top: 76px;
+    padding-bottom: clamp(56px, 8vw, 82px);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 30px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+    color: var(--color-dust-bright);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .back-link:hover {
+    color: var(--color-gold);
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 24px;
+  }
+
+  .service-title {
+    max-width: 1040px;
+  }
+
+  .service-lede {
+    max-width: 760px;
+    margin: 26px 0 0;
+    color: var(--color-dust-bright);
+    font-size: 18px;
+    line-height: 1.75;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 36px;
+  }
+
+  .service-intro,
+  .related-services {
+    background: #ffffff;
+    padding: var(--section-pad) 0;
+  }
+
+  .intro-grid,
+  .process-grid,
+  .faq-grid,
+  .related-services-inner {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.82fr) minmax(360px, 1.18fr);
+    gap: clamp(48px, 7vw, 96px);
+    align-items: start;
+  }
+
+  .intro-eyebrow,
+  .scope-eyebrow,
+  .process-eyebrow,
+  .fit-eyebrow,
+  .faq-eyebrow,
+  .related-eyebrow,
+  .cta-eyebrow {
+    margin-bottom: 24px;
+  }
+
+  .intro-eyebrow span,
+  .scope-eyebrow span,
+  .fit-eyebrow span,
+  .faq-eyebrow span,
+  .related-eyebrow span {
+    color: var(--color-gold-dark);
+  }
+
+  .intro-title,
+  .scope-title,
+  .fit-title,
+  .faq-title,
+  .related-title {
+    color: var(--color-ink);
+  }
+
+  .intro-copy p {
+    margin: 0;
+    color: var(--color-stone);
+    font-size: 17px;
+    line-height: 1.85;
+  }
+
+  .intro-copy p + p {
+    margin-top: 22px;
+  }
+
+  .scope,
+  .project-fit {
+    background: var(--color-cream);
+    padding: var(--section-pad) 0;
+  }
+
+  .scope {
+    scroll-margin-top: 96px;
+  }
+
+  .scope-head {
+    max-width: 840px;
+    margin-bottom: 52px;
+  }
+
+  .scope-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  }
+
+  .scope-card {
+    min-height: 248px;
+    padding: 36px 32px;
+    background: #ffffff;
+  }
+
+  .scope-card h3,
+  .fit-card h3 {
+    margin: 17px 0 11px;
+    color: var(--color-ink);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .scope-card .num {
+    color: var(--color-gold-dark);
+  }
+
+  .scope-card p,
+  .fit-card p {
+    margin: 0;
+    color: var(--color-stone-muted);
+    font-size: 14.5px;
+    line-height: 1.72;
+  }
+
+  .support-band {
+    position: relative;
+    min-height: clamp(480px, 56vw, 650px);
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: var(--color-ink);
+  }
+
+  .support-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(13, 13, 13, 0.1) 20%, rgba(13, 13, 13, 0.92) 100%);
+  }
+
+  .support-inner {
+    position: relative;
+    width: 100%;
+    padding-bottom: clamp(52px, 7vw, 76px);
+  }
+
+  .support-kicker {
+    margin-bottom: 18px;
+  }
+
+  .support-inner h2 {
+    max-width: 880px;
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(30px, 3.5vw, 48px);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.18;
+    text-transform: uppercase;
+  }
+
+  .support-inner p {
+    max-width: 720px;
+    margin: 22px 0 0;
+    color: var(--color-dust-bright);
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  .process {
+    background: var(--color-ink);
+    padding: var(--section-pad) 0;
+  }
+
+  .process-title {
+    color: #ffffff;
+  }
+
+  .process-copy {
+    max-width: 460px;
+    margin: 26px 0 0;
+    color: var(--color-dust-muted);
+    font-size: 16px;
+    line-height: 1.76;
+  }
+
+  .process-list {
+    border-bottom: 1px solid var(--color-coal-border);
+  }
+
+  .process-item {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 22px;
+    padding: 27px 0;
+    border-top: 1px solid var(--color-coal-border);
+  }
+
+  .process-num {
+    color: var(--color-gold);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  .process-item h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .process-item p {
+    margin: 10px 0 0;
+    color: var(--color-dust-muted);
+    font-size: 14.5px;
+    line-height: 1.72;
+  }
+
+  .fit-head {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.9fr) minmax(340px, 1.1fr);
+    gap: clamp(42px, 7vw, 88px);
+    align-items: end;
+    margin-bottom: 48px;
+  }
+
+  .fit-head p {
+    margin: 0;
+    color: var(--color-stone);
+    font-size: 16px;
+    line-height: 1.78;
+  }
+
+  .fit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--color-line);
+    border: 1px solid var(--color-line);
+  }
+
+  .fit-card {
+    min-height: 210px;
+    padding: 34px 30px;
+    background: #ffffff;
+  }
+
+  .fit-card h3 {
+    margin-top: 0;
+  }
+
+  .faqs {
+    background: #ffffff;
+    padding: var(--section-pad) 0;
+  }
+
+  .faq-intro {
+    max-width: 440px;
+    margin: 24px 0 0;
+    color: var(--color-stone-muted);
+    font-size: 15px;
+    line-height: 1.72;
+  }
+
+  .faq-list {
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .faq-item {
+    border-top: 1px solid var(--color-line);
+  }
+
+  .faq-item summary {
+    position: relative;
+    padding: 24px 42px 24px 0;
+    color: var(--color-ink);
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.45;
+    list-style: none;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    top: 22px;
+    right: 0;
+    color: var(--color-gold-dark);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .faq-item[open] summary::after {
+    content: "−";
+  }
+
+  .faq-item p {
+    margin: -2px 0 26px;
+    padding-right: 30px;
+    color: var(--color-stone);
+    font-size: 15px;
+    line-height: 1.76;
+  }
+
+  .related-services {
+    border-top: 1px solid var(--color-line);
+  }
+
+  .related-links {
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .related-links a {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 0;
+    border-top: 1px solid var(--color-line);
+    color: var(--color-ink);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .related-links a::after {
+    content: "→";
+    color: var(--color-gold-dark);
+  }
+
+  .related-links a:hover {
+    color: var(--color-sage-dark);
+  }
+
+  .service-cta {
+    background: var(--color-ink);
+    padding: clamp(68px, 8vw, 92px) 0;
+  }
+
+  .service-cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+  }
+
+  .service-cta h2 {
+    max-width: 760px;
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(28px, 3.5vw, 46px);
+    line-height: 1.18;
+    text-transform: uppercase;
+  }
+
+  .service-cta p {
+    max-width: 640px;
+    margin: 18px 0 0;
+    color: var(--color-dust-muted);
+    font-size: 16px;
+    line-height: 1.72;
+  }
+
+  .service-cta .btn {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 900px) {
+    .fit-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .fit-card {
+      min-height: 0;
+    }
+
+    .service-cta-inner {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .service-hero {
+      min-height: 650px;
+    }
+
+    .service-hero-scrim {
+      background:
+        linear-gradient(90deg, rgba(13, 13, 13, 0.9) 0%, rgba(13, 13, 13, 0.5) 100%),
+        linear-gradient(180deg, rgba(13, 13, 13, 0.16) 18%, rgba(13, 13, 13, 0.94) 100%);
+    }
+
+    .service-hero-inner {
+      padding-top: 50px;
+      padding-bottom: 52px;
+    }
+
+    .service-lede {
+      font-size: 16px;
+      line-height: 1.68;
+    }
+
+    .hero-actions .btn {
+      width: 100%;
+      padding-inline: 18px;
+    }
+
+    .intro-grid,
+    .process-grid,
+    .faq-grid,
+    .related-services-inner,
+    .fit-head {
+      grid-template-columns: 1fr;
+      gap: 42px;
+    }
+
+    .scope-card {
+      min-height: 0;
+    }
+
+    .support-band {
+      min-height: 540px;
+    }
+
+    .support-inner p {
+      font-size: 16px;
+    }
+
+    .service-cta .btn {
+      width: 100%;
+    }
+  }
+</style>
