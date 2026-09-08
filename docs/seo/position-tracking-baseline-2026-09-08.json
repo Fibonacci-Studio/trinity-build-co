@@ -1,0 +1,121 @@
+{
+  "observed_at_utc": "2026-09-08T07:34:33.483756+00:00",
+  "project_id": 31133981,
+  "campaign_id": 5439722,
+  "target": "Arizona, United States / Google / English / Desktop",
+  "keywords": [
+    {
+      "keyword": "mixed use development contractor phoenix",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "5125 e madison st phoenix az 85034",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "multi family construction phoenix",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "office building construction phoenix",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "commercial general contractors phoenix az",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "commercial construction management phoenix",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "commercial general contractor phoenix",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "trinity building",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "preconstruction services phoenix",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "commercial construction value engineering",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "trinity build co arizona",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "trinity build co",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "commercial construction company phoenix",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "commercial tenant improvements phoenix",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "commercial construction budget development",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "commercial construction arizona",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "design build contractor phoenix",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "apartment construction company phoenix",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "commercial contractor trinity build co phoenix arizona",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "construction company office",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "trinity build co phoenix",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "tenant improvement contractor phoenix",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "working buildings",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "commercial campus construction phoenix",
+      "tracking_started": "2026-09-07"
+    },
+    {
+      "keyword": "ground up commercial construction phoenix",
+      "tracking_started": "2026-09-07"
+    }
+  ],
+  "poor_legacy_targets": [
+    "5125 e madison st phoenix az 85034",
+    "trinity building",
+    "construction company office",
+    "working buildings"
+  ],
+  "proposed_replacements": [
+    "office construction phoenix",
+    "office build out phoenix",
+    "multi building construction arizona",
+    "commercial preconstruction contractor arizona"
+  ],
+  "mutation_status": "Read only. No keyword, target, competitor, campaign, or history change."
+}

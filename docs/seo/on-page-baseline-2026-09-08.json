@@ -1,0 +1,71 @@
+{
+  "observed_at_utc": "2026-09-08T07:30:30.739833+00:00",
+  "project_id": 31133981,
+  "domain": "trinitybuildco.com",
+  "source_revision": "17b4ece",
+  "report_last_updated": "2026-09-07",
+  "google_target": "United States / English",
+  "ideas": {
+    "total": 18,
+    "content": 13,
+    "semantic": 1,
+    "serp": 1,
+    "backlinks": 3,
+    "technical": 0,
+    "strategy": 0,
+    "ux": 0
+  },
+  "pages": [
+    {
+      "path": "/why-trinity",
+      "id": "6a9fac752d68ea4c45edaee1",
+      "keywords": [
+        "trinity homes az"
+      ],
+      "ideas": 6,
+      "findings": [
+        "target keyword absent from body,H1,meta,title",
+        "generic length advice based on mismatched target",
+        "suggested backlink sources"
+      ]
+    },
+    {
+      "path": "/industries/office-buildings",
+      "id": "6a9fac752d68ea4c45edaee2",
+      "keywords": [
+        "5125 e madison st phoenix az 85034",
+        "construction company office",
+        "lti contracting phoenix az",
+        "working buildings"
+      ],
+      "ideas": 8,
+      "findings": [
+        "aggregate rating suggestion without supplied rating evidence",
+        "generic length/readability advice against mismatched competitors",
+        "target keywords absent from body,H1,title",
+        "semantic suggestion: 5125 e madison st",
+        "suggested backlink sources"
+      ]
+    },
+    {
+      "path": "/industries/commercial-campuses",
+      "id": "6a9fac752d68ea4c45edaee3",
+      "keywords": [
+        "cdn building",
+        "trinity building"
+      ],
+      "ideas": 4,
+      "findings": [
+        "readability advice against mismatched competitors",
+        "target keyword absent from body,H1",
+        "suggested backlink sources"
+      ]
+    }
+  ],
+  "gsc_manual_actions": {
+    "property": "sc-domain:trinitybuildco.com",
+    "observed": "No issues detected",
+    "url": "https://search.google.com/search-console/manual-actions?resource_id=sc-domain%3Atrinitybuildco.com"
+  },
+  "mutation_status": "Before any On Page target changes; no page/project/history deletion; no backlink action; no website runtime change."
+}

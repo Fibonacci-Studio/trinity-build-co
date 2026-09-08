@@ -1,0 +1,101 @@
+{
+  "project_id": 31133981,
+  "authorized_scope": "Correct the same three existing On Page landing-page targets and collect ideas using included allowance only. Do not delete pages/project/history. Position Tracking stays read-only until reviewed.",
+  "prepared_at_utc": "2026-09-08T07:31:36.011352+00:00",
+  "allowance_before": {
+    "seo_ideas_used": 7,
+    "seo_ideas_limit": 500,
+    "seo_ideas_remaining": 493,
+    "position_tracking_used": 25,
+    "position_tracking_limit": 500
+  },
+  "targets": [
+    {
+      "path": "/why-trinity",
+      "id": "6a9fac752d68ea4c45edaee1",
+      "keywords": [
+        "commercial general contractor phoenix"
+      ]
+    },
+    {
+      "path": "/industries/office-buildings",
+      "id": "6a9fac752d68ea4c45edaee2",
+      "keywords": [
+        "office construction phoenix",
+        "office build out phoenix"
+      ]
+    },
+    {
+      "path": "/industries/commercial-campuses",
+      "id": "6a9fac752d68ea4c45edaee3",
+      "keywords": [
+        "commercial campus construction phoenix",
+        "multi building construction arizona"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "path": "/why-trinity",
+      "keywords": [
+        "commercial general contractor phoenix"
+      ],
+      "status": "Completed",
+      "observed_at_utc": "2026-09-08T07:33:39.949789+00:00",
+      "report_last_updated": "2026-09-08",
+      "ideas": 6
+    },
+    {
+      "path": "/industries/office-buildings",
+      "keywords": [
+        "office construction phoenix",
+        "office build out phoenix"
+      ],
+      "status": "Completed",
+      "observed_at_utc": "2026-09-08T07:33:39.949906+00:00",
+      "report_last_updated": "2026-09-08",
+      "ideas": 7
+    },
+    {
+      "path": "/industries/commercial-campuses",
+      "keywords": [
+        "commercial campus construction phoenix",
+        "multi building construction arizona"
+      ],
+      "status": "Completed",
+      "observed_at_utc": "2026-09-08T07:33:39.949908+00:00",
+      "report_last_updated": "2026-09-08",
+      "ideas": 5
+    }
+  ],
+  "gsc_security_issues": {
+    "property": "sc-domain:trinitybuildco.com",
+    "status": "No issues detected",
+    "url": "https://search.google.com/search-console/security-issues?resource_id=sc-domain%3Atrinitybuildco.com"
+  },
+  "allowance_after": {
+    "observed_at_utc": "2026-09-08T07:39:23.846968+00:00",
+    "seo_ideas_used": 12,
+    "seo_ideas_limit": 500,
+    "seo_ideas_remaining": 488,
+    "position_tracking_used": 29,
+    "position_tracking_limit": 500,
+    "standard_api_units_before": 27840,
+    "standard_api_units_after": 27840
+  },
+  "position_tracking_change": {
+    "campaign_id": 5439722,
+    "old_keywords_retained": 25,
+    "added_keywords": [
+      "office construction phoenix",
+      "office build out phoenix",
+      "multi building construction arizona",
+      "commercial preconstruction contractor arizona"
+    ],
+    "new_configured_count": 29,
+    "old_target_preserved": "Arizona, United States / Google / English / Desktop",
+    "history_retained": true,
+    "reason": "Used expressly authorized additive fallback because Semrush says keyword deletion permanently loses stored history. No deletion or hidden report filter.",
+    "ranking_limit": "New4 collection pending at save; dated ranking widget still represented25 evaluated terms. No improvement or numeric ranking claimed."
+  }
+}

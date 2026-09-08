@@ -81,3 +81,26 @@ test('llms index is a factual list of published pages with no fabricated locatio
   assert.ok(links.length >= 10);
   for (const url of links) assert.ok(pages.has(url) || url === `${origin}/sitemap-index.xml`, url);
 });
+
+test('service-focused headings preserve industry identity without invented competitor facts or ratings', () => {
+  for (const [path, industry] of [
+    ['/industries/office-buildings', 'Office Buildings'],
+    ['/industries/commercial-campuses', 'Commercial Campuses'],
+  ]) {
+    const html = pages.get(`${origin}${path}`);
+    const heading = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/)?.[1];
+    assert.match(heading, /construction in Phoenix/);
+    const scripts = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+      .map((match) => JSON.parse(match[1]));
+    const entries = scripts.flatMap((script) => script['@graph'] ?? (Array.isArray(script) ? script : [script]));
+    const service = entries.find((entry) => entry['@type'] === 'Service');
+    assert.equal(service.name, `${industry} Construction`);
+    assert.equal(service.serviceType, `${industry} Construction`);
+    const breadcrumb = entries.find((entry) => entry['@type'] === 'BreadcrumbList');
+    assert.equal(breadcrumb.itemListElement.at(-1).name, industry);
+  }
+  for (const path of ['/why-trinity', '/industries/office-buildings', '/industries/commercial-campuses']) {
+    const html = pages.get(`${origin}${path}`);
+    assert.doesNotMatch(html, /trinity homes az|lti contracting|5125 e madison|million square feet|aggregateRating/i);
+  }
+});

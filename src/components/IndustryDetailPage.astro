@@ -18,6 +18,7 @@ interface FAQItem {
 
 interface Props {
   title: string;
+  heroTitle?: string;
   seoTitle?: string;
   seoDescription: string;
   eyebrow: string;
@@ -42,6 +43,7 @@ interface Props {
 
 const {
   title,
+  heroTitle = title,
   seoTitle = `${title} Construction | Trinity Build Co.`,
   seoDescription,
   eyebrow,
@@ -142,7 +144,7 @@ const structuredData = [
       <div class="container sector-hero-inner">
         <a href="/industries" class="back-link">All Industries</a>
         <div class="eyebrow hero-eyebrow"><span>{eyebrow}</span></div>
-        <h1 class="page-title sector-title">{title}</h1>
+        <h1 class="page-title sector-title">{heroTitle}</h1>
         <p class="sector-lede">{lede}</p>
         <div class="hero-actions">
           <a href="/contact" class="btn btn--sage" data-analytics-cta="start_project" data-analytics-placement="industry_hero">Start Your Project</a>
