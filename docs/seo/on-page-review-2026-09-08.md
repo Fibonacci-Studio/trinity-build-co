@@ -1,6 +1,6 @@
 # Trinity On Page and tracking correction — September 8, 2026
 
-This follow-up uses the retained Semrush project **31133981 / TrinityBuildCo**, not a new project. Website changes are prepared from live source `17b4ece` in an isolated worktree. The owner's dirty checkout, existing `848c471` audit evidence, and deployed website are untouched by this patch.
+This follow-up uses the retained Semrush project **31133981 / TrinityBuildCo**. Website changes were prepared from source `17b4ece` in an isolated worktree and deployed at revision `78d99a51021952aff6d424a95460b88615e1d596`. The owner's dirty checkout and existing `848c471` audit evidence remain intact.
 
 ## Evidence and account changes
 
@@ -46,4 +46,8 @@ Read-only signed-in Google Search Console checks for exact property `sc-domain:t
 - `node --experimental-strip-types --test tests/hermaion-capture.test.mjs`:23/23 pass. No inquiry or email was sent.
 - `git diff --check` passed.
 
-The copy patch still requires independent review and authorized deployment. No claim is made that it has already changed live Semrush counts. After deployment, any recrawl must remain within explicitly verified included allowance. Retain technical Site Audit, On Page recommendations, position history, and backlink status as separate measurements; Site Audit100% alone does not mean every SEO task is complete.
+The copy patch passed independent review and was deployed on September 8. Vercel deployment `dpl_CSMyube3X8qmdY5meEf5BvcwUaYL` reached READY with the exact source revision above, then was promoted to `https://trinitybuildco.com`. HTTP checks confirmed all three changed pages returned 200 with their intended headings and canonical URLs. Browser verification passed on desktop and at a 390-pixel mobile viewport; the mobile document had no horizontal overflow.
+
+The existing 100% Site Audit result (31 URLs, zero errors, warnings or notices) predates this copy follow-up. No fresh whole-site crawl of revision `78d99a5` is claimed. Any later recrawl must remain within verified included allowance. Technical Site Audit, On Page recommendations, position history, and backlink status remain separate measurements; Site Audit 100% does not mean every SEO task is complete.
+
+Hermaion's first import completed at `2026-09-08T07:56:05.739145Z`: the retained project's finished 31-page audit and all 29 tracked keyword rows were saved. The bounded audit endpoint did not supply a numeric quality score, so Hermaion stores that score as absent rather than inferring 100 from zero issues. No purchase, subscription change, or paid refill was made.
