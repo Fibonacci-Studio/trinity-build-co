@@ -33,3 +33,9 @@ Read-only production HTML measurements versus the local production build (bytes;
 | Portfolio | 52,276 | 26,601 | 10.96% | 393 |
 
 All26 candidate pages have measured text/HTML above10%, with script/style text excluded. This is a reproducible local measure, not Semrush's unpublished parsing algorithm or a guaranteed search benefit. Re-crawl and live canonical/CSS/capture verification remain deployment follow-up; no audit was restarted and no account plan, subscription or paid operation was changed.
+
+## First deployed verification
+
+Production deployment `dpl_BbSDpzHdbmBZYwDrFXPviSTiNrQM` served exact commit `c663c15d9b323d7b0e3f1d643dd136d9665f9a9a`. The protected candidate's homepage, sitemap and llms index were verified before promotion; canonical production Home, Contact, Portfolio, sitemap and llms requests then returned200 with the corrected content.
+
+A fresh included Semrush crawl on September8 returned **99% Site Health, 0errors, 1warning, 0notices**, compared with94%,26errors,23warnings,2notices. All structured-data errors, low-word-count warnings, missing-llms notice and orphan-sitemap notice cleared. The remaining warning was the Careers page's text/HTML ratio rounded to0.10. No checks were excluded or hidden. Careers now includes practical application guidance based on its existing email workflow and links to published services/process, without new job, compensation or hiring-policy claims. Its production build and the same full52 website tests pass; another deployment/crawl is required to verify that last warning.

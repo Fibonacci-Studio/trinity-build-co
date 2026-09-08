@@ -118,6 +118,25 @@ const applyHref = (role: string) =>
           Don't see your role? Introduce yourself at
           <a href={`mailto:${business.careersEmail}`} class="roles-email">{business.careersEmail}</a>
         </p>
+        <div class="application-guidance">
+          <h3>How to introduce yourself</h3>
+          <p>
+            Choose a role above to open an email with the position in the subject line.
+            Include your resume and a short introduction describing the construction work
+            you know best. If you are making a general introduction, tell us which part
+            of the team interests you and where your experience could contribute.
+          </p>
+          <p>
+            Useful details include the types of projects you have worked on, your responsibilities,
+            the Arizona locations you can work in, and your availability. You can describe
+            relevant field coordination, project planning, estimating, or trade experience
+            without sharing confidential information from a previous employer.
+          </p>
+          <p>
+            Before reaching out, explore our <a href="/services">construction services</a>
+            and <a href="/process">project process</a> to learn more about the work.
+          </p>
+        </div>
       </div>
     </section>
   </main>
@@ -125,6 +144,18 @@ const applyHref = (role: string) =>
 </Base>
 
 <style>
+  .application-guidance {
+    max-width: 820px;
+    margin-top: 48px;
+    color: var(--color-stone);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  .application-guidance h3 { color: var(--color-ink); font-size: 21px; }
+  .application-guidance p { margin: 16px 0; }
+  .application-guidance a { color: var(--color-gold-dark); text-underline-offset: 3px; }
+
   .offer {
     background: #ffffff;
     padding: var(--section-pad) 0;
